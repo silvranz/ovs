@@ -53,10 +53,6 @@ try {
    //Handle the request
    $application = new \Phalcon\Mvc\Application($di);
 
-	$application->notFound(function () use ($app) {
-		$app->response->setStatusCode(404, "Not Found")->sendHeaders();
-		echo 'This is crazy, but this page was not found!';
-	});
    echo $application->handle()->getContent();
 
 } catch(\Phalcon\Exception $e) {

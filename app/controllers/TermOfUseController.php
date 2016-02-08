@@ -2,11 +2,10 @@
 
 use Phalcon\Mvc\Controller;
 
-class IndexController extends Controller
+class TermOfUseController extends Controller
 {
 
     public function indexAction()
     {
-		$this->view->setVar("greet","Hello");
     }
 }
