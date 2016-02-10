@@ -1,4 +1,3 @@
-{% block content %}
 <!-- Primary Page Layout –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <div class="section header">
@@ -41,4 +40,3 @@
 	</div>
 </div>
 <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-{% endblock %}
