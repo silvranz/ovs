@@ -1,0 +1,1 @@
+var BASE_URL = "<?php echo $this->url->get(); ?>";
