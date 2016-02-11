@@ -555,8 +555,8 @@ ul.inline > li {
   box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
   background-color: white;
   overflow: visible;
-  /*z-index: 3;*/
-  z-index: 1000;
+  z-index: 3;
+  /*z-index: 1000;*/
 }
 
 .left-content .content {
@@ -1416,4 +1416,33 @@ ul.inline > li {
     top: -14rem;
     max-height: 570px;
   }
+}
+
+/* Tambahan dari nicholas */
+.edit-param-element{
+	width: 25%;
+    position: absolute;
+    top: 39px;
+    right: 0px;
+    min-height: 100%;
+	background-color:#DDDDDD;
+	z-index:3;
+}
+.edit-param-element .header .title{
+	background-color: #3899EC;
+    text-align: center;
+    color: #FFF;
+    padding: 5px;
+}
+.edit-param-element .title-section{
+	border-bottom:1px solid black;
+}
+.right-side{
+    right: 0px;
+}
+.left-side{
+    left: 0px;
+}
+nav{
+	z-index:10;
 }

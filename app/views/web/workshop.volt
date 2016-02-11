@@ -1,4 +1,3 @@
-
 <div class="top-menu-editor-separator" style="height:40px;"></div>
 
 <div class="left-control">
@@ -38,7 +37,7 @@
 				<div class="items-section">
 					<form>
 						<label for="txtHexColor">Hex Color</label>
-						<input type="text" id="txtHexColor" class="input-hex-color" />
+						<input type="color" id="txtHexColor" class="input-hex-color"/>
 						<input type="submit" id="btnSetBackgroundColor" class="button button-primary" value="Set Color" />
 					</form>
 				</div>
@@ -118,9 +117,9 @@
 					<div class="title">Simple Button</div>
 				</div>
 				<div class="items-section">
-					<input type="button" class="button button-primary draggable-element" value="Button" element-type="button" />
-					<input type="button" class="button button-danger draggable-element" value="Button" element-type="button" />
-					<input type="button" class="button button-success draggable-element" value="Button" element-type="button" />
+					<input type="button" class="button button-primary draggable-element" value="Button" map="button-primary" />
+					<input type="button" class="button button-danger draggable-element" value="Button" map="button-danger" />
+					<input type="button" class="button button-success draggable-element" value="Button" map="button-success" />
 				</div>
 
 				<div class="title-section">
@@ -539,622 +538,688 @@
 	</div>
 </div>
 
-	<div class="md-overlay"></div><!-- the overlay element -->
+<div class="md-overlay"></div><!-- the overlay element -->
 
-	<!-- Properties Content of Element -->
+<!-- Properties Content of Element -->
 
-	<!-- Text -->
-	<div id="properties-text" class="panel-properties">
-		<div class="row">
-        <div class="twelve columns">
-          	<label>Opacity</label>
-        	<input type="range" min="0" max="100" id="prop-opacity-text" class="u-full-width prop-opacity" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Width</label>
-        	<input type="number" id="prop-width-text" class="u-full-width prop-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Height</label>
-        	<input type="number" id="prop-height-text" class="u-full-width prop-height" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">X</label>
-        	<input type="number" id="prop-xpos-text" class="u-full-width prop-xpos" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Y</label>
-        	<input type="number" id="prop-ypos-text" class="u-full-width prop-ypos" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="six columns">
-          	<label>Text Color</label>
-        	<input type="color" id="prop-text-color-text" class="u-full-width prop-text-color">
-        </div>
-        <div class="six columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-text" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-          	<label>Border Width</label>
-        	<input type="number" class="u-full-width prop-border-width">
-        </div>
-        <div class="four columns">
-          	<label>Border Style</label>
-          	<select class="u-full-width prop-border-style">
-          		<option value="dashed">Dashed</option>
-          		<option value="dotted">Dotted</option>
-          		<option value="double">Double</option>
-          		<option value="groove">Groove</option>
-          		<option value="hidden">Hidden</option>
-          		<option value="inherit">Inherit</option>
-          		<option value="initial">Initial</option>
-          		<option value="inset">Inset</option>
-          		<option value="none">None</option>
-          		<option value="outset">Outset</option>
-          		<option value="ridge">Ridge</option>
-          		<option value="solid">Solid</option>
-          	</select>
-        </div>
-        <div class="four columns">
-          	<label>Border Radius</label>
-        	<input type="number" class="u-full-width prop-border-radius">
-        </div>
-    </div>
-    <div class="row">
-    	<div class="twelve columns">
-          	<label>Border Color</label>
-        	<input type="color" class="u-full-width prop-border-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+<!-- Text -->
+<div id="properties-text" class="panel-properties">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Opacity</label>
+		<input type="range" min="0" max="100" id="prop-opacity-text" class="u-full-width prop-opacity" />
 	</div>
-
-	<!-- Link -->
-	<div id="properties-link" class="panel-properties">
-		<div class="row">
-        <div class="twelve columns">
-          	<label>Opacity</label>
-        	<input type="range" min="0" max="100" id="prop-opacity-link" class="u-full-width prop-opacity" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Width</label>
-        	<input type="number" id="prop-width-link" class="u-full-width prop-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Height</label>
-        	<input type="number" id="prop-height-link" class="u-full-width prop-height" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">X</label>
-        	<input type="number" id="prop-xpos-link" class="u-full-width prop-xpos" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Y</label>
-        	<input type="number" id="prop-ypos-link" class="u-full-width prop-ypos" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="six columns">
-          	<label>Text Color</label>
-        	<input type="color" id="prop-text-color-text" class="u-full-width prop-text-color">
-        </div>
-        <div class="six columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-link" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-          	<label>Border Width</label>
-        	<input type="number" class="u-full-width prop-border-width">
-        </div>
-        <div class="four columns">
-          	<label>Border Style</label>
-          	<select class="u-full-width prop-border-style">
-          		<option value="dashed">Dashed</option>
-          		<option value="dotted">Dotted</option>
-          		<option value="double">Double</option>
-          		<option value="groove">Groove</option>
-          		<option value="hidden">Hidden</option>
-          		<option value="inherit">Inherit</option>
-          		<option value="initial">Initial</option>
-          		<option value="inset">Inset</option>
-          		<option value="none">None</option>
-          		<option value="outset">Outset</option>
-          		<option value="ridge">Ridge</option>
-          		<option value="solid">Solid</option>
-          	</select>
-        </div>
-        <div class="four columns">
-          	<label>Border Radius</label>
-        	<input type="number" class="u-full-width prop-border-radius">
-        </div>
-    </div>
-    <div class="row">
-    	<div class="twelve columns">
-          	<label>Border Color</label>
-        	<input type="color" class="u-full-width prop-border-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Width</label>
+		<input type="number" id="prop-width-text" class="u-full-width prop-width" />
 	</div>
-
-	<!-- Textbox -->
-	<div id="properties-textbox" class="panel-properties">
-		<div class="row">
-  		<div class="twelve columns">
-          	<label>Placeholder</label>
-          	<input id="prop-placeholder-textbox" class="u-full-width" type="text" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Opacity</label>
-        	<input type="range" min="0" max="100" id="prop-opacity-textbox" class="u-full-width prop-opacity" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Width</label>
-        	<input type="number" id="prop-width-textbox" class="u-full-width prop-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Height</label>
-        	<input type="number" id="prop-height-textbox" class="u-full-width prop-height" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">X</label>
-        	<input type="number" id="prop-xpos-textbox" class="u-full-width prop-xpos" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Y</label>
-        	<input type="number" id="prop-ypos-textbox" class="u-full-width prop-ypos" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="six columns">
-          	<label>Text Color</label>
-        	<input type="color" id="prop-text-color-textbox" class="u-full-width prop-text-color">
-        </div>
-        <div class="six columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-textbox" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-          	<label>Border Width</label>
-        	<input type="number" class="u-full-width prop-border-width">
-        </div>
-        <div class="four columns">
-          	<label>Border Style</label>
-          	<select class="u-full-width prop-border-style">
-          		<option value="dashed">Dashed</option>
-          		<option value="dotted">Dotted</option>
-          		<option value="double">Double</option>
-          		<option value="groove">Groove</option>
-          		<option value="hidden">Hidden</option>
-          		<option value="inherit">Inherit</option>
-          		<option value="initial">Initial</option>
-          		<option value="inset">Inset</option>
-          		<option value="none">None</option>
-          		<option value="outset">Outset</option>
-          		<option value="ridge">Ridge</option>
-          		<option value="solid">Solid</option>
-          	</select>
-        </div>
-        <div class="four columns">
-          	<label>Border Radius</label>
-        	<input type="number" class="u-full-width prop-border-radius">
-        </div>
-    </div>
-    <div class="row">
-    	<div class="twelve columns">
-          	<label>Border Color</label>
-        	<input type="color" class="u-full-width prop-border-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+	<div class="three columns">
+		<label class="tacenter">Height</label>
+		<input type="number" id="prop-height-text" class="u-full-width prop-height" />
 	</div>
-	
-	<!-- Button -->
-	<div id="properties-button" class="panel-properties">
-		<div class="row">
-  		<div class="twelve columns">
-          	<label>Button Text</label>
-          	<input id="prop-text-button" class="u-full-width" type="text" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Opacity</label>
-        	<input type="range" min="0" max="100" id="prop-opacity-button" class="u-full-width prop-opacity" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Width</label>
-        	<input type="number" id="prop-width-button" class="u-full-width prop-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Height</label>
-        	<input type="number" id="prop-height-button" class="u-full-width prop-height" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">X</label>
-        	<input type="number" id="prop-xpos-button" class="u-full-width prop-xpos" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Y</label>
-        	<input type="number" id="prop-ypos-button" class="u-full-width prop-ypos" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="six columns">
-          	<label>Text Color</label>
-        	<input type="color" id="prop-text-color-button" class="u-full-width prop-text-color">
-        </div>
-        <div class="six columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-button" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-          	<label>Border Width</label>
-        	<input type="number" class="u-full-width prop-border-width">
-        </div>
-        <div class="four columns">
-          	<label>Border Style</label>
-          	<select class="u-full-width prop-border-style">
-          		<option value="dashed">Dashed</option>
-          		<option value="dotted">Dotted</option>
-          		<option value="double">Double</option>
-          		<option value="groove">Groove</option>
-          		<option value="hidden">Hidden</option>
-          		<option value="inherit">Inherit</option>
-          		<option value="initial">Initial</option>
-          		<option value="inset">Inset</option>
-          		<option value="none">None</option>
-          		<option value="outset">Outset</option>
-          		<option value="ridge">Ridge</option>
-          		<option value="solid">Solid</option>
-          	</select>
-        </div>
-        <div class="four columns">
-          	<label>Border Radius</label>
-        	<input type="number" class="u-full-width prop-border-radius">
-        </div>
-    </div>
-    <div class="row">
-    	<div class="twelve columns">
-          	<label>Border Color</label>
-        	<input type="color" class="u-full-width prop-border-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+	<div class="three columns">
+		<label class="tacenter">X</label>
+		<input type="number" id="prop-xpos-text" class="u-full-width prop-xpos" />
 	</div>
-
-	<!-- Image -->
-	<div id="properties-image" class="panel-properties">
-		<div class="row">
-        <div class="twelve columns">
-          	<label>Opacity</label>
-        	<input type="range" min="0" max="100" id="prop-opacity-image" class="u-full-width prop-opacity" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Width</label>
-        	<input type="number" id="prop-width-image" class="u-full-width prop-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Height</label>
-        	<input type="number" id="prop-height-image" class="u-full-width prop-height" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">X</label>
-        	<input type="number" id="prop-xpos-image" class="u-full-width prop-xpos" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Y</label>
-        	<input type="number" id="prop-ypos-image" class="u-full-width prop-ypos" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-          	<label>Border Width</label>
-        	<input type="number" class="u-full-width prop-border-width">
-        </div>
-        <div class="four columns">
-          	<label>Border Style</label>
-          	<select class="u-full-width prop-border-style">
-          		<option value="dashed">Dashed</option>
-          		<option value="dotted">Dotted</option>
-          		<option value="double">Double</option>
-          		<option value="groove">Groove</option>
-          		<option value="hidden">Hidden</option>
-          		<option value="inherit">Inherit</option>
-          		<option value="initial">Initial</option>
-          		<option value="inset">Inset</option>
-          		<option value="none">None</option>
-          		<option value="outset">Outset</option>
-          		<option value="ridge">Ridge</option>
-          		<option value="solid">Solid</option>
-          	</select>
-        </div>
-        <div class="four columns">
-          	<label>Border Radius</label>
-        	<input type="number" class="u-full-width prop-border-radius">
-        </div>
-    </div>
-    <div class="row">
-    	<div class="twelve columns">
-          	<label>Border Color</label>
-        	<input type="color" class="u-full-width prop-border-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+	<div class="three columns">
+		<label class="tacenter">Y</label>
+		<input type="number" id="prop-ypos-text" class="u-full-width prop-ypos" />
 	</div>
-
-	<!-- Image -->
-	<div id="properties-container" class="panel-properties">
-		<div class="row">
-        <div class="twelve columns">
-          	<label>Opacity</label>
-        	<input type="range" min="0" max="100" id="prop-opacity-container" class="u-full-width prop-opacity" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Width</label>
-        	<input type="number" id="prop-width-container" class="u-full-width prop-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Height</label>
-        	<input type="number" id="prop-height-container" class="u-full-width prop-height" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">X</label>
-        	<input type="number" id="prop-xpos-container" class="u-full-width prop-xpos" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Y</label>
-        	<input type="number" id="prop-ypos-container" class="u-full-width prop-ypos" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-          	<label>Border Width</label>
-        	<input type="number" class="u-full-width prop-border-width">
-        </div>
-        <div class="four columns">
-          	<label>Border Style</label>
-          	<select class="u-full-width prop-border-style">
-          		<option value="dashed">Dashed</option>
-          		<option value="dotted">Dotted</option>
-          		<option value="double">Double</option>
-          		<option value="groove">Groove</option>
-          		<option value="hidden">Hidden</option>
-          		<option value="inherit">Inherit</option>
-          		<option value="initial">Initial</option>
-          		<option value="inset">Inset</option>
-          		<option value="none">None</option>
-          		<option value="outset">Outset</option>
-          		<option value="ridge">Ridge</option>
-          		<option value="solid">Solid</option>
-          	</select>
-        </div>
-        <div class="four columns">
-          	<label>Border Radius</label>
-        	<input type="number" class="u-full-width prop-border-radius">
-        </div>
-    </div>
-    <div class="row">
-    	<div class="twelve columns">
-          	<label>Border Color</label>
-        	<input type="color" class="u-full-width prop-border-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-container" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+</div>
+<div class="row">
+	<div class="six columns">
+		<label>Text Color</label>
+		<input type="color" id="prop-text-color-text" class="u-full-width prop-text-color">
 	</div>
-
-	<!-- Widget Gallery -->
-	<div id="properties-gallery" class="panel-properties">
-		<div class="row">
-    	<div class="three columns">
-          	<label class="tacenter">Category Width</label>
-        	<input type="number" id="prop-width-category-gallery" class="u-full-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Gallery Width</label>
-        	<input type="number" id="prop-width-image-container-gallery" class="u-full-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Image Width</label>
-        	<input type="number" id="prop-width-image-gallery" class="u-full-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Image Height</label>
-        	<input type="number" id="prop-height-image-gallery" class="u-full-width" />
-        </div>
-    </div>
-    <div class="row">
-	    <div class="three columns">
-          	<label class="tacenter">Padding Top</label>
-        	<input type="number" id="prop-padding-top-gallery" class="u-full-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Padding Right</label>
-        	<input type="number" id="prop-padding-right-gallery" class="u-full-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Padding Bottom</label>
-        	<input type="number" id="prop-padding-bottom-gallery" class="u-full-width" />
-        </div>
-        <div class="three columns">
-          	<label class="tacenter">Padding Left</label>
-        	<input type="number" id="prop-padding-left-gallery" class="u-full-width" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-container" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+	<div class="six columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-text" class="u-full-width prop-background-color">
 	</div>
-
-	<!-- Widget Article -->
-	<div id="properties-article" class="panel-properties">
-    <div class="row">
-    	<div class="twelve columns">
-          	<label class="tacenter">Category Width</label>
-        	<input type="number" id="prop-width-category-article" class="u-full-width" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Background Color</label>
-        	<input type="color" id="prop-background-color-container" class="u-full-width prop-background-color">
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<label>Show on all pages</label>
-        	<label class="switch switch-green">
-				<input type="checkbox" class="switch-input prop-switch-showall">
-				<span class="switch-label" data-on="Yes" data-off="No"></span>
-				<span class="switch-handle"></span>
-		    </label>
-        </div>
-    </div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<label>Border Width</label>
+		<input type="number" class="u-full-width prop-border-width">
 	</div>
-
-	<!-- Event of Element -->
-
-	<!-- Link -->
-	<div id="event-link" class="panel-event">
-		<div class="row">
-        <div class="twelve columns">
-          	<label>Link To:</label>
-          	<select id="ddlLinkTo" class="u-full-width">
-          		<option value="link-page">Page</option>
-          		<option value="link-url">URL</option>
-          	</select>
-        </div>
-    </div>
-    <div class="row section-link-page">
-        <div class="twelve columns">
-          	<label>Page</label>
-          	<select class="u-full-width" id="ddlListPage">
-          	</select>
-        </div>
-    </div>
-    <div class="row section-link-url hide">
-        <div class="twelve columns">
-          	<label>URL</label>
-          	<input placeholder="Ketik URL disini &hellip;" id="txtLinkURL" type="text" class="u-full-width" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="twelve columns">
-          	<input type="button" id="btnApplyEventLink" value="Apply" class="u-full-width" />
-        </div>
-    </div>
+	<div class="four columns">
+		<label>Border Style</label>
+		<select class="u-full-width prop-border-style">
+			<option value="dashed">Dashed</option>
+			<option value="dotted">Dotted</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="hidden">Hidden</option>
+			<option value="inherit">Inherit</option>
+			<option value="initial">Initial</option>
+			<option value="inset">Inset</option>
+			<option value="none">None</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridge</option>
+			<option value="solid">Solid</option>
+		</select>
 	</div>
-
-	<div class="contextmenu">
-		<ul class="menu-default">
-			<li class="manipulate-element" type="cut">Cut</li>
-			<li class="manipulate-element" type="copy">Copy</li>
-			<li class="manipulate-element" type="duplicate">Duplicate</li>
-		</ul>
-		<ul class="menu-default">
-			<li class="reorder-element" type="bring-to-front">Bring to Front</li>
-			<li class="reorder-element" type="bring-forward">Bring Forward</li>
-			<li class="reorder-element" type="send-backward">Send Backward</li>
-			<li class="reorder-element" type="send-to-back">Send to Back</li>
-		</ul>
-		<ul class="no-after menu-paste">
-			<li class="manipulate-element" type="paste">Paste</li>
-		</ul>
+	<div class="four columns">
+		<label>Border Radius</label>
+		<input type="number" class="u-full-width prop-border-radius">
 	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Border Color</label>
+		<input type="color" class="u-full-width prop-border-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Link -->
+<div id="properties-link" class="panel-properties">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Opacity</label>
+		<input type="range" min="0" max="100" id="prop-opacity-link" class="u-full-width prop-opacity" />
+	</div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Width</label>
+		<input type="number" id="prop-width-link" class="u-full-width prop-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Height</label>
+		<input type="number" id="prop-height-link" class="u-full-width prop-height" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">X</label>
+		<input type="number" id="prop-xpos-link" class="u-full-width prop-xpos" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Y</label>
+		<input type="number" id="prop-ypos-link" class="u-full-width prop-ypos" />
+	</div>
+</div>
+<div class="row">
+	<div class="six columns">
+		<label>Text Color</label>
+		<input type="color" id="prop-text-color-text" class="u-full-width prop-text-color">
+	</div>
+	<div class="six columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-link" class="u-full-width prop-background-color">
+	</div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<label>Border Width</label>
+		<input type="number" class="u-full-width prop-border-width">
+	</div>
+	<div class="four columns">
+		<label>Border Style</label>
+		<select class="u-full-width prop-border-style">
+			<option value="dashed">Dashed</option>
+			<option value="dotted">Dotted</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="hidden">Hidden</option>
+			<option value="inherit">Inherit</option>
+			<option value="initial">Initial</option>
+			<option value="inset">Inset</option>
+			<option value="none">None</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridge</option>
+			<option value="solid">Solid</option>
+		</select>
+	</div>
+	<div class="four columns">
+		<label>Border Radius</label>
+		<input type="number" class="u-full-width prop-border-radius">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Border Color</label>
+		<input type="color" class="u-full-width prop-border-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Textbox -->
+<div id="properties-textbox" class="panel-properties">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Placeholder</label>
+		<input id="prop-placeholder-textbox" class="u-full-width" type="text" />
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Opacity</label>
+		<input type="range" min="0" max="100" id="prop-opacity-textbox" class="u-full-width prop-opacity" />
+	</div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Width</label>
+		<input type="number" id="prop-width-textbox" class="u-full-width prop-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Height</label>
+		<input type="number" id="prop-height-textbox" class="u-full-width prop-height" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">X</label>
+		<input type="number" id="prop-xpos-textbox" class="u-full-width prop-xpos" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Y</label>
+		<input type="number" id="prop-ypos-textbox" class="u-full-width prop-ypos" />
+	</div>
+</div>
+<div class="row">
+	<div class="six columns">
+		<label>Text Color</label>
+		<input type="color" id="prop-text-color-textbox" class="u-full-width prop-text-color">
+	</div>
+	<div class="six columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-textbox" class="u-full-width prop-background-color">
+	</div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<label>Border Width</label>
+		<input type="number" class="u-full-width prop-border-width">
+	</div>
+	<div class="four columns">
+		<label>Border Style</label>
+		<select class="u-full-width prop-border-style">
+			<option value="dashed">Dashed</option>
+			<option value="dotted">Dotted</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="hidden">Hidden</option>
+			<option value="inherit">Inherit</option>
+			<option value="initial">Initial</option>
+			<option value="inset">Inset</option>
+			<option value="none">None</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridge</option>
+			<option value="solid">Solid</option>
+		</select>
+	</div>
+	<div class="four columns">
+		<label>Border Radius</label>
+		<input type="number" class="u-full-width prop-border-radius">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Border Color</label>
+		<input type="color" class="u-full-width prop-border-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Button -->
+<div id="properties-button" class="panel-properties">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Button Text</label>
+		<input id="prop-text-button" class="u-full-width" type="text" />
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Opacity</label>
+		<input type="range" min="0" max="100" id="prop-opacity-button" class="u-full-width prop-opacity" />
+	</div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Width</label>
+		<input type="number" id="prop-width-button" class="u-full-width prop-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Height</label>
+		<input type="number" id="prop-height-button" class="u-full-width prop-height" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">X</label>
+		<input type="number" id="prop-xpos-button" class="u-full-width prop-xpos" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Y</label>
+		<input type="number" id="prop-ypos-button" class="u-full-width prop-ypos" />
+	</div>
+</div>
+<div class="row">
+	<div class="six columns">
+		<label>Text Color</label>
+		<input type="color" id="prop-text-color-button" class="u-full-width prop-text-color">
+	</div>
+	<div class="six columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-button" class="u-full-width prop-background-color">
+	</div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<label>Border Width</label>
+		<input type="number" class="u-full-width prop-border-width">
+	</div>
+	<div class="four columns">
+		<label>Border Style</label>
+		<select class="u-full-width prop-border-style">
+			<option value="dashed">Dashed</option>
+			<option value="dotted">Dotted</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="hidden">Hidden</option>
+			<option value="inherit">Inherit</option>
+			<option value="initial">Initial</option>
+			<option value="inset">Inset</option>
+			<option value="none">None</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridge</option>
+			<option value="solid">Solid</option>
+		</select>
+	</div>
+	<div class="four columns">
+		<label>Border Radius</label>
+		<input type="number" class="u-full-width prop-border-radius">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Border Color</label>
+		<input type="color" class="u-full-width prop-border-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Image -->
+<div id="properties-image" class="panel-properties">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Opacity</label>
+		<input type="range" min="0" max="100" id="prop-opacity-image" class="u-full-width prop-opacity" />
+	</div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Width</label>
+		<input type="number" id="prop-width-image" class="u-full-width prop-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Height</label>
+		<input type="number" id="prop-height-image" class="u-full-width prop-height" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">X</label>
+		<input type="number" id="prop-xpos-image" class="u-full-width prop-xpos" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Y</label>
+		<input type="number" id="prop-ypos-image" class="u-full-width prop-ypos" />
+	</div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<label>Border Width</label>
+		<input type="number" class="u-full-width prop-border-width">
+	</div>
+	<div class="four columns">
+		<label>Border Style</label>
+		<select class="u-full-width prop-border-style">
+			<option value="dashed">Dashed</option>
+			<option value="dotted">Dotted</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="hidden">Hidden</option>
+			<option value="inherit">Inherit</option>
+			<option value="initial">Initial</option>
+			<option value="inset">Inset</option>
+			<option value="none">None</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridge</option>
+			<option value="solid">Solid</option>
+		</select>
+	</div>
+	<div class="four columns">
+		<label>Border Radius</label>
+		<input type="number" class="u-full-width prop-border-radius">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Border Color</label>
+		<input type="color" class="u-full-width prop-border-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Image -->
+<div id="properties-container" class="panel-properties">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Opacity</label>
+		<input type="range" min="0" max="100" id="prop-opacity-container" class="u-full-width prop-opacity" />
+	</div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Width</label>
+		<input type="number" id="prop-width-container" class="u-full-width prop-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Height</label>
+		<input type="number" id="prop-height-container" class="u-full-width prop-height" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">X</label>
+		<input type="number" id="prop-xpos-container" class="u-full-width prop-xpos" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Y</label>
+		<input type="number" id="prop-ypos-container" class="u-full-width prop-ypos" />
+	</div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<label>Border Width</label>
+		<input type="number" class="u-full-width prop-border-width">
+	</div>
+	<div class="four columns">
+		<label>Border Style</label>
+		<select class="u-full-width prop-border-style">
+			<option value="dashed">Dashed</option>
+			<option value="dotted">Dotted</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="hidden">Hidden</option>
+			<option value="inherit">Inherit</option>
+			<option value="initial">Initial</option>
+			<option value="inset">Inset</option>
+			<option value="none">None</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridge</option>
+			<option value="solid">Solid</option>
+		</select>
+	</div>
+	<div class="four columns">
+		<label>Border Radius</label>
+		<input type="number" class="u-full-width prop-border-radius">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Border Color</label>
+		<input type="color" class="u-full-width prop-border-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-container" class="u-full-width prop-background-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Widget Gallery -->
+<div id="properties-gallery" class="panel-properties">
+	<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Category Width</label>
+		<input type="number" id="prop-width-category-gallery" class="u-full-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Gallery Width</label>
+		<input type="number" id="prop-width-image-container-gallery" class="u-full-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Image Width</label>
+		<input type="number" id="prop-width-image-gallery" class="u-full-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Image Height</label>
+		<input type="number" id="prop-height-image-gallery" class="u-full-width" />
+	</div>
+</div>
+<div class="row">
+	<div class="three columns">
+		<label class="tacenter">Padding Top</label>
+		<input type="number" id="prop-padding-top-gallery" class="u-full-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Padding Right</label>
+		<input type="number" id="prop-padding-right-gallery" class="u-full-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Padding Bottom</label>
+		<input type="number" id="prop-padding-bottom-gallery" class="u-full-width" />
+	</div>
+	<div class="three columns">
+		<label class="tacenter">Padding Left</label>
+		<input type="number" id="prop-padding-left-gallery" class="u-full-width" />
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-container" class="u-full-width prop-background-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Widget Article -->
+<div id="properties-article" class="panel-properties">
+<div class="row">
+	<div class="twelve columns">
+		<label class="tacenter">Category Width</label>
+		<input type="number" id="prop-width-category-article" class="u-full-width" />
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Background Color</label>
+		<input type="color" id="prop-background-color-container" class="u-full-width prop-background-color">
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<label>Show on all pages</label>
+		<label class="switch switch-green">
+			<input type="checkbox" class="switch-input prop-switch-showall">
+			<span class="switch-label" data-on="Yes" data-off="No"></span>
+			<span class="switch-handle"></span>
+		</label>
+	</div>
+</div>
+</div>
+
+<!-- Event of Element -->
+
+<!-- Link -->
+<div id="event-link" class="panel-event">
+	<div class="row">
+	<div class="twelve columns">
+		<label>Link To:</label>
+		<select id="ddlLinkTo" class="u-full-width">
+			<option value="link-page">Page</option>
+			<option value="link-url">URL</option>
+		</select>
+	</div>
+</div>
+<div class="row section-link-page">
+	<div class="twelve columns">
+		<label>Page</label>
+		<select class="u-full-width" id="ddlListPage">
+		</select>
+	</div>
+</div>
+<div class="row section-link-url hide">
+	<div class="twelve columns">
+		<label>URL</label>
+		<input placeholder="Ketik URL disini &hellip;" id="txtLinkURL" type="text" class="u-full-width" />
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<input type="button" id="btnApplyEventLink" value="Apply" class="u-full-width" />
+	</div>
+</div>
+</div>
+
+<div class="contextmenu">
+	<ul class="menu-default">
+		<li class="manipulate-element" type="properties">Properties</li>
+		<li class="manipulate-element" type="events">Events</li>
+	</ul>
+	<ul class="menu-default">
+		<li class="manipulate-element" type="cut">Cut</li>
+		<li class="manipulate-element" type="copy">Copy</li>
+		<li class="manipulate-element" type="duplicate">Duplicate</li>
+		<li class="manipulate-element" type="delete">Delete</li>
+	</ul>
+	<ul class="menu-default">
+		<li class="reorder-element" type="bring-to-front">Bring to Front</li>
+		<li class="reorder-element" type="bring-forward">Bring Forward</li>
+		<li class="reorder-element" type="send-backward">Send Backward</li>
+		<li class="reorder-element" type="send-to-back">Send to Back</li>
+	</ul>
+	<ul class="no-after menu-paste">
+		<li class="manipulate-element" type="paste">Paste</li>
+	</ul>
+</div>
+
+<div class="edit-param-element right-side" style="display:none">
+	<div class="header">
+		<h5 class="title"></h5>
+	</div>
+	<div class="container category-view">
+	<div class="title-section">Border</div>
+	<div class="row">
+		<div class="six columns">
+			<label class="tacenter">Width</label>
+			<input attribute="stroke-width" class="u-full-width param" type="number">
+		</div>
+		<div class="six columns">
+			<label class="tacenter">Color</label>
+			<input attribute="stroke" class="u-full-width param" type="color">
+		</div>
+	</div>
+	<div class="title-section">Border Line</div>
+	<div class="row">
+		<div class="six columns">
+			<label class="tacenter">Join</label>			
+			<select attribute="stroke-linejoin" class="u-full-width param">
+				<option value="mitter">Mitter</option>
+				<option value="round">Round</option>
+				<option value="bevel">Bevel</option>
+			</select>
+		</div>
+		<div class="six columns">
+			<label class="tacenter">Cap</label>
+			<select attribute="stroke-linecap" class="u-full-width param">
+				<option value="butt">Butt</option>
+				<option value="square">Square</option>
+				<option value="round">Round</option>
+			</select>
+		</div>
+	</div>
+	<div class="title-section">Fill</div>
+	<div class="row">
+		<div class="six columns">
+			<label class="tacenter">Opacity</label>
+			<input  attribute="fill-opacity" class="u-full-width param" type="number"></div>
+		<div class="six columns">
+			<label class="tacenter">Color</label>
+			<input attribute="fill" class="u-full-width param" type="color"></div>
+	</div>
+	<div class="title-section">General</div>
+	<div class="row">
+		<div class="twelve columns">
+			<label>Background Color</label>
+			<input attribute="background-color" class="u-full-width param-style" type="color">
+		</div>
+		<div class="twelve columns">
+			<label>Text</label>
+			<input id="element-text" class="u-full-width" type="text">
+		</div>
+	</div>
+	<div id="itemTemplate">
+		
+	</div>
+	</div>
+</div>
