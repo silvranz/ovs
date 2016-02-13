@@ -1210,10 +1210,6 @@
 	<div class="title-section">General</div>
 	<div class="row">
 		<div class="twelve columns">
-			<label>Background Color</label>
-			<input attribute="background-color" class="u-full-width param-style" type="color">
-		</div>
-		<div class="twelve columns">
 			<label>Text</label>
 			<input id="element-text" class="u-full-width" type="text">
 		</div>

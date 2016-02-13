@@ -71,6 +71,7 @@ function drawButton(shape){
 	var text = document.createElementNS(svgNS,'text');
 	rect.setAttribute('x',0);
 	rect.setAttribute('y',0);
+	rect.setAttribute("class","frame");
 	group.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
 	rect.setAttribute("width",defaultWidth);
 	rect.setAttribute("height",defaultHeight);
@@ -110,7 +111,7 @@ function loadShape(shape){
 	var newShape = mappingDraw[shape.tag](shape);
 	$(newShape)
 	.attr({
-		"id":shape.tag+$(shape.tag).length,
+		"id":newShape.tagName+$(newShape.tagName).length,
 		"stroke":"#000",
 		"fill":"#000"
 	})
@@ -212,9 +213,26 @@ $(document).ready(function(){
 		}
 	})
 	$(".edit-param-element .param").change(function(){
+		$("#"+$(".contextmenu").data("selectedElement")+" .frame").removeAttr($(this).attr("attribute"));
 		$("#"+$(".contextmenu").data("selectedElement")).attr($(this).attr("attribute"),$(this).val());
 	})
 	$(".edit-param-element .param-style").change(function(){
 		$("#"+$(".contextmenu").data("selectedElement")).css($(this).attr("attribute"),$(this).val());
+	})
+	$(".edit-param-element #element-text").change(function(){
+		var text = $("#"+$(".contextmenu").data("selectedElement"))[0];
+		if(text.tagName != "text")
+			text = $("#"+$(".contextmenu").data("selectedElement")).find("text")[0];
+		var maxWidth = text.getBBox().width;
+		var s = $(this).val();
+		$(text).empty();
+		var tspan = document.createElementNS(svgNS,'tspan');
+		tspan.textContent = s;
+		text.appendChild(tspan);
+		/*text.textContent = s;		
+		if(text.getBBox().width>maxWidth){
+		}
+		else{
+		}*/
 	})
 })
