@@ -144,9 +144,9 @@
 					<div class="title">Box Shadow Button</div>
 				</div>
 				<div class="items-section">
-					<input type="button" class="hvr-box-shadow-outset button button-primary draggable-element" value="Shadow" element-type="button" />
-					<input type="button" class="hvr-box-shadow-outset button-danger draggable-element" value="Shadow" element-type="button" />
-					<input type="button" class="hvr-box-shadow-outset button-success draggable-element" value="Shadow" element-type="button" />
+					<input type="button" class="hvr-box-shadow-outset button button-primary draggable-element" value="Shadow" map="button-primary-shadow" element-type="button" />
+					<input type="button" class="hvr-box-shadow-outset button-danger draggable-element" value="Shadow" element-type="button"map="button-danger-shadow"  />
+					<input type="button" class="hvr-box-shadow-outset button-success draggable-element" value="Shadow" map="button-success-shadow"  element-type="button" />
 				</div>
 			</div>
 		</div>
@@ -308,6 +308,13 @@
 	<div class="ruler vertical right"></div>
 </div-->
 <svg id="editor-container">
+	<defs>
+		<filter id="f1" x="0" y="0" width="105%" height="120%">
+			<feOffset result="offOut" in="SourceGraphic" dy="10"/>
+			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		</filter>
+	</defs>
 	<rect id="boudingBoxHover" fill="#fff" fill-opacity="0" stroke="#3899EC" style="display:none"></rect>
 </svg>
 <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->

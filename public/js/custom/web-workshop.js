@@ -55,6 +55,39 @@ var mappingShape = {
 			"stroke-linejoin":"bevel",
 			"fill":"#5CB85C"
 		}
+	},
+	"button-primary-shadow":{
+		tag:"button",
+		textColor:"white",
+		attr:{
+			"stroke":"#33C3F0",
+			"stroke-width":"5",
+			"stroke-linejoin":"bevel",
+			"fill":"#33C3F0",
+			"filter":"url(#f1)"
+		}
+	},
+	"button-danger-shadow":{
+		tag:"button",
+		textColor:"white",
+		attr:{
+			"stroke":"#C9302C",
+			"stroke-width":"5",
+			"stroke-linejoin":"bevel",
+			"fill":"#C9302C",
+			"filter":"url(#f1)"
+		}
+	},
+	"button-success-shadow":{
+		tag:"button",
+		textColor:"white",
+		attr:{
+			"stroke":"#5CB85C",
+			"stroke-width":"5",
+			"stroke-linejoin":"bevel",
+			"fill":"#5CB85C",
+			"filter":"url(#f1)"
+		}
 	}
 };
 var mappingDraw = {
@@ -111,6 +144,7 @@ function drawText(shape){
 	return group;
 }
 function loadShape(shape){
+	console.log(shape);
 	var newShape = mappingDraw[shape.tag](shape);
 	$(newShape)
 	.attr({
