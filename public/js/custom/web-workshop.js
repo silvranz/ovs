@@ -95,17 +95,20 @@ function drawButton(shape){
 	return group;
 }
 function drawText(shape){
+	var group = document.createElementNS(svgNS,'g');
 	var text = document.createElementNS(svgNS,'text');
-	text.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
-	text.setAttribute('text-anchor','middle');
+	group.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
 	for(key in shape.style){
 		text.style[key] = shape.style[key];
 	}
 	var tspan = document.createElementNS(svgNS,'tspan');
 	tspan.textContent = "Hello";
 	text.appendChild(tspan);
-	svg.appendChild(text);
-	return text;
+	group.appendChild(text);
+	svg.appendChild(group);
+	text.setAttribute('x',0);
+	text.setAttribute('y',text.getBBox().height/16);
+	return group;
 }
 function loadShape(shape){
 	var newShape = mappingDraw[shape.tag](shape);
@@ -133,13 +136,14 @@ function loadShape(shape){
 	})
 	.mousedown(function(e){
 		e.stopPropagation();
+		e.preventDefault();
 		var bBox = this.getBBox();
 		var tMatrix = this.getCTM();
 		switch (e.which) {
 			case 1:
 					$(this).closest("svg").data("dragged",$(this).attr("id"));
-					$(this).closest("svg").data("divx",e.pageX - (bBox.x+tMatrix.e));
-					$(this).closest("svg").data("divy",e.pageY - (bBox.y+tMatrix.f));
+					$(this).closest("svg").data("divx",e.pageX - (tMatrix.e));
+					$(this).closest("svg").data("divy",e.pageY - (tMatrix.f));
 				break;
 			case 2:
 				alert('Middle Mouse button pressed.');

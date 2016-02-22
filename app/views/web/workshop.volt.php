@@ -144,9 +144,9 @@
 					<div class="title">Box Shadow Button</div>
 				</div>
 				<div class="items-section">
-					<input type="button" class="hvr-box-shadow-outset button button-primary draggable-element" value="Shrink" element-type="button" />
-					<input type="button" class="hvr-box-shadow-outset button-danger draggable-element" value="Shrink" element-type="button" />
-					<input type="button" class="hvr-box-shadow-outset button-success draggable-element" value="Shrink" element-type="button" />
+					<input type="button" class="hvr-box-shadow-outset button button-primary draggable-element" value="Shadow" element-type="button" />
+					<input type="button" class="hvr-box-shadow-outset button-danger draggable-element" value="Shadow" element-type="button" />
+					<input type="button" class="hvr-box-shadow-outset button-success draggable-element" value="Shadow" element-type="button" />
 				</div>
 			</div>
 		</div>
