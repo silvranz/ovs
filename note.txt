@@ -1,1 +1,2 @@
 http://tympanus.net/Development/AnimatedCheckboxes/
+http://www.hongkiat.com/blog/svg-animations/
