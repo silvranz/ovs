@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="one-half column">
 			  	<h4 class="hero-heading">Partner terbaik dalam membuat website</h4>
-			  	<button class="button button-primary">Buka Toko Sekarang</button>
+			  	<a class="button button-primary" href="{{url("web/workshop")}}">Buka Toko Sekarang</a>
 			</div>
 		</div>
 	</div>

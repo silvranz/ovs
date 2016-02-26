@@ -67,9 +67,9 @@
 			<li class="category" trigger-panel-id="button-panel">
 				Button
 			</li>
-			<li class="category" trigger-panel-id="link-panel">
+			<!--li class="category" trigger-panel-id="link-panel">
 				Link
-			</li>
+			</li-->
 			<li class="category" trigger-panel-id="textbox-panel">
 				Textbox
 			</li>
@@ -122,7 +122,7 @@
 					<input type="button" class="button button-success draggable-element" value="Button" map="button-success" />
 				</div>
 
-				<div class="title-section">
+				<!--div class="title-section">
 					<div class="title">Grow Button</div>
 				</div>
 				<div class="items-section">
@@ -147,10 +147,10 @@
 					<input type="button" class="hvr-box-shadow-outset button button-primary draggable-element" value="Shadow" map="button-primary-shadow" element-type="button" />
 					<input type="button" class="hvr-box-shadow-outset button-danger draggable-element" value="Shadow" element-type="button"map="button-danger-shadow"  />
 					<input type="button" class="hvr-box-shadow-outset button-success draggable-element" value="Shadow" map="button-success-shadow"  element-type="button" />
-				</div>
+				</div -->
 			</div>
 		</div>
-		<div class="category-content" id="link-panel" style="display:none;">
+		<!--div class="category-content" id="link-panel" style="display:none;">
 			<div class="header">
 				<label class="title">Add Link</label>
 			</div>
@@ -159,7 +159,7 @@
 					<h4>Simple Link</h4>
 				</div>
 			</div>
-		</div>
+		</div-->
 		<div class="category-content" id="textbox-panel" style="display:none;">
 			<div class="header">
 				<label class="title">Add Textbox</label>
@@ -309,10 +309,12 @@
 </div-->
 <svg id="editor-container">
 	<defs>
-		<filter id="f1" x="0" y="0" width="105%" height="120%">
-			<feOffset result="offOut" in="SourceGraphic" dy="10"/>
-			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
-			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		<filter id="f1"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="2" dy="2" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge> 
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
 		</filter>
 	</defs>
 	<rect id="boudingBoxHover" fill="#fff" fill-opacity="0" stroke="#3899EC" style="display:none"></rect>
