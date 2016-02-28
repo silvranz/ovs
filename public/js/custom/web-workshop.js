@@ -56,48 +56,155 @@ var mappingShape = {
 			"fill":"#5CB85C"
 		}
 	},
-	"button-primary-shadow":{
-		tag:"button",
-		textColor:"white",
+	"textbox":{		
+		tag:"textbox",
+		textColor:"black",
 		attr:{
-			"stroke":"#33C3F0",
-			"stroke-width":"5",
+			"stroke":"#D1D1D1",
+			"stroke-width":"1",
 			"stroke-linejoin":"bevel",
-			"fill":"#33C3F0",
-			"filter":"url(#f1)"
+			"fill":"#FFFFFF"
 		}
 	},
-	"button-danger-shadow":{
-		tag:"button",
-		textColor:"white",
+	"radio":{		
+		tag:"radio",
+		textColor:"black",
 		attr:{
-			"stroke":"#C9302C",
-			"stroke-width":"5",
+			"stroke":"#D1D1D1",
+			"stroke-width":"1",
 			"stroke-linejoin":"bevel",
-			"fill":"#C9302C",
-			"filter":"url(#f1)"
+			"fill":"#FFFFFF"
 		}
 	},
-	"button-success-shadow":{
-		tag:"button",
-		textColor:"white",
+	"checkbox":{		
+		tag:"checkbox",
+		textColor:"black",
 		attr:{
-			"stroke":"#5CB85C",
-			"stroke-width":"5",
+			"stroke":"#D1D1D1",
+			"stroke-width":"1",
 			"stroke-linejoin":"bevel",
-			"fill":"#5CB85C",
-			"filter":"url(#f1)"
+			"fill":"#FFFFFF"
+		}
+	},
+	"container":{		
+		tag:"container",
+		attr:{
+			"stroke":"#000000",
+			"stroke-width":"1",
+			"fill":"#FFFFFF"
 		}
 	}
 };
 var mappingDraw = {
 	"text":drawText,
-	"button":drawButton
+	"button":drawButton,
+	"radio":drawRadio,
+	"checkbox":drawCheckbox,
+	"container":drawContainer,
+	"textbox":drawTextBox
 };
 var svg,svgNS;
 var bBoxPadding = 5;
 var defaultWidth = 100;
 var defaultHeight = 30;
+function drawContainer(shape){	
+	var group = document.createElementNS(svgNS,'g');
+	var rect = document.createElementNS(svgNS,'rect');
+	group.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
+	rect.setAttribute('x',0);
+	rect.setAttribute('y',0);
+	rect.setAttribute("class","frame");
+	rect.setAttribute("width",defaultWidth*4);
+	rect.setAttribute("height",defaultHeight*4);
+	for(key in shape.style){
+		rect.style[key] = shape.style[key];
+	}
+	for(key in shape.attr){
+		rect.setAttribute(key,shape.attr[key]);
+	}
+	group.appendChild(rect);
+	svg.appendChild(group);
+	return group;
+}
+function drawCheckbox(shape){	
+	var group = document.createElementNS(svgNS,'g');
+	var rect = document.createElementNS(svgNS,'rect');
+	var text = document.createElementNS(svgNS,'text');
+	group.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
+	rect.setAttribute('x',0);
+	rect.setAttribute('y',0);
+	rect.setAttribute("class","frame");
+	rect.setAttribute("width",defaultWidth/8);
+	rect.setAttribute("height",defaultHeight/2);
+	for(key in shape.style){
+		rect.style[key] = shape.style[key];
+	}
+	for(key in shape.attr){
+		rect.setAttribute(key,shape.attr[key]);
+	}
+	var tspan = document.createElementNS(svgNS,'tspan');
+	tspan.textContent = "Hello";
+	text.appendChild(tspan);
+	group.appendChild(rect);
+	group.appendChild(text);
+	svg.appendChild(group);
+	var bbox = rect.getBBox();
+	text.setAttribute('x',bbox.x+bbox.width+bBoxPadding);
+	text.setAttribute('y',bbox.y+bbox.height-bBoxPadding);
+	return group;
+}
+function drawRadio(shape){	
+	var group = document.createElementNS(svgNS,'g');
+	var circle = document.createElementNS(svgNS,'circle');
+	var text = document.createElementNS(svgNS,'text');
+	group.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
+	circle.setAttribute('cx',0);
+	circle.setAttribute('cy',0);
+	circle.setAttribute("class","frame");
+	circle.setAttribute("r",defaultHeight/4);
+	for(key in shape.style){
+		circle.style[key] = shape.style[key];
+	}
+	for(key in shape.attr){
+		circle.setAttribute(key,shape.attr[key]);
+	}
+	var tspan = document.createElementNS(svgNS,'tspan');
+	tspan.textContent = "Hello";
+	text.appendChild(tspan);
+	group.appendChild(circle);
+	group.appendChild(text);
+	svg.appendChild(group);
+	var bbox = circle.getBBox();
+	text.setAttribute('x',bbox.x+bbox.width+bBoxPadding);
+	text.setAttribute('y',bbox.y+bbox.height-bBoxPadding);
+	return group;
+}
+function drawTextBox(shape){	
+	var group = document.createElementNS(svgNS,'g');
+	var rect = document.createElementNS(svgNS,'rect');
+	var line = document.createElementNS(svgNS,'line');
+	group.setAttribute('transform',"translate("+parseInt(window.scrollX + window.innerWidth/2)+","+parseInt(window.scrollY + window.innerHeight/2)+")");
+	rect.setAttribute('x',0);
+	rect.setAttribute('y',0);
+	line.setAttribute('x1',bBoxPadding);
+	line.setAttribute('y1',0.2*defaultHeight);
+	line.setAttribute('x2',bBoxPadding);
+	line.setAttribute('y2',1.2*defaultHeight);
+	line.setAttribute('opacity',0);
+	rect.setAttribute("class","frame");
+	rect.setAttribute("width",2*defaultWidth);
+	rect.setAttribute("height",1.4*defaultHeight);
+	for(key in shape.style){
+		rect.style[key] = shape.style[key];
+	}
+	for(key in shape.attr){
+		rect.setAttribute(key,shape.attr[key]);
+	}
+	group.appendChild(rect);
+	group.appendChild(line);
+	svg.appendChild(group);
+	return group;
+}
 function drawButton(shape){
 	var group = document.createElementNS(svgNS,'g');
 	var rect = document.createElementNS(svgNS,'rect');
@@ -224,7 +331,9 @@ $(document).ready(function(){
 		$("#editor-container").css("background-color",$("#page-background-content #txtHexColor").val());
 	})
 	$(".draggable-element").click(function(e){
+		e.preventDefault();
 		loadShape(mappingShape[$(this).attr("map")]);
+		return;
 	})
 	$(svg)
 	.mousemove(function(e){

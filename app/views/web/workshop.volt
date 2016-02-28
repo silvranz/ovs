@@ -70,8 +70,8 @@
 			<!--li class="category" trigger-panel-id="link-panel">
 				Link
 			</li-->
-			<li class="category" trigger-panel-id="textbox-panel">
-				Textbox
+			<li class="category" trigger-panel-id="input-panel">
+				Input
 			</li>
 			<li class="category" trigger-panel-id="image-panel">
 				Image
@@ -160,14 +160,16 @@
 				</div>
 			</div>
 		</div-->
-		<div class="category-content" id="textbox-panel" style="display:none;">
+		<div class="category-content" id="input-panel" style="display:none;">
 			<div class="header">
-				<label class="title">Add Textbox</label>
+				<label class="title">Add Input</label>
 			</div>
 			<div class="category-view">
-				<div>
-					<input type="text" class="u-full-width draggable-element" element-type="textbox" />
-				</div>
+				<input type="text" class="u-full-width draggable-element" map="textbox"/>
+				<input id="radioInput" type="radio" style="display:inline-block" class="draggable-element" map="radio" />
+				<label for="radioInput" class="draggable-element" map="radio" style="display:inline-block">Radio Button</label>
+				<input id="checkBoxInput" type="checkbox" style="display:inline-block" class="draggable-element" map="checkbox" />
+				<label for="checkBoxInput" class="draggable-element" map="checkbox" style="display:inline-block">Check Box</label>
 			</div>
 		</div>
 		<div class="category-content" id="image-panel" style="display:none;">
@@ -187,22 +189,7 @@
 			<div class="category-view">
 				<div class="row">
 					<div class="twelve column">
-						<div class="container-box gray draggable-element" element-type="container"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="twelve column">
-						<div class="container-box border-solid draggable-element" element-type="container"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="twelve column">
-						<div class="container-box border-dashed draggable-element" element-type="container"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="twelve column">
-						<div class="container-box border-dotted draggable-element" element-type="container"></div>
+						<div class="container-box border-solid draggable-element" map="container"></div>
 					</div>
 				</div>
 			</div>
@@ -1158,13 +1145,9 @@
 	<ul class="menu-default">
 		<li class="manipulate-element" type="cut">Cut</li>
 		<li class="manipulate-element" type="copy">Copy</li>
-		<li class="manipulate-element" type="duplicate">Duplicate</li>
-		<li class="manipulate-element" type="delete">Delete</li>
 	</ul>
 	<ul class="menu-default">
 		<li class="reorder-element" type="bring-to-front">Bring to Front</li>
-		<li class="reorder-element" type="bring-forward">Bring Forward</li>
-		<li class="reorder-element" type="send-backward">Send Backward</li>
 		<li class="reorder-element" type="send-to-back">Send to Back</li>
 	</ul>
 	<ul class="no-after menu-paste">
