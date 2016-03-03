@@ -13,6 +13,7 @@
 		<link rel="shortcut icon" href="{{url("images/ovs.ico")}}">
 		<script src="{{url("js/jquery.js")}}" type="text/javascript"></script>
 		<script src="{{url("js/custom")}}<?php echo "/".$customScript.".js" ?>" type="text/javascript"></script>
+		{{ partial("partial/web-workshop-js") }}
         <title>Ovs - Build Your Awesome Website</title>
     </head>
     <body>
@@ -22,7 +23,7 @@
 				<li class="first"><a href="{{url()}}">Oversign</a></li>
 				<li class="second">
 					<a id="btnOpenBoxPage" href="#">
-						<span>Page Name</span>
+						<span id="currentPageName">Page Name</span>
 						<img src="{{url("images/icons/arrow-down-white.png")}}" />
 					</a>
 					<div class="box-page">
@@ -30,26 +31,26 @@
 							<div class="twelve columns">
 								<div class="box-list-page">
 									<ul>
-										<li class="item-template" style="display:none;">
+										<li class="page-item" id="item-template" style="display:none;">
 											<div class="row">
 												<div class="three columns">
 													<div class="preview-workspace-container" style="border:1px solid #000; width:60px; height:40px;">
-														<!-- <img id=	"previewPage" style="width:60px; height:40px;" /> -->
 													</div>
-												</div>
+												</div>												
 												<div class="nine columns">
-													<div class="page-name">Page Name</div>
-													<div class="page-control">
-														<a class="btnTriggerRenamePageModal md-trigger" href="#" data-modal="modal-rename-page">Rename</a>
-														<a class="btnDuplicatePage" href="#">Duplicate</a>
-														<a class="btnTriggerDeletePageModal md-trigger" href="#" data-modal="modal-delete-page">Delete</a>
-													</div>
+													<input type="text" class="page-name" value="Page Name"/>
 												</div>
 											</div>
-											<div class="row no-pd">
-												<div class="nine columns offset-by-three">
-													<span>Set as homepage</span>
-													<label class="switch switch-green">
+											<div class="row">
+												<div class="page-control">
+													<button class="six columns button-primary btnDuplicatePage">Duplicate</button>
+													<button class="six columns button-primary btnTriggerDeletePageModal">Delete</button>
+												</div>
+											</div>
+											<div class="row">
+												<div style="margin-top:3px;margin-bottom:3px">
+													<span class="nine columns">Set as homepage</span>
+													<label class="three columns switch switch-green">
 														<input type="checkbox" class="switch-input switch-homepage">
 														<span class="switch-label switch-homepage" data-on="Yes" data-off="No"></span>
 														<span class="switch-handle switch-homepage"></span>
@@ -67,7 +68,7 @@
 					</div>
 				</li>
 				<li class="third">
-					<a id="btnOpenBoxTools" href="#">Tools</a>
+					<!--a id="btnOpenBoxTools" href="#">Tools</a>
 					<div class="box-tools">
 						<div class="row">
 							<div class="twelve columns">
@@ -79,7 +80,7 @@
 								</label>
 							</div>
 						</div>
-					</div>
+					</div-->
 				</li>
 				<li><a href="#">Save</a></li>
 				<li><a id="btnPreview" href="#">Preview</a></li>

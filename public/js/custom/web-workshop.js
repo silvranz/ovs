@@ -251,7 +251,6 @@ function drawText(shape){
 	return group;
 }
 function loadShape(shape){
-	console.log(shape);
 	var newShape = mappingDraw[shape.tag](shape);
 	$(newShape)
 	.attr({
@@ -322,6 +321,7 @@ $(document).ready(function(){
 	})
 	$("#page-background-content .bg-items").click(function(e){
 		$("#editor-container").css("background-color",$(this).css("background-color"));
+		pageJSON[pageIndex]["background-color"] = $(this).css("background-color");
 	})
 	$("form").submit(function(e){
 		e.preventDefault();
@@ -329,6 +329,7 @@ $(document).ready(function(){
 	$("#page-background-content #txtHexColor").val("#FFFFFF");
 	$("#page-background-content #btnSetBackgroundColor").click(function(e){
 		$("#editor-container").css("background-color",$("#page-background-content #txtHexColor").val());
+		pageJSON[pageIndex]["background-color"] = $("#page-background-content #txtHexColor").val();
 	})
 	$(".draggable-element").click(function(e){
 		e.preventDefault();
@@ -376,10 +377,5 @@ $(document).ready(function(){
 		var tspan = document.createElementNS(svgNS,'tspan');
 		tspan.textContent = s;
 		text.appendChild(tspan);
-		/*text.textContent = s;		
-		if(text.getBBox().width>maxWidth){
-		}
-		else{
-		}*/
 	})
 })
