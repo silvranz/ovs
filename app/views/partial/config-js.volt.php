@@ -1,1 +1,1 @@
-var BASE_URL = "<?php echo $this->url->get(); ?>";
+var BASE_URL = "<?= $this->url->get() ?>";

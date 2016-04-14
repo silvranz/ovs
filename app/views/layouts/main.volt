@@ -6,7 +6,8 @@
 		<link rel="stylesheet" href="{{url("css/skeleton.css")}}" />
 		<link rel="stylesheet" href="{{url("css/custom.css")}}" />
 		<link rel="stylesheet" href="{{url("css/top-navbar.css")}}" />
-		<link rel="stylesheet" href="{{url("css/modal.css")}}" />		
+		<link rel="stylesheet" href="{{url("css/modal.css")}}" />
+		<link rel="stylesheet" href="{{url("css/font.css")}}" />		
 		<link rel="shortcut icon" href="{{url("images/ovs.ico")}}">
 		<script>
 			{{ partial("partial/config-js") }}

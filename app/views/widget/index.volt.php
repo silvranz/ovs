@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div id="store-template-filter" class="two columns">
-			<button class="button button-primary" onclick="location.href='<?php echo $this->url->get('widget/workshop'); ?>'">Create new widget</button>
+			<button class="button button-primary" onclick="location.href='<?= $this->url->get('widget/workshop') ?>'">Create new widget</button>
 		</div>	
 	</div>
 </div>

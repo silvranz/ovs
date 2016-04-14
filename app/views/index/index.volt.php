@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="one-half column">
 			  	<h4 class="hero-heading">Partner terbaik dalam membuat website</h4>
-			  	<a class="button button-primary" href="<?php echo $this->url->get('web/workshop'); ?>">Buka Toko Sekarang</a>
+			  	<a class="button button-primary" href="<?= $this->url->get('web/workshop') ?>">Buka Toko Sekarang</a>
 			</div>
 		</div>
 	</div>

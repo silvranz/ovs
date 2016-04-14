@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/top-navbar.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/switch.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/skeleton.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/range.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/normalize.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/modal.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/hover.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/editor-top-navbar.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo $this->url->get('css/web-workshop/custom.css'); ?>" />
-		<link rel="shortcut icon" href="<?php echo $this->url->get('images/ovs.ico'); ?>">
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/top-navbar.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/switch.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/skeleton.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/range.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/normalize.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/modal.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/hover.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/editor-top-navbar.css') ?>" />
+		<link rel="stylesheet" href="<?= $this->url->get('css/web-workshop/custom.css') ?>" />
+		<link rel="shortcut icon" href="<?= $this->url->get('images/ovs.ico') ?>">
         <title>Ovs - Build Your Awesome Website</title>
     </head>
     <body>
 		<!-- Top Navbar -->
 		<nav class="clearfix">
 			<ul class="clearfix">
-				<li class="first"><a href="<?php echo $this->url->get(); ?>">Oversign</a></li>
+				<li class="first"><a href="<?= $this->url->get() ?>">Oversign</a></li>
 				<li class="second">
 					<a id="btnOpenBoxPage" href="#">
 						<span>Page Name</span>
-						<img src="<?php echo $this->url->get('images/icons/arrow-down-white.png'); ?>" />
+						<img src="<?= $this->url->get('images/icons/arrow-down-white.png') ?>" />
 					</a>
 					<div class="box-page">
 						<div class="row">
@@ -87,6 +87,6 @@
 			</ul>
 			<a href="#" id="pull">Menu</a>
 		</nav>
-		<?php echo $this->getContent(); ?>
+		<?= $this->getContent() ?>
     </body>
 </html>

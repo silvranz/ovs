@@ -13,7 +13,7 @@
 			</div>
 		</div>
 
-		<form id="loginForm" method="post" action="<?php echo $this->url->get('connection/login'); ?>">
+		<form id="loginForm" method="post" action="<?= $this->url->get('connection/login') ?>">
 			<div class="row">
 				<div class="twelve columns">
 					<label for="txtLoginEmail">Email</label>
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 
-		<form id="registerForm"  method="post" action="<?php echo $this->url->get('connection/register'); ?>">
+		<form id="registerForm"  method="post" action="<?= $this->url->get('connection/register') ?>">
 			<div class="row">
 				<div class="twelve columns">
 					<label for="txtRegisterEmail">Email</label>
