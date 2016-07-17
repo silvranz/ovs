@@ -34,7 +34,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +114,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'ABN_';
 
 
 /*
@@ -232,7 +232,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '@n63L413R1@NiCH0L@Z';
 
 /*
 |--------------------------------------------------------------------------
@@ -323,7 +323,7 @@ $config['csrf_expire'] = 7200;
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

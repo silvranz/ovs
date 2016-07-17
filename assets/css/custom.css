@@ -1,0 +1,395 @@
+body {
+	padding-top: 50px;
+	background-color: #e7e7e9;
+	font-size: 1.4em; /* currently ems cause chrome bug misinterpreting rems on body element */
+	font-weight: 500;
+	font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+}
+
+.wrapper-static > .header {
+	height:70px; 
+	padding:15px;
+}
+
+/* MAIN PAGE BACKGROUND */
+.wrapper-background {
+	background-size: cover; 
+	color: #fff;
+	padding: 50px 0 90px;
+}
+
+/* BANNER */
+.wrapper-banner a:hover {
+	opacity: 0.8;
+	transition: .25s ease-out all;
+    -moz-transition: .25s ease-out all;
+    -webkit-transition: .25s ease-out all;
+    -o-transition: .25s ease-out all;
+}
+
+/* COLOR */
+.text-orange {
+	color: #E66909;
+}
+.text-white {
+	color: #ffffff;
+}
+
+/* FLOAT */
+.no-float {
+    float: none !important;
+}
+
+/* FOOTER */
+.bs-docs-footer {
+	margin-top: 0px;
+}
+
+.glyphicon:hover {
+	cursor: pointer;
+}
+
+/* WIDTH */
+.full-width {
+	width: 100%;
+}
+
+/* NAVBAR */
+.navbar-inverse {
+	background-color: #32322F;
+	margin-bottom: 0;
+}
+/*a.navbar-brand {
+	background-color: #E66909;
+}*/
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #8c99a4;
+    cursor: pointer;
+    -webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+       -o-transition: all .25s ease;
+          transition: all .25s ease;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #E66909;
+  outline: 0;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #E66909;
+	-webkit-transition: all .25s ease;
+	 -moz-transition: all .25s ease;
+	  -ms-transition: all .25s ease;
+	   -o-transition: all .25s ease;
+	      transition: all .25s ease;
+}
+
+/* HEADER NAVBAR */
+#user-menu-dropdown {
+	background-color: #555555;
+}
+
+/* FORM CONTROL */
+.form-control:focus {
+	border-color: #E66909;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(245, 124, 2, .7);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(245, 124, 2, .7);
+}
+
+/* BUTTON */
+.btn-orange {
+  	color: #FFFFFF;
+  	background-color: #E66909;
+}
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active,
+.btn-orange.active,
+.open .dropdown-toggle.btn-orange {
+  	color: #FFFFFF;
+  	background-color: #8c99a4;
+}
+.btn-orange:active,
+.btn-orange.active,
+.open .dropdown-toggle.btn-orange {
+  	background-image: none;
+}
+.btn-orange.disabled,
+.btn-orange[disabled],
+fieldset[disabled] .btn-orange,
+.btn-orange.disabled:hover,
+.btn-orange[disabled]:hover,
+fieldset[disabled] .btn-orange:hover,
+.btn-orange.disabled:focus,
+.btn-orange[disabled]:focus,
+fieldset[disabled] .btn-orange:focus,
+.btn-orange.disabled:active,
+.btn-orange[disabled]:active,
+fieldset[disabled] .btn-orange:active,
+.btn-orange.disabled.active,
+.btn-orange[disabled].active,
+fieldset[disabled] .btn-orange.active {
+  	background-color: #D1873D;
+}
+.btn-orange .badge {
+  	color: #D1873D;
+  	background-color: #fff;
+}
+
+.btn-facebook {
+  	color: #FFFFFF;
+  	background-color: #283F6D;
+}
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.open .dropdown-toggle.btn-facebook {
+  	color: #FFFFFF;
+  	background-color: #3C579C;
+}
+.btn-facebook:active,
+.btn-facebook.active,
+.open .dropdown-toggle.btn-facebook {
+  	background-image: none;
+}
+.btn-facebook.disabled,
+.btn-facebook[disabled],
+fieldset[disabled] .btn-facebook,
+.btn-facebook.disabled:hover,
+.btn-facebook[disabled]:hover,
+fieldset[disabled] .btn-facebook:hover,
+.btn-facebook.disabled:focus,
+.btn-facebook[disabled]:focus,
+fieldset[disabled] .btn-facebook:focus,
+.btn-facebook.disabled:active,
+.btn-facebook[disabled]:active,
+fieldset[disabled] .btn-facebook:active,
+.btn-facebook.disabled.active,
+.btn-facebook[disabled].active,
+fieldset[disabled] .btn-facebook.active {
+  	background-color: #D1873D;
+}
+
+/* FONT */
+@font-face {
+  	font-family: 'Raleway';
+  	font-weight: 500;
+  	src: local('Raleway Light'), local('Raleway-Light'), url('../fonts/custom/font_1.woff2') format('woff2');
+  	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+.fbold {
+	font-weight: bold;
+}
+
+/* BACKGROUND */
+.bg-white {
+	background-color: #FFFFFF;
+}
+
+/* ERROR */
+.error-message {
+	color: #C30F0F !important;
+	display: block;
+}
+
+/* Overlay for Loading */
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1042;
+	opacity: 1;
+	background: rgba(0,0,0,0.5);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Modal Bootstrap - Set zindex so it will on behind of the overlay */
+.modal {
+	z-index: 1041;
+}
+
+.bs-docs-footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #2a2730;
+}
+.bs-docs-footer a {
+	color: #FFFFFF;
+}
+
+/* BORDER */
+.with-border {
+	border: 1px solid #efefef;
+}
+.with-border-right {
+	border-right: 1px solid #efefef;
+}
+.with-border-bottom {
+	border-bottom: 1px solid #efefef;
+}
+.no-border {
+	border: transparent !important;
+}
+.no-radius {
+	border-radius: 0px !important;
+}
+
+/* MARGIN */
+.no-mg {
+	margin: 0 !important;
+}
+._mt5 {
+	margin-top: -5px !important;
+}
+._mt7 {
+	margin-top: -7px !important;
+}
+.mt3 {
+	margin-top: 3px !important;
+}
+.mt5 {
+	margin-top: 5px !important;
+}
+.mt10 {
+	margin-top: 10px !important;
+}
+.mt15 {
+	margin-top: 15px !important;
+}
+.mt20 {
+	margin-top: 20px !important;
+}
+.mt50 {
+	margin-top: 50px !important;
+}
+.mb5 {
+	margin-bottom: 5px !important;
+}
+.mb10 {
+	margin-bottom: 10px !important;
+}
+.mb15 {
+	margin-bottom: 15px !important;
+}
+.mb20 {
+	margin-bottom: 20px;
+}
+.mb40 {
+	margin-bottom: 40px;
+}
+.mr5 {
+	margin-right: 5px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.ml5 {
+	margin-left: 5px !important;
+}
+.ml10 {
+	margin-left: 10px !important;
+}
+.ml20 {
+	margin-left: 20px !important;
+}
+
+/* DISPLAY */
+.dpinline {
+	display: inline;
+}
+.dpinlineblock {
+	display: inline-block !important;
+}
+
+/* PADDING */
+.no-pd {
+	padding: 0;
+}
+.pd5 {
+	padding: 5px;
+}
+.pd10 {
+	padding: 10px;
+}
+.pd15 {
+	padding: 15px;
+}
+.pd20 {
+	padding: 20px;
+}
+
+.pl0 {
+	padding-left: 0px;
+}
+.pt0 {
+	padding-top: 0px;
+}
+.pb0 {
+	padding-bottom: 0px;
+}
+.pt15 {
+	padding-top: 15px;
+}
+
+.pb20 {
+	padding-bottom: 20px;
+}
+
+/* LIST STYLE */
+.no-ul-type {
+	list-style-type: none;
+}
+
+/* TEXT ALIGN */
+.taleft {
+	text-align: left !important;
+}
+.tacenter {
+	text-align: center;
+}
+.taright {
+	text-align: right;
+}
+.tajustify {
+	text-align: justify;
+}
+
+/* CURSOR */
+.cpointer {
+	cursor: pointer;
+}
+
+@media print {
+	a[href]:after {
+		content: none !important;
+	}
+	.print-floleft {
+		float: left !important;
+	}
+	.print-floright {
+		float: right !important;
+	}
+}
