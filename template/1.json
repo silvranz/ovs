@@ -1,0 +1,17 @@
+{
+	"title":"Testing Page 1",
+	"body":[
+		{
+			"tag":"div",
+			"style":"border:1px solid black;width:100px;height:100px",
+			"className":"collapse navbar-collapse"
+		},
+		{
+			"tag":"input",
+			"style":"",
+			"extraAttr":[
+				["type","text"]
+			]
+		}
+	]
+}

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Testing extends CI_Controller {
+class Testing extends ABN_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -25,13 +25,62 @@ class Testing extends CI_Controller {
 		//Terima data halaman [bisa json,xml,txt,string,dsb]
 		$json = '{"title":"Testing Page 1",
 					"body":[
-						{"tag":"div","style":"border:1px solid black;width:100px;height:100px","closedTag":1},
-						{"tag":"input","closedTag":0,
-							"extraTag":[["type","text"]]}
+						{"tag":"nav","attribute":[["class","navbar navbar-default"],["id","navbar"]]},
+						{"tag":"div","attribute":[["class","collapse navbar-collapse"]],"parent":"navbar"},
+						{"tag":"input","attribute":[["type","text"]]},
+						{"tag":"input","attribute":[["type","button"],["value","button1"]]}
 						]}';
 		$pageData = json_decode($json,true);
-		//Mungkin prossesing datanya dulu lalu kirim ke view
-		$this->load->view('preview',$pageData);
+		$domRender = $this->renderDOM($pageData);
+	}
+	private function renderDOM($json){
+		$page = new DOMDocument();
+		$page->normalizeDocument();
+		$page->formatOutput = true;
+
+		$html = $page->createElement('html');
+		$head = $page->createElement('head');
+		$title = $page->createElement('title');
+		$bootstrap = $page->createElement('link');
+		
+		$body = $page->createElement('body');
+
+		$title_text = $page->createTextNode($json["title"]);
+		$title->appendChild($title_text);
+		$meta = $page->createElement('meta');
+		$meta->setAttribute("http-equiv","Content-Type");
+		$meta->setAttribute("content","text/html; charset=utf-8");
+		$meta = $head->appendChild($meta);
+		
+		$bootstrap->setAttribute("rel","stylesheet");
+		$bootstrap->setAttribute("href",$this->domain."/assets/css/bootstrap/bootstrap.css");
+
+		$head->appendChild($title);
+		$head->appendChild($bootstrap);
+		
+		$countB = count($json["body"]);
+		for($i=0;$i<$countB;$i++){
+			$tempEl = $page->createElement($json["body"][$i]["tag"]);
+			$countAttr = count($json["body"][$i]["attribute"]);
+			for($j=0;$j<$countAttr;$j++){
+				$tempEl->setAttribute($json["body"][$i]["attribute"][$j][0],$json["body"][$i]["attribute"][$j][1]);
+			}
+			if(!$tempEl->hasAttribute("id")){
+				$tempEl->setAttribute("id",$json["body"][$i]["tag"].$body->getElementsByTagName($json["body"][$i]["tag"])->length);
+			}
+			/*if(isset($json["body"][$i]["parent"])){
+				$parent = $page->getElementById($json["body"][$i]["parent"]);
+				$parent->appendChild($tempEl);
+			}
+			else{*/
+				$body->appendChild($tempEl);
+			//}
+		}
+
+		$html->appendChild($head);
+		$html->appendChild($body);
+		$page->appendChild($html);
+		echo "<!DOCTYPE html>" .html_entity_decode($page->saveHTML());
 	}
 }
 
