@@ -1,6 +1,6 @@
 <main class="bs-docs-masthead custom-top-bg" id="content" role="main">
 	<div class="container">
-		<p class="lead">Your best partner for creating websies</p>
+		<p class="lead">Your best partner for creating websites</p>
 		<button class="btn btn-primary">Try Now</button>
 	</div>
 </main>
