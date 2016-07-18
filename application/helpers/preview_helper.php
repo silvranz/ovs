@@ -1,44 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Testing extends ABN_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function gplus()
-	{
-		$this->load->view('gpl');
-	}
-	public function viewTemplate($jsonPage=""){
-		//Terima data halaman [bisa json,xml,txt,string,dsb]
-		$json = '{"title":"Testing Page 1",
-					"body":[
-						{"tag":"nav","attribute":[["class","navbar navbar-default"],["id","header"]]},
-						{"tag":"div","attribute":[["class","collapse navbar-collapse"],["id","navbar"]],"parent":"header"},
-						{"tag":"ul","attribute":[["class","nav navbar-nav navbar-left"],["id","menuList"]],"parent":"navbar"},
-						{"tag":"li","attribute":[["id","menu1"]],"parent":"menuList"},
-						{"tag":"a","attribute":[["href","http://google.com"]],"parent":"menu1","text":"Google"},
-						{"tag":"li","attribute":[["id","menu2"]],"parent":"menuList"},
-						{"tag":"a","attribute":[["href","http://facebook.com"]],"parent":"menu2","text":"Facebook"},
-						{"tag":"input","attribute":[["type","text"]]},
-						{"tag":"input","attribute":[["type","button"],["value","button1"]]}
-						]}';
-		$pageData = json_decode($json,true);
-		$domRender = $this->renderDOM($pageData);
-	}
-	public function renderDOM($json){
+if ( ! function_exists('renderDOM')) {
+	function renderDOM($json){
+		$CI = get_instance();
 		$page = new DOMDocument();
 		$page->normalizeDocument();
 		$page->formatOutput = true;
@@ -58,7 +22,7 @@ class Testing extends ABN_Controller {
 		$meta = $head->appendChild($meta);
 		
 		$bootstrap->setAttribute("rel","stylesheet");
-		$bootstrap->setAttribute("href",$this->domain."/assets/css/bootstrap/bootstrap.css");
+		$bootstrap->setAttribute("href",$CI->domain."/assets/css/bootstrap/bootstrap.css");
 
 		$head->appendChild($title);
 		$head->appendChild($bootstrap);
@@ -97,6 +61,3 @@ class Testing extends ABN_Controller {
 		echo "<!DOCTYPE html>" .html_entity_decode($page->saveHTML());
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
