@@ -25,8 +25,13 @@ class Testing extends ABN_Controller {
 		//Terima data halaman [bisa json,xml,txt,string,dsb]
 		$json = '{"title":"Testing Page 1",
 					"body":[
-						{"tag":"nav","attribute":[["class","navbar navbar-default"],["id","navbar"]]},
-						{"tag":"div","attribute":[["class","collapse navbar-collapse"]],"parent":"navbar"},
+						{"tag":"nav","attribute":[["class","navbar navbar-default"],["id","header"]]},
+						{"tag":"div","attribute":[["class","collapse navbar-collapse"],["id","navbar"]],"parent":"header"},
+						{"tag":"ul","attribute":[["class","nav navbar-nav navbar-left"],["id","menuList"]],"parent":"navbar"},
+						{"tag":"li","attribute":[["id","menu1"]],"parent":"menuList"},
+						{"tag":"a","attribute":[["href","http://google.com"]],"parent":"menu1","text":"Google"},
+						{"tag":"li","attribute":[["id","menu2"]],"parent":"menuList"},
+						{"tag":"a","attribute":[["href","http://facebook.com"]],"parent":"menu2","text":"Facebook"},
 						{"tag":"input","attribute":[["type","text"]]},
 						{"tag":"input","attribute":[["type","button"],["value","button1"]]}
 						]}';
@@ -58,25 +63,34 @@ class Testing extends ABN_Controller {
 		$head->appendChild($title);
 		$head->appendChild($bootstrap);
 		
+		$html->appendChild($head);
+		$html->appendChild($body);
+		$page->appendChild($html);
+		
 		$countB = count($json["body"]);
 		for($i=0;$i<$countB;$i++){
 			$tempEl = $page->createElement($json["body"][$i]["tag"]);
-			$countAttr = count($json["body"][$i]["attribute"]);
+			$countAttr = isset($json["body"][$i]["attribute"])?count($json["body"][$i]["attribute"]):0;
 			for($j=0;$j<$countAttr;$j++){
 				$tempEl->setAttribute($json["body"][$i]["attribute"][$j][0],$json["body"][$i]["attribute"][$j][1]);
+				if($json["body"][$i]["attribute"][$j][0]=="id"){
+					$tempEl->setIdAttribute($json["body"][$i]["attribute"][$j][0],true);
+				}
 			}
 			if(!$tempEl->hasAttribute("id")){
 				$tempEl->setAttribute("id",$json["body"][$i]["tag"].$body->getElementsByTagName($json["body"][$i]["tag"])->length);
 			}
-			/*if(isset($json["body"][$i]["parent"])){
+			if(isset($json["body"][$i]["text"])){
+				$tempEl->appendChild($page->createTextNode($json["body"][$i]["text"]));
+			}
+			if(isset($json["body"][$i]["parent"])){
 				$parent = $page->getElementById($json["body"][$i]["parent"]);
 				$parent->appendChild($tempEl);
 			}
-			else{*/
+			else{
 				$body->appendChild($tempEl);
-			//}
+			}
 		}
-
 		$html->appendChild($head);
 		$html->appendChild($body);
 		$page->appendChild($html);
