@@ -365,5 +365,13 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Domain + Base Directory
+|--------------------------------------------------------------------------
+*/
+$config['base_directory'] = 'ovs';
+$config['domain'] = 'http://localhost/ovs';
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */

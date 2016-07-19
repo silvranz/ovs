@@ -54,7 +54,7 @@ if ( ! function_exists('load_script')) {
 
 		if( !empty($scripts) ) {
 			foreach ($scripts as $script) {
-				$stringify_script .= "<script type='text/javascript' src='".$CI->domain.'/assets/js/'.$script.".js'></script>";
+				$stringify_script .= "<script type='text/javascript' src='".$CI->config->item('domain').'/assets/js/'.$script.".js'></script>";
 		    }
 		}
 	    
@@ -70,7 +70,7 @@ if ( ! function_exists('load_css')) {
 
 		if( !empty($scripts) ) {
 			foreach ($scripts as $script) {
-		        $stringify_script .= "<link href='".$CI->domain.'/assets/css/'.$script.".css' rel='stylesheet'>";
+		        $stringify_script .= "<link href='".$CI->config->item('domain').'/assets/css/'.$script.".css' rel='stylesheet'>";
 		    }
 		}
 	    echo $stringify_script;

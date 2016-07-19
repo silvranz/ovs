@@ -2,16 +2,17 @@
 
 class ABN_Controller extends CI_Controller {
 
-	public $domain = 'http://localhost/ovs';
-
 	public function __construct() {
 		parent::__construct();
 
+		$domain = $this->config->item('domain');
+		$base_directory = $this->config->item('base_directory');
+
 		$this->load->helper('common');
-	    $this->webroot = $_SERVER['DOCUMENT_ROOT'].'/ovs/';
+	    $this->webroot = $_SERVER['DOCUMENT_ROOT'].'/'.$base_directory.'/';
 		$this->load->vars(array(
-			'domain' => $this->domain,
-			'webroot' => $_SERVER['DOCUMENT_ROOT'].'/ovs/',
+			'domain' => $domain,
+			'webroot' => $_SERVER['DOCUMENT_ROOT'].'/'.$base_directory.'/',
 		));
 	}
 
