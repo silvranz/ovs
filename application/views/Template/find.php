@@ -51,8 +51,8 @@
 						<button class="btn btn-default col-sm-6">Use</button>
 					</div>
 					<div id="templateItem" class="col-sm-3">
-						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-						<button class="btn btn-default col-sm-6">Preview</button>
+						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/preview1.jpg" />
+						<a href="<?=$domain?>/template/preview/1" class="btn btn-default col-sm-6">Preview</a>
 						<button class="btn btn-default col-sm-6">Use</button>
 					</div>
 					<div id="templateItem" class="col-sm-3">

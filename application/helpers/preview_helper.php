@@ -22,7 +22,7 @@ if ( ! function_exists('renderDOM')) {
 		$meta = $head->appendChild($meta);
 		
 		$bootstrap->setAttribute("rel","stylesheet");
-		$bootstrap->setAttribute("href",$CI->domain."/assets/css/bootstrap/bootstrap.css");
+		$bootstrap->setAttribute("href",$CI->config->item('domain')."/assets/css/bootstrap/bootstrap.css");
 
 		$head->appendChild($title);
 		$head->appendChild($bootstrap);
