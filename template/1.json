@@ -2,16 +2,131 @@
 	"title":"Testing Page 1",
 	"body":[
 		{
+			"tag":"nav",
+			"attribute":[
+					["class","navbar navbar-default"],
+					["id","header"]
+					]
+		},
+		{
 			"tag":"div",
-			"style":"border:1px solid black;width:100px;height:100px",
-			"className":"collapse navbar-collapse"
+			"attribute":[
+					["class","collapse navbar-collapse"],
+					["id","navbar"]
+					],
+			"parent":"header"
+		},
+		{
+			"tag":"ul",
+			"attribute":[
+					["class","nav navbar-nav navbar-left"],
+					["id","menuList"]
+					],
+			"parent":"navbar"
+		},
+		{
+			"tag":"li",
+			"attribute":[
+					["id","menu1"]
+					],
+			"parent":"menuList"
+		},
+		{
+			"tag":"a",
+			"attribute":[
+					["href","http://google.com"]
+					],
+			"parent":"menu1",
+			"text":"Google"
+		},
+		{
+			"tag":"li",
+			"attribute":[
+					["id","menu2"]
+					],
+			"parent":"menuList"
+		},
+		{
+			"tag":"a",
+			"attribute":[
+					["href","http://facebook.com"]
+					],
+			"parent":"menu2",
+			"text":"Facebook"
+		},
+		{
+			"tag":"div",
+			"attribute":[
+					["class","container row"],
+					["id","container"]
+					]
+		},
+		{
+			"tag":"div",
+			"attribute":[
+					["class","col-sm-8"],
+					["id","leftSection"]
+					],
+			"parent":"container"
+		},
+		{
+			"tag":"div",
+			"attribute":[
+					["class","col-sm-4"],
+					["id","rightSection"]
+					],
+			"parent":"container"
+		},
+		{
+			"tag":"a",
+			"attribute":[
+					["href","https://isekailunatic.wordpress.com/2016/07/17/chapter-139-in-front-of-the-variant/"],
+					["id","blog1"]
+					],
+			"parent":"leftSection"
+		},
+		{
+			"tag":"h2",
+			"attribute":[
+					["class","bs-docs-featurette-title"]
+					],
+			"parent":"blog1",
+			"text":"Chapter 139: In Front of The Variant"
+		},
+		{
+			"tag":"div",
+			"parent":"leftSection",
+			"text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..."
+		},
+		{
+			"tag":"h4",
+			"attribute":[
+					["class","bs-docs-featurette-title"]
+					],
+			"parent":"rightSection",
+			"text":"Follow blog via email"
+		},
+		{
+			"tag":"div",
+			"parent":"rightSection",
+			"text":"Enter your email address to follow this blog and receive notifications of new posts by email."
 		},
 		{
 			"tag":"input",
-			"style":"",
-			"extraAttr":[
-				["type","text"]
-			]
+			"attribute":[
+					["type","text"],
+					["placeholder","Enter your email here"],
+					["class","form-control"]
+					],
+			"parent":"rightSection"
+		},
+		{
+			"tag":"button",
+			"attribute":[
+					["class","btn btn-default"]
+					],
+			"parent":"rightSection",
+			"text":"Follow"
 		}
 	]
 }
