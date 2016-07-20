@@ -1,10 +1,3 @@
-<script>
-	$(document).ready(function(){
-		$("#startLoad").click(function(e){
-			e.preventDefault();
-		})
-	})
-</script>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -46,29 +39,82 @@
 				</div>
 				<div class="panel-body">
 					<div id="templateItem" class="col-sm-3 hide">
-						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-						<button class="btn btn-default col-sm-6">Preview</button>
-						<button class="btn btn-default col-sm-6">Use</button>
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">Template Title or Name</div>
+							<div class="panel-body">
+								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
+							</div>
+							<div class="panel-footer">
+								<a class="btn btn-default col-sm-6">Preview</a>
+								<a class="btn btn-default col-sm-6">Use</a>
+								<div style="clear:both"></div>
+							</div>
+						</div>
 					</div>
 					<div id="templateItem" class="col-sm-3">
-						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/preview1.jpg" />
-						<a href="<?=$domain?>/template/preview/1" class="btn btn-default col-sm-6">Preview</a>
-						<button class="btn btn-default col-sm-6">Use</button>
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">Template 1</div>
+							<div class="panel-body">
+								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/preview1.jpg" />
+							</div>
+							<div class="panel-footer">
+								<a href="<?=$domain?>/template/preview/1" class="btn btn-default col-sm-6">Preview</a>
+								<a class="btn btn-default col-sm-6">Use</a>
+								<div style="clear:both"></div>
+							</div>
+						</div>
 					</div>
 					<div id="templateItem" class="col-sm-3">
-						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-						<button class="btn btn-default col-sm-6">Preview</button>
-						<button class="btn btn-default col-sm-6">Use</button>
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">Example 1</div>
+							<div class="panel-body">
+								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
+							</div>
+							<div class="panel-footer">
+								<a class="btn btn-default col-sm-6">Preview</a>
+								<a class="btn btn-default col-sm-6">Use</a>
+								<div style="clear:both"></div>
+							</div>
+						</div>
 					</div>
 					<div id="templateItem" class="col-sm-3">
-						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-						<button class="btn btn-default col-sm-6">Preview</button>
-						<button class="btn btn-default col-sm-6">Use</button>
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">Example 2</div>
+							<div class="panel-body">
+								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
+							</div>
+							<div class="panel-footer">
+								<a class="btn btn-default col-sm-6">Preview</a>
+								<a class="btn btn-default col-sm-6">Use</a>
+								<div style="clear:both"></div>
+							</div>
+						</div>
 					</div>
 					<div id="templateItem" class="col-sm-3">
-						<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-						<button class="btn btn-default col-sm-6">Preview</button>
-						<button class="btn btn-default col-sm-6">Use</button>
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">Example 3</div>
+							<div class="panel-body">
+								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
+							</div>
+							<div class="panel-footer">
+								<a class="btn btn-default col-sm-6">Preview</a>
+								<a class="btn btn-default col-sm-6">Use</a>
+								<div style="clear:both"></div>
+							</div>
+						</div>
+					</div>
+					<div id="templateItem" class="col-sm-3">
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">Example 4</div>
+							<div class="panel-body">
+								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
+							</div>
+							<div class="panel-footer">
+								<a class="btn btn-default col-sm-6">Preview</a>
+								<a class="btn btn-default col-sm-6">Use</a>
+								<div style="clear:both"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<a href="#" id="startLoad"><div class="panel-footer text-center">Load More</div></a>
