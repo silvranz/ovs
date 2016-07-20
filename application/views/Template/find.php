@@ -37,12 +37,24 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body" id="templateContainer">
 					<div id="templateItem" class="col-sm-3 hide">
 						<div class="panel panel-default">
-							<div class="panel-heading text-center">Template Title or Name</div>
+							<div class="panel-heading text-center template-title">Template Title or Name</div>
 							<div class="panel-body">
-								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
+								<img class="screen-shot" style="width:100%"/>
+								<div class="col-sm-4">
+									<span class="glyphicon glyphicon-user"></span>
+									<span class="total-use large"></span>
+								</div>
+								<div class="col-sm-8">
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="total-rating"></span>
+								</div>
 							</div>
 							<div class="panel-footer">
 								<a class="btn btn-default col-sm-6">Preview</a>
@@ -56,61 +68,21 @@
 							<div class="panel-heading text-center">Template 1</div>
 							<div class="panel-body">
 								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/preview1.jpg" />
+								<div class="col-sm-4">
+									<span class="glyphicon glyphicon-user"></span>
+									<span class="total-use large">100</span>
+								</div>
+								<div class="col-sm-8">
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="total-rating">4.5</span>
+								</div>
 							</div>
 							<div class="panel-footer">
 								<a href="<?=$domain?>/template/preview/1" class="btn btn-default col-sm-6">Preview</a>
-								<a class="btn btn-default col-sm-6">Use</a>
-								<div style="clear:both"></div>
-							</div>
-						</div>
-					</div>
-					<div id="templateItem" class="col-sm-3">
-						<div class="panel panel-default">
-							<div class="panel-heading text-center">Example 1</div>
-							<div class="panel-body">
-								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-							</div>
-							<div class="panel-footer">
-								<a class="btn btn-default col-sm-6">Preview</a>
-								<a class="btn btn-default col-sm-6">Use</a>
-								<div style="clear:both"></div>
-							</div>
-						</div>
-					</div>
-					<div id="templateItem" class="col-sm-3">
-						<div class="panel panel-default">
-							<div class="panel-heading text-center">Example 2</div>
-							<div class="panel-body">
-								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-							</div>
-							<div class="panel-footer">
-								<a class="btn btn-default col-sm-6">Preview</a>
-								<a class="btn btn-default col-sm-6">Use</a>
-								<div style="clear:both"></div>
-							</div>
-						</div>
-					</div>
-					<div id="templateItem" class="col-sm-3">
-						<div class="panel panel-default">
-							<div class="panel-heading text-center">Example 3</div>
-							<div class="panel-body">
-								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-							</div>
-							<div class="panel-footer">
-								<a class="btn btn-default col-sm-6">Preview</a>
-								<a class="btn btn-default col-sm-6">Use</a>
-								<div style="clear:both"></div>
-							</div>
-						</div>
-					</div>
-					<div id="templateItem" class="col-sm-3">
-						<div class="panel panel-default">
-							<div class="panel-heading text-center">Example 4</div>
-							<div class="panel-body">
-								<img class="iSS" style="width:100%" src="<?=$domain?>/assets/images/background/top-bg.jpg" />
-							</div>
-							<div class="panel-footer">
-								<a class="btn btn-default col-sm-6">Preview</a>
 								<a class="btn btn-default col-sm-6">Use</a>
 								<div style="clear:both"></div>
 							</div>
