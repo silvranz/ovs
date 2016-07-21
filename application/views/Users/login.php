@@ -4,14 +4,60 @@
 			<div class="col-sm-12">
 				<div class="wrapper-static bg-white">
 					<div class="header">
-						<p>Google API baru tombolnya</p>
-
-						<!--Add buttons to initiate auth sequence and sign out-->
-						<button id="authorize-button" class="btn btn-danger" style="display: none;">G+</button>
-						<button id="signout-button" class="btn btn-danger" style="display: none;">Sign Out G+</button>
-
-						<div id="content"></div>
-
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<div class="wrapper-static bg-white">
+						<h3 class="header">
+							Login
+						</h3>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Enter your email" />
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="Enter your password" />
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default full-width">Sign In</button>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary col-sm-6">F</button>
+						<button class="btn btn-danger col-sm-6">G+</button>
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
+				<div class="col-sm-5">
+					<div class="wrapper-static bg-white">
+						<h3 class="header">
+							Register
+						</h3>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Full name" />
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Email" />
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="Password" />
+					</div>
+					<div class="form-group">
+						<select class="form-control">
+							<option value="">-- Please select your gender --</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select class="form-control">
+							<option value="">-- Please select your country --</option>
+						</select>
+					</div>
+					<button class="btn btn-default col-sm-12">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 						<script type="text/javascript">
 						  // Enter an API key from the Google API Console:
 						  //   https://console.developers.google.com/apis/credentials?project=_
@@ -86,9 +132,3 @@
 						  }
 						</script>
 						<script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>

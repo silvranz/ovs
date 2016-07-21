@@ -7,12 +7,12 @@
 					<div id="c1" class="panel-collapse collapse">
 						<div class="panel panel-default panel-body">
 							<span>Sort by :</span>
-							<button class="panel-title btn btn-default">Latest Update</button>
-							<button class="panel-title btn btn-default">Most Popular</button>
+							<button class="panel-title btn btn-default sortFilter filterOption" data-mode="1">Latest Update</button>
+							<button class="panel-title btn btn-default sortFilter filterOption" data-mode="2">Most Popular</button>
 						</div>
 						<div class="panel panel-default panel-body">
 							<h3 class="panel-body">Category</h3>
-							<div class="row">
+							<div id="listCategoryContainer" class="row">
 							<?php 
 							$countCat = count($request["listCategory"]);
 							for($i=0;$i<$countCat;){
@@ -25,7 +25,7 @@
 											$i++;
 											while($i<$countCat&&
 													$request["listCategory"][$i]->ParentCategoryID==$request["listCategory"][$i-1]->ParentCategoryID){
-												echo '<a href="#"><li class="list-group-item">'.$request["listCategory"][$i]->TemplateName.'</li></a>';
+												echo '<a href="#" class="categoryFilter filterOption" id="'.$request["listCategory"][$i]->TemplateID.'"><li class="list-group-item">'.$request["listCategory"][$i]->TemplateName.'</li></a>';
 												$i++;
 											};
 									echo		'</ul>
@@ -78,7 +78,7 @@
 									<span class="glyphicon glyphicon-star"></span>
 									<span class="glyphicon glyphicon-star"></span>
 									<span class="glyphicon glyphicon-star"></span>
-									<span class="total-rating">4.5</span>
+									<span class="total-rating"><b>4.5</b></span>
 								</div>
 							</div>
 							<div class="panel-footer">

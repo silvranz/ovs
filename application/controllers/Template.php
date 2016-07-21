@@ -23,7 +23,8 @@ class Template extends ABN_Controller {
 	
 	/*** service ***/
 	public function getTemplate(){
-		$listTemplate = $this->template->getTemplate("",0);
+		$input = $this->input->post();
+		$listTemplate = $this->template->getTemplate($input["categoryId"],$input["mode"]);
 		echo json_encode($listTemplate);
 	}
 	/*** end service ***/
