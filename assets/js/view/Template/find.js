@@ -30,21 +30,16 @@ $(document).ready(function() {
 function loadTemplate(listCategory,mode){
 	listCategory = (typeof listCategory == "undefined")?"":listCategory;
 	mode = (typeof mode == "undefined")?0:mode;
-	console.log({
-			categoryId:listCategory,
-			mode:mode
-		});
-	$.ajax({
+	$("#templateContainer").scrolling({
 		url:serviceUri+"template/getTemplate",
-		type:"POST",
-		data:{
-			categoryId:listCategory,
+		requestData:{
+			categoryId:listCategory.slice(0,-1),
 			mode:mode
 		},
-		dataType:"json",
-		success:function(data){
-			$("#templateContainer>div:not(#templateItem)").remove();
-			//TemplateID: "3", TemplateTitle: "Casual Much", TemplateImage: "asd.jpg", TemplateSubCategoryID: "1", TemplateCategoryID: "1", CreatedDate: "2016-07-20 16:23:49", TemplateRating: null, NumberOfUser: "0"
+		startButton:$("#startLoad"),
+		itemPerLoad:2,
+		callback:function(data){
+			var ajaxObj = this;
 			for(var i=0;i<data.length;i++){
 				var newTemplate = $("#templateItem").clone().removeAttr("id").removeClass("hide").data("templateId",data[i].TemplateID);
 				$(".template-title",newTemplate).text(data[i].TemplateTitle);

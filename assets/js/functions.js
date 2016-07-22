@@ -325,3 +325,50 @@ $.replaceText = function() {
         $(target).text(text);
     });
 }
+$.fn.scrolling = function(param){
+	var container=this;
+	var templateItem = $("#templateItem",container);
+	var requestData = param.requestData;
+	requestData["limit"] = param.itemPerLoad;
+	requestData["offset"] = 0;
+	$(container).data("offset",requestData["offset"]);
+	$(container).html(templateItem);
+	if(param.startButton){
+		param.startButton.click(function(e){
+			e.preventDefault();
+			$(window).scroll(function() {
+				if($(window).scrollTop() + $(window).height() == $(document).height()){
+					requestData["offset"] = typeof $(container).data("offset")=="undefined"?
+													0:$(container).data("offset")+requestData["limit"];
+					$(container).data("offset",requestData["offset"]);
+					$.ajax({
+						type:"POST",
+						url:param.url,
+						data:requestData,
+						dataType:"JSON",
+						container:container,
+						templateItem:templateItem,
+						startButton:param.startButton,
+						success:function(data){
+							if(data.length==0){
+								$(window).off("scroll");
+							}
+							param.callback(data);
+						}
+					})
+				}
+			}).trigger("scroll");	
+		})
+	}
+	$.ajax({
+		type:"POST",
+		url:param.url,
+		data:requestData,
+		dataType:"JSON",
+		container:container,
+		templateItem:templateItem,
+		startButton:param.startButton,
+		success:param.callback
+	})
+	return this;
+}
