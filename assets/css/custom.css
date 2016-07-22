@@ -15,6 +15,50 @@ h1,h2,h3,h4,h5,h6 {
 	padding:15px;
 }
 
+/* SOCIAL MEDIA BUTTON*/
+.wrapper-social .wrapper-inner {
+	width: 100%; 
+	color: #FFFFFF;
+	line-height: 35px; 
+	text-align:center;
+}
+.wrapper-social .wrapper-button {
+	width:100%; 
+	height:35px;
+	border-radius: 5px;
+}
+.wrapper-social .wrapper-button a {
+	text-decoration: none;
+}
+
+.wrapper-social .wrapper-facebook:hover {
+	background-color: #8b9dc3 !important;
+	-webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+       -o-transition: all .25s ease;
+          transition: all .25s ease; 
+}
+.wrapper-social .wrapper-google:hover {
+	background-color: #C47677 !important;
+	-webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+       -o-transition: all .25s ease;
+          transition: all .25s ease; 
+}
+
+/* GOOGLE BUTTON */
+.wrapper-google {
+	background-color:#DF4A32;
+}
+
+/* FACEBOOK BUTTON */
+.wrapper-facebook {
+	background-color:#3b5998;
+}
+
+
 /* MAIN PAGE BACKGROUND */
 .custom-top-bg {
 	background-image: url(../images/background/top-bg.jpg); 
@@ -367,6 +411,9 @@ fieldset[disabled] .btn-facebook.active {
 }
 .pb0 {
 	padding-bottom: 0px;
+}
+.pb15 {
+	padding-bottom: 15px;
 }
 .pt15 {
 	padding-top: 15px;
