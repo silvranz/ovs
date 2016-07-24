@@ -58,7 +58,7 @@
 							</div>
 							<div class="panel-footer">
 								<a class="btn btn-default col-sm-6">Preview</a>
-								<a class="btn btn-default col-sm-6">Use</a>
+								<a class="btn btn-default col-sm-6 useButton">Use</a>
 								<div style="clear:both"></div>
 							</div>
 						</div>

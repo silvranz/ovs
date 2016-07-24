@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "pages";
 $route['404_override'] = '';
+$route['template/form-fillment'] = 'template/form_fillment';
 
 
 /* End of file routes.php */

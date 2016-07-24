@@ -46,6 +46,10 @@ function loadTemplate(listCategory,mode){
 				$(".total-use",newTemplate).text(data[i].NumberOfUser);
 				$(".total-rating",newTemplate).text(data[i].TemplateRating==null?'0':Math.round(data[i].TemplateRating * 10) / 10);
 				$(".screen-shot",newTemplate).attr("src",serviceUri+"assets/images/screen-shot/"+data[i].TemplateImage);
+				console.log($(".useButton",newTemplate));
+				$(".useButton",newTemplate).click(function(){
+					location.href=serviceUri+"template/form-fillment";
+				});
 				$("#templateContainer").append(newTemplate)
 			}
 		}

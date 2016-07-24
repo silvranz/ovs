@@ -19,6 +19,9 @@ class Template extends ABN_Controller {
 		$pageData = json_decode(file_get_contents('Template/'.$jsonName.'.json'),true);
 		renderDOM($pageData);
 	}
+	public function form_fillment(){
+		$this->render();
+	}
 	/*** end page load ***/
 	
 	/*** service ***/
