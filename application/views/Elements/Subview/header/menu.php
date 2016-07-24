@@ -44,11 +44,59 @@
 							'wrapTag' => 'li',
 						));
 
-						echo tag('a', 'Login', array(
-							'href' => $domain.'/users/login',
-							'wrapTag' => 'li',
-						));
-				?>
+						if( isLoggedIn() ) { 
+        		?>
+        		<li id="user-menu-dropdown" class="dropdown">
+        			<?php
+        					$userphoto = $this->session->userdata('userphoto');
+							$path_image = '/assets/images/uploads/users/thumbs/'.$userphoto;
+							$custom_image = $domain.$path_image;
+							if( !file_exists( $webroot.$path_image ) ) {
+								$custom_image = $domain.'/assets/images/placeholder/users.jpg';
+							}
+
+        					$userImage = tag('img', strtok($this->session->userdata('username'), " "), array(
+        						'class' => 'pull-left _mt7 mr5 img-circle',
+        						'src' => $custom_image,
+        						'style' => 'width: 35px; height: 35px;',
+        					));
+        					$caret = tag('b', false, array(
+        						'class' => 'caret',
+        					));
+
+        					echo tag('a', $userImage.$caret, array(
+        						'href' => '#',
+        						'class' => 'dropdown-toggle', 
+        						'data-toggle' => 'dropdown',
+        					));
+        			?>
+		          	<ul class="dropdown-menu">
+		          		<?php
+		          				echo tag('a', 'Logout', array(
+		          					'href' => $domain.'/users/logout',
+		          					'wrapTag' => 'li',
+		          				));
+		          		?>
+		          	</ul>
+		        </li>
+		        <?php
+		        		} else {
+		        			$method_name = ucwords($this->router->method);
+		        			$display_text = 'Login';
+
+		        			if( $method_name == 'Login' || $method_name == 'Register' ) {
+		        				if( $method_name == 'Login' ) {
+		        					$display_text = 'Register';
+		        				}
+		        			}
+
+		        			echo tag('a', $display_text, array(
+		        				'href' => $domain.'/users/'.strtolower($display_text),
+		        				'data-title' => 'Login',
+		        				'wrapTag' => 'li'
+		        			));
+		        		}
+		        ?>
       		</ul>
     	</div>
   	</div>

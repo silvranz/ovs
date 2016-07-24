@@ -2,11 +2,23 @@
 
 class ABN_Controller extends CI_Controller {
 
+	public $domain;
+
 	public function __construct() {
 		parent::__construct();
 
-		$domain = $this->config->item('domain');
+		$this->domain = $domain = $this->config->item('domain');
 		$base_directory = $this->config->item('base_directory');
+
+		if( $this->session->userdata('redirect_now') == true ) {
+			$this->session->set_userdata('redirect_now', false);
+			if( !empty($this->session->userdata('redirect_after')) ) {
+				$redirect_after = $this->session->userdata('redirect_after');
+				$this->session->set_userdata('redirect_after', false);
+				$this->load->helper('url');
+	            redirect($this->domain.'/'.$redirect_after);
+			}
+		}
 
 		$this->load->helper('common');
 	    $this->webroot = $_SERVER['DOCUMENT_ROOT'].'/'.$base_directory.'/';
@@ -39,6 +51,13 @@ class ABN_Controller extends CI_Controller {
 		$this->load->view('Layouts/'.$layout, array(
 			'content_view' => $content_view,
 		));
+	}
+
+	public function validateUserLogin(){
+		if( empty($this->session->userdata('loggedin')) ) {
+			$this->load->helper('url');
+			redirect($this->domain);
+		}
 	}
 
 	public function setCustomError( $field_name = false, $error = false ) {

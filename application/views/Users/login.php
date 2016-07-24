@@ -1,75 +1,83 @@
-<div class="container">
-	<div class="big-wrapper pb15">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="col-sm-5">
-					<div class="wrapper-static bg-white">
-						<h3 class="header">
-							Login
-						</h3>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Enter your email" />
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Enter your password" />
-					</div>
-					<div class="form-group">
-						<button class="btn btn-success full-width">Sign In</button>
-					</div>
-					<div class="wrapper-social">
-						<div class="mt5">
-							<div class="wrapper-facebook wrapper-button">
-								<a href="#" class="facebook-link">
-									<div class="wrapper-inner">
-										<span class="">Sign in with Facebook</span>
-									</div>
-								</a>
+<main class="bs-docs-masthead custom-top-bg" id="content" role="main">
+	<div class="container">
+		<div class="big-wrapper">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="bg-white pd15">
+						<h1 id="glyphicons" class="page-header">Login</h1>
+						<form id="formLogin" role="form" action="users/login?redirect_after=template/find" class="ajax-form" data-reload="true" method="post" accept-charset="utf-8">
+							<?php
+									if( isset($alert) ) {
+										echo $alert;
+									}
+							?>
+							<div class="form-group">
+								<?php
+										echo tag('label', 'Email', array(
+						  					'for' => 'email',
+						  					'class' => 'control-label',
+						  				));
+						  				echo tag('input', false, array(
+						  					'type' => 'text',
+						  					'name' => 'email',
+						  					'class' => 'form-control',
+						  					'placeholder' => 'Enter your email',
+						  				));
+										echo form_error('email');
+								?>
 							</div>
-						</div>
-						<div class="mt5">
-							<div class="wrapper-google wrapper-button">
-								<a href="#" class="google-link">
-									<div class="wrapper-inner">
-										<span class="">Sign in with G+</span>
-									</div>
-								</a>
+							<div class="form-group">
+								<?php
+										echo tag('label', 'Password', array(
+						  					'for' => 'password',
+						  					'class' => 'control-label',
+						  				));
+						  				echo tag('input', false, array(
+						  					'type' => 'password',
+						  					'name' => 'password',
+						  					'class' => 'form-control',
+						  					'placeholder' => 'Enter your password',
+						  				));
+										echo form_error('password');
+								?>
 							</div>
-						</div>
+							<div class="form-group">
+								<?php
+										echo tag('button', 'Sign In', array(
+											'type' => 'submit',
+											'class' => 'btn btn-success full-width',
+										));
+								?>
+							</div>
+							<div class="wrapper-social">
+								<div class="mt5">
+									<div class="wrapper-facebook wrapper-button">
+										<a href="#" class="facebook-link">
+											<div class="wrapper-inner">
+												<span class="">Sign in with Facebook</span>
+											</div>
+										</a>
+									</div>
+								</div>
+								<div class="mt5">
+									<div class="wrapper-google wrapper-button">
+										<a href="#" class="google-link">
+											<div class="wrapper-inner">
+												<span class="">Sign in with G+</span>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-				</div>
-				<div class="col-sm-2"></div>
-				<div class="col-sm-5">
-					<div class="wrapper-static bg-white">
-						<h3 class="header">
-							Register
-						</h3>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Full name" />
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Email" />
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Password" />
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<option value="">-- Please select your gender --</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<option value="">-- Please select your country --</option>
-						</select>
-					</div>
-					<button class="btn btn-success col-sm-12">Sign Up</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</main>
+
+<!--
 	<script type="text/javascript">
 	  // Enter an API key from the Google API Console:
 	  //   https://console.developers.google.com/apis/credentials?project=_
@@ -144,3 +152,4 @@
 	  }
 	</script>
 	<script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
+-->

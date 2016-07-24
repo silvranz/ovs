@@ -148,8 +148,6 @@ $.ajaxLink = function() {
                     } else {
                         self.closest('.wrapper-ajax-link').replaceWith(result);
                     }
-
-                    $.unveil();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert('Processing failed. Please try again in a few seconds.');
@@ -200,8 +198,6 @@ $.ajaxForm = function() {
                             window.location.reload();
                         }
                     }
-                    $.fileUpload();
-                    $.unveil();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert('Processing failed. Please try again in a few seconds.');
@@ -224,7 +220,6 @@ $.ajaxModal = function(options) {
             success: function(response, status) {
                 $('#myModal').replaceWith(response);
                 $('#myModal').modal('show');
-                $.fileUpload();
                 return false;
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
