@@ -1,7 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Users extends ABN_Controller {
-
+	/*** tambahan nicholas ***/
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("User_Model","user");
+	}
+	
+	public function setting(){
+		$databaseResult = $this->user->getProfile($this->session->userdata("userid"));
+		if(count($databaseResult->result())>0){
+			$userProfile = $databaseResult->result();
+			$databaseResult->next_result();
+			$databaseResult = $this->user->getCountry();
+			$country = $databaseResult->result();
+			$this->load->vars(array("additional_js"=>["view/Users/setting"]));
+			$this->render(array("profile"=>$userProfile[0],"country"=>$country));
+		}
+	}
+	/*** selesai tambahan nicholas ***/
+	
 	public function login() {
 
 		if( $this->session->userdata('loggedin') ) {

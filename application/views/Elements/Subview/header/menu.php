@@ -72,6 +72,10 @@
         			?>
 		          	<ul class="dropdown-menu">
 		          		<?php
+		          				echo tag('a', 'Setting', array(
+		          					'href' => $domain.'/users/setting',
+		          					'wrapTag' => 'li',
+		          				));
 		          				echo tag('a', 'Logout', array(
 		          					'href' => $domain.'/users/logout',
 		          					'wrapTag' => 'li',
