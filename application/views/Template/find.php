@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="panel-body" id="templateContainer">
-					<div id="templateItem" class="col-sm-3 hide">
+					<div id="templateItem" class="col-sm-3 hide itemPanel">
 						<div class="panel panel-default">
 							<div class="panel-heading text-center template-title">Template Title or Name</div>
 							<div class="panel-body">

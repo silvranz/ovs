@@ -20,7 +20,8 @@ class Template extends ABN_Controller {
 		renderDOM($pageData);
 	}
 	public function form_fillment(){
-		$this->render();
+		$this->load->vars(array("additional_js"=>["view/Template/form_fillment"]));
+		$this->render(["key"=>$this->input->get("key")]);
 	}
 	/*** end page load ***/
 	
@@ -29,6 +30,16 @@ class Template extends ABN_Controller {
 		$input = $this->input->post();
 		$listTemplate = $this->template->getTemplate($input["categoryId"],$input["mode"],$input["limit"],$input["offset"]);
 		echo json_encode($listTemplate);
+	}
+	public function checkDomain(){
+		$result = $this->template->checkDomain($this->input->post("domainName"));
+		echo json_encode($result[0]->Result);
+	}
+	public function createStore(){
+		$databaseObj = $this->template->getTemplateJSON($this->input->post("key"));
+		$templateJSON = $databaseObj->result()[0]->TemplateJson;
+		$databaseObj->next_result();
+		$this->template->createStore($this->input->post("domainName"),$this->input->post("key"),$templateJSON);
 	}
 	/*** end service ***/
 }
