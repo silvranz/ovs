@@ -45,6 +45,10 @@
 						));
 
 						if( isLoggedIn() ) { 
+							echo tag('a', 'My Website', array(
+								'href' => $domain.'/website',
+								'wrapTag' => 'li',
+							));
         		?>
         		<li id="user-menu-dropdown" class="dropdown">
         			<?php
@@ -72,8 +76,8 @@
         			?>
 		          	<ul class="dropdown-menu">
 		          		<?php
-		          				echo tag('a', 'Setting', array(
-		          					'href' => $domain.'/users/setting',
+		          				echo tag('a', 'Profile', array(
+		          					'href' => $domain.'/users/profile',
 		          					'wrapTag' => 'li',
 		          				));
 		          				echo tag('a', 'Logout', array(

@@ -8,6 +8,10 @@ class Website extends ABN_Controller {
 	
 	/*** page load ***/
 	public function index(){
+		$this->load->vars(array(
+			'site_title' => 'My website',
+			"additional_js"=>["view/Website/index"]
+		));
 		$this->render();
 	}
 	/*** end page load ***/

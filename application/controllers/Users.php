@@ -7,14 +7,17 @@ class Users extends ABN_Controller {
 		$this->load->model("User_Model","user");
 	}
 	
-	public function setting(){
+	public function profile(){
 		$databaseResult = $this->user->getProfile($this->session->userdata("userid"));
 		if(count($databaseResult->result())>0){
 			$userProfile = $databaseResult->result();
 			$databaseResult->next_result();
 			$databaseResult = $this->user->getCountry();
 			$country = $databaseResult->result();
-			$this->load->vars(array("additional_js"=>["view/Users/setting"]));
+			$this->load->vars(array(
+								'site_title' => 'User Profile',
+								"additional_js"=>["view/Users/profile"]
+							));
 			$this->render(array("profile"=>$userProfile[0],"country"=>$country));
 		}
 	}

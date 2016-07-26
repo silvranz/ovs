@@ -9,8 +9,8 @@ class Template extends ABN_Controller {
 	public function find() {
 		$this->load->vars(array(
 			'site_title' => 'Find Template',
+			"additional_js"=>["view/Template/find"]
 		));
-		$this->load->vars(array("additional_js"=>["view/Template/find"]));
 		$listCategory = $this->template->getCategory();
 		$this->render(array("listCategory"=>$listCategory));
 	}

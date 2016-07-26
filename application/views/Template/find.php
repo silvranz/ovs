@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="panel panel-default">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="text-center" data-toggle="collapse" href="#c1"><h3>Filter Template</h3></a>
 					<div id="c1" class="panel-collapse collapse">
@@ -57,8 +57,10 @@
 								</div>
 							</div>
 							<div class="panel-footer">
-								<a class="btn btn-default col-sm-6">Preview</a>
-								<a class="btn btn-default col-sm-6 useButton">Use</a>
+								<div class="btn-group col-sm-12">
+								<button class="btn btn-default col-sm-6">Preview</button>
+								<button class="btn btn-default col-sm-6 useButton">Use</button>
+								</div>
 								<div style="clear:both"></div>
 							</div>
 						</div>
