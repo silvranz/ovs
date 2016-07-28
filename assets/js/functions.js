@@ -323,7 +323,10 @@ $.replaceText = function() {
 $.fn.scrolling = function(param){
 	var container=this;
 	var templateItem = $("#templateItem",container);
-	var requestData = param.requestData;
+	var requestData = {};
+	if(typeof param.requestData !== "undefined"){
+		requestData = param.requestData;
+	}
 	requestData["limit"] = param.itemPerLoad;
 	requestData["offset"] = 0;
 	$(container).data("offset",requestData["offset"]);

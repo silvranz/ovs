@@ -17,5 +17,10 @@ class Website extends ABN_Controller {
 	/*** end page load ***/
 	
 	/*** service ***/
+	public function getWebsite(){
+		$input = $this->input->post();
+		$listWebsite = $this->website->getWebsite($this->session->userdata("userid"),$input["limit"],$input["offset"]);
+		echo json_encode($listWebsite);
+	}
 	/*** end service ***/
 }
