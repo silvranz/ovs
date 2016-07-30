@@ -12,10 +12,6 @@ $(document).ready(function() {
 				$(".created-date",newWebsite).text(data[i].CreatedDate);
 				$(".domain-name",newWebsite).text(data[i].StoreDomain).attr("href","http://"+data[i].StoreDomain);
 				$(".screen-shot",newWebsite).attr("src",serviceUri+"assets/images/screen-shot/"+data[i].StoreImage);
-				$(".editButton",newWebsite).click(function(e){
-					e.preventDefault();
-					location.href=serviceUri+"website/edit";
-				});
 				$("#websiteContainer").append(newWebsite);
 				console.log(newWebsite);
 			}

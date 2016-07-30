@@ -14,6 +14,13 @@ class Website extends ABN_Controller {
 		));
 		$this->render();
 	}
+	public function edit(){
+		$this->load->vars(array(
+			'site_title' => 'Edit website',
+			"additional_js"=>["view/Website/edit"]
+		));
+		$this->render();
+	}
 	/*** end page load ***/
 	
 	/*** service ***/
