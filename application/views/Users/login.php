@@ -47,6 +47,15 @@
 											'type' => 'submit',
 											'class' => 'btn btn-success full-width',
 										));
+										echo '<br>';
+
+										$registerLink = tag('span', 'New member ? Please ' . tag('a', '<u>Register</u>', array(
+											'href' => $domain.'/users/register',
+											'class' => 'fbold',
+										)));
+										echo tag('div', $registerLink, array(
+											'class' => 'taright text-black',
+										));
 								?>
 							</div>
 							<div class="wrapper-social">

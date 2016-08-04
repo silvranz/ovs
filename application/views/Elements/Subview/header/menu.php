@@ -27,28 +27,32 @@
       		?>
       	</div>
     	<div id="navbar" class="collapse navbar-collapse">
-      		<ul class="nav navbar-nav navbar-right">
+      		<ul class="nav navbar-nav">
       			<?php
-      					echo tag('a', 'Template', array(
+      					echo tag('a', 'Home', array(
+							'href' => $domain,
+							'wrapTag' => 'li',
+						));
+
+						echo tag('a', 'Template', array(
 							'href' => $domain.'/template/find',
 							'wrapTag' => 'li',
 						));
-
-      					echo tag('a', 'Forum', array(
-							'href' => $domain.'/pages/forum',
-							'wrapTag' => 'li',
-						));
       					
-						echo tag('a', 'Widget', array(
-							'href' => $domain.'/pages/widget',
+						echo tag('a', 'Example', array(
+							'href' => $domain.'/pages/example',
 							'wrapTag' => 'li',
 						));
 
+						echo tag('a', 'Our Clients', array(
+							'href' => $domain.'/pages/client',
+							'wrapTag' => 'li',
+						));
+				?>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<?php
 						if( isLoggedIn() ) { 
-							echo tag('a', 'My Website', array(
-								'href' => $domain.'/website',
-								'wrapTag' => 'li',
-							));
         		?>
         		<li id="user-menu-dropdown" class="dropdown">
         			<?php
@@ -76,10 +80,18 @@
         			?>
 		          	<ul class="dropdown-menu">
 		          		<?php
-		          				echo tag('a', 'Profile', array(
+		          				echo tag('a', 'My Website', array(
+									'href' => $domain.'/website',
+									'wrapTag' => 'li',
+								));
+
+		          				echo tag('a', 'My Profile', array(
 		          					'href' => $domain.'/users/profile',
 		          					'wrapTag' => 'li',
 		          				));
+
+		          				echo divider();
+
 		          				echo tag('a', 'Logout', array(
 		          					'href' => $domain.'/users/logout',
 		          					'wrapTag' => 'li',

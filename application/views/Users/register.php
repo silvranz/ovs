@@ -70,7 +70,23 @@
 										echo form_error('CountryID'); 
 								?>
 							</div>
-							<button type="submit" class="btn btn-success full-width">Sign Up</button>
+							<div class="form-group">
+								<?php
+										echo tag('button', 'Sign Up', array(
+											'type' => 'submit',
+											'class' => 'btn btn-success full-width',
+										));
+										echo '<br>';
+
+										$loginLink = tag('span', 'Already member ? Please ' . tag('a', '<u>Sign In</u>', array(
+											'href' => $domain.'/users/login',
+											'class' => 'fbold',
+										)));
+										echo tag('div', $loginLink, array(
+											'class' => 'taright text-black',
+										));
+								?>
+							</div>
 						</form>
 					</div>
 				</div>
