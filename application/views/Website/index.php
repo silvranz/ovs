@@ -2,6 +2,13 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="text-center">My Website</h3>
+					<div class="form-group"></div>
+					<div class="form-group">
+						<button class="form-control btn btn-default" id="createWebsite">Add new website</button>
+					</div>
+				</div>
 				<div class="panel-body" id="websiteContainer">
 					<div id="templateItem" class="col-sm-6 hide itemPanel">
 						<div class="panel panel-default">

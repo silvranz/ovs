@@ -1,5 +1,7 @@
 $(document).ready(function() {
-	console.log("asd");
+	$("#createWebsite").click(function(){
+		location.href=serviceUri+"template/find";
+	})
 	$("#websiteContainer").scrolling({
 		url:serviceUri+"website/getWebsite",
 		startButton:$("#startLoad"),
@@ -17,7 +19,6 @@ $(document).ready(function() {
 					location.href=serviceUri+"website/edit";
 				});
 				$("#websiteContainer").append(newWebsite);
-				console.log(newWebsite);
 			}
 		}
 	})

@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	console.log("asd");
 	$("#websiteContainer").scrolling({
 		url:serviceUri+"website/getWebsite",
 		startButton:$("#startLoad"),

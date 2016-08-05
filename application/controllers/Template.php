@@ -9,7 +9,10 @@ class Template extends ABN_Controller {
 	public function find() {
 		$this->load->vars(array(
 			'site_title' => 'Find Template',
-			"additional_js"=>["view/Template/find"]
+			"additional_js"=>[
+				"view/Template/find",
+				"bootstrap/bootstrap-rating.min"],
+			"additional_css"=>["bootstrap/bootstrap-rating"]
 		));
 		$listCategory = $this->template->getCategory();
 		$this->render(array("listCategory"=>$listCategory));
@@ -20,6 +23,10 @@ class Template extends ABN_Controller {
 		renderDOM($pageData);
 	}
 	public function form_fillment(){
+		if(!$this->session->userdata('loggedin')){
+			$this->load->helper('url');
+			redirect($this->domain);
+		}
 		$this->load->vars(array("additional_js"=>["view/Template/form_fillment"]));
 		$this->render(["key"=>$this->input->get("key")]);
 	}
@@ -28,7 +35,7 @@ class Template extends ABN_Controller {
 	/*** service ***/
 	public function getTemplate(){
 		$input = $this->input->post();
-		$listTemplate = $this->template->getTemplate($input["categoryId"],$input["mode"],$input["limit"],$input["offset"]);
+		$listTemplate = $this->template->getTemplate($input["categoryId"],$this->session->userdata("userid"),$input["mode"],$input["limit"],$input["offset"]);
 		echo json_encode($listTemplate);
 	}
 	public function checkDomain(){
@@ -40,6 +47,11 @@ class Template extends ABN_Controller {
 		$templateJSON = $databaseObj->result()[0]->TemplateJson;
 		$databaseObj->next_result();
 		$this->template->createStore($this->input->post("domainName"),$this->input->post("key"),$templateJSON);
+	}
+	public function rateTemplate(){
+		if(!$this->session->userdata('loggedin'))return;
+		$post = $this->input->post();
+		$this->template->insertRating($post["template"],$this->session->userdata("userid"),$post["rate"]);
 	}
 	/*** end service ***/
 }

@@ -1,6 +1,9 @@
 <div class="container">
 	<div class="row text-center">
 		<div class="col-sm-8 col-sm-offset-2">
+			<div class="form-group text-center">
+				<h3>Create your new website</h3>
+			</div>
 			<div class="wrapper-static bg-white">
 				<div class="header">
 					<input id="keyValue" type="hidden" value="<?=$request["key"]?>">
