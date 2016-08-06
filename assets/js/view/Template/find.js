@@ -37,7 +37,7 @@ function loadTemplate(listCategory,mode){
 	$("#templateContainer").scrolling({
 		url:serviceUri+"template/getTemplate",
 		requestData:{
-			categoryId:listCategory.slice(0,-1),
+			categoryId:listCategory,
 			mode:mode
 		},
 		startButton:$("#startLoad"),

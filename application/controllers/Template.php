@@ -17,15 +17,15 @@ class Template extends ABN_Controller {
 		$listCategory = $this->template->getCategory();
 		$this->render(array("listCategory"=>$listCategory));
 	}
-	public function preview($jsonName) {
+	public function preview($pageName) {
 		$this->load->helper('preview');
-		$pageData = json_decode(file_get_contents('Template/'.$jsonName.'.json'),true);
-		renderDOM($pageData);
+		$pageData = $this->domain.'/assets/template/'.$pageName;
+		$this->load->view("Template/preview",array("page"=>$pageData));
 	}
 	public function form_fillment(){
 		if(!$this->session->userdata('loggedin')){
 			$this->load->helper('url');
-			redirect($this->domain);
+			redirect($this->domain."/users/login");
 		}
 		$this->load->vars(array("additional_js"=>["view/Template/form_fillment"]));
 		$this->render(["key"=>$this->input->get("key")]);
