@@ -66,8 +66,10 @@ function loadTemplate(listCategory,mode){
 				$(".total-use",newTemplate).text(data[i].NumberOfUser);
 				$(".total-rating",newTemplate).text(rate);
 				$(".screen-shot",newTemplate).attr("src",serviceUri+"assets/images/screen-shot/"+data[i].TemplateImage);
+				$(".previewButton",newTemplate).click(function(){
+					location.href=serviceUri+"template/preview/"+$(this).closest(".itemPanel").data("templateId");
+				});
 				$(".useButton",newTemplate).click(function(){
-					console.log($(this).closest(".itemPanel"));
 					location.href=serviceUri+"template/form-fillment?key="+$(this).closest(".itemPanel").data("templateId");
 				});
 				$("#templateContainer").append(newTemplate)

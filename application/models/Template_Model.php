@@ -19,10 +19,9 @@ class Template_Model extends CI_Model {
 		$catString=empty($category)?"NULL":"'$category'";
 		$userString=isset($userId)?"'$userId'":"NULL";
 		$queryString = "CALL GetTemplateByCategory(".$catString.",".$userString.",'$mode',$limit,$offset)";
-		echo $queryString;
 		return $this->db->query($queryString)->result();
 	}
-	public function getTemplateJSON($templateID){
+	public function getTemplateName($templateID){
 		return $this->db->query("CALL GetTemplateByTemplateID('$templateID')");
 	}
 }

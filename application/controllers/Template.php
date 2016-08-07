@@ -17,9 +17,8 @@ class Template extends ABN_Controller {
 		$listCategory = $this->template->getCategory();
 		$this->render(array("listCategory"=>$listCategory));
 	}
-	public function preview($pageName) {
-		$this->load->helper('preview');
-		$pageData = $this->domain.'/assets/template/'.$pageName;
+	public function preview($templateID) {
+		$pageData = $this->template->getTemplateName($templateID)->result()[0]->TemplateJson;
 		$this->load->view("Template/preview",array("page"=>$pageData));
 	}
 	public function form_fillment(){
