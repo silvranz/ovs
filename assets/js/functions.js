@@ -334,6 +334,21 @@ $.fn.scrolling = function(param){
 	if(param.startButton){
 		param.startButton.click(function(e){
 			e.preventDefault();
+			$.ajax({
+				type:"POST",
+				url:param.url,
+				data:requestData,
+				dataType:"JSON",
+				container:container,
+				templateItem:templateItem,
+				startButton:param.startButton,
+				success:function(data){
+							if(data.length==0){
+								$(window).off("scroll");
+							}
+							param.callback(data);
+						}
+			})
 			$(window).scroll(function() {
 				if($(window).scrollTop() + $(window).height() == $(document).height()){
 					requestData["offset"] = typeof $(container).data("offset")=="undefined"?
@@ -355,7 +370,7 @@ $.fn.scrolling = function(param){
 						}
 					})
 				}
-			}).trigger("scroll");	
+			});	
 		})
 	}
 	$.ajax({

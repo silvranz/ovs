@@ -18,7 +18,7 @@ class Template extends ABN_Controller {
 		$this->render(array("listCategory"=>$listCategory));
 	}
 	public function preview($templateID) {
-		$pageData = $this->template->getTemplateName($templateID)->result()[0]->TemplateJson;
+		$pageData = $this->template->getTemplateName($templateID)->result()[0]->TemplateProjectName;
 		$this->load->view("Template/preview",array("page"=>$pageData));
 	}
 	public function form_fillment(){
@@ -42,10 +42,16 @@ class Template extends ABN_Controller {
 		echo json_encode($result[0]->Result);
 	}
 	public function createStore(){
-		$databaseObj = $this->template->getTemplateJSON($this->input->post("key"));
-		$templateJSON = $databaseObj->result()[0]->TemplateJson;
+		$this->load->helper('file_helper');
+		$post = $this->input->post();
+		$databaseObj = $this->template->getTemplateName($post["key"]);
+		$resultObj = $databaseObj->result()[0];
+		$projectName = $resultObj->TemplateProjectName;
+		$projectImage = "asd.jpg";//$resultObj->Image;
+		recursive_copy("assets/template/".$projectName,"../".$post["domainName"]);
+		copy("assets/images/screen-shot/".$projectImage,"assets/images/screen-shot/".$post["domainName"].".jpg");
 		$databaseObj->next_result();
-		$this->template->createStore($this->input->post("domainName"),$this->input->post("key"),$templateJSON);
+		$this->template->createStore($post["storeName"],$post["domainName"],$this->session->userdata("userid"),$post["key"]);
 	}
 	public function rateTemplate(){
 		if(!$this->session->userdata('loggedin'))return;

@@ -2,8 +2,8 @@
 
 class Template_Model extends CI_Model {
 	
-	public function createStore($domainName,$templateId,$json){
-		return $this->db->query("CALL InsertStore('$domainName','$domainName','1','$templateId','$json')")->result();
+	public function createStore($storeName,$domainName,$userId,$templateId){
+		return $this->db->query("CALL InsertStore('$storeName','$domainName','$domainName','$domainName','$userId','$templateId',NULL)")->result();
 	}
 	public function checkDomain($domainName){
 		return $this->db->query("CALL ValidateStoreDomain('$domainName')")->result();
@@ -19,6 +19,7 @@ class Template_Model extends CI_Model {
 		$catString=empty($category)?"NULL":"'$category'";
 		$userString=isset($userId)?"'$userId'":"NULL";
 		$queryString = "CALL GetTemplateByCategory(".$catString.",".$userString.",'$mode',$limit,$offset)";
+		//echo $queryString;
 		return $this->db->query($queryString)->result();
 	}
 	public function getTemplateName($templateID){

@@ -1,7 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if ( ! function_exists('renderDOM')) {
-	function renderDOM($json){
+if ( ! function_exists('recurse_copy')) {
+	function recursive_copy($src,$dst) {
+		if(!is_dir($src))return "Source is not directory";
+		$dir = opendir($src); 
+		mkdir($dst); 
+		while(false !== ( $file = readdir($dir)) ) { 
+			if (( $file != '.' ) && ( $file != '..' )) { 
+				if ( is_dir($src . '/' . $file) ) { 
+					recurse_copy($src . '/' . $file,$dst . '/' . $file); 
+				} 
+				else { 
+					copy($src . '/' . $file,$dst . '/' . $file); 
+				} 
+			} 
+		} 
+		closedir($dir); 
+	} 
+	/*function renderDOM($json){
 		$CI = get_instance();
 		$page = new DOMDocument();
 		$page->normalizeDocument();
@@ -59,5 +75,5 @@ if ( ! function_exists('renderDOM')) {
 		$html->appendChild($body);
 		$page->appendChild($html);
 		echo "<!DOCTYPE html>" .html_entity_decode($page->saveHTML());
-	}
+	}*/
 }

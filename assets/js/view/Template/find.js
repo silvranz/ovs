@@ -41,7 +41,7 @@ function loadTemplate(listCategory,mode){
 			mode:mode
 		},
 		startButton:$("#startLoad"),
-		itemPerLoad:2,
+		itemPerLoad:4,
 		callback:function(data){
 			var ajaxObj = this;
 			for(var i=0;i<data.length;i++){

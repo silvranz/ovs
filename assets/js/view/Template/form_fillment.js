@@ -23,12 +23,12 @@ $(document).ready(function() {
 		$.ajax({
 			url:serviceUri+"template/createStore",
 			data:{
+				storeName:$("#storeName").val(),
 				domainName:$("#domainName").val(),
 				key:$("#keyValue").val()
 			},
 			type:"POST",
 			success:function(data){
-				console.log(serviceUri+"website");
 				location.href=serviceUri+"website";
 			}
 		})

@@ -18,11 +18,11 @@
 								<h4 class="col-sm-4">Created Date:</h4>
 								<div class="created-date col-sm-8 text-right"></div>
 								<h4 class="col-sm-4">Domain Name:</h4>
-								<a class="domain-name col-sm-8 text-right"></a>
+								<a class="domain-name col-sm-8 text-right" target="_blank"></a>
 							</div>
 							<div class="panel-footer">
 								<div class="btn-group col-sm-12">
-								<button class="btn btn-default col-sm-6">Preview</button>
+								<button class="btn btn-default col-sm-6 previewButton">Preview</button>
 								<button class="btn btn-default col-sm-6 editButton">Edit</button>
 								</div>
 								<div style="clear:both"></div>
