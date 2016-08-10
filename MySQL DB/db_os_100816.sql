@@ -122,6 +122,26 @@ CREATE TABLE `store` (
 
 insert  into `store`(`StoreID`,`StoreName`,`StoreDomain`,`StoreImage`,`StoreProjectName`,`UserID`,`TemplateID`,`StoreJson`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Thelana Shop','thelana.ovslab.com',NULL,NULL,5,4,'asdafdfadf',5,'2016-07-24 10:34:40','C',NULL,NULL);
 
+/*Table structure for table `storetable` */
+
+DROP TABLE IF EXISTS `storetable`;
+
+CREATE TABLE `storetable` (
+  `StoreTableID` int(11) NOT NULL AUTO_INCREMENT,
+  `StoreTableName` varchar(100) DEFAULT NULL,
+  `StoreID` int(11) DEFAULT NULL,
+  `CreatedUser` int(11) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
+  `AuditedActivity` char(1) DEFAULT NULL,
+  `AuditedUser` int(11) DEFAULT NULL,
+  `AuditedTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`StoreTableID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `storetable` */
+
+insert  into `storetable`(`StoreTableID`,`StoreTableName`,`StoreID`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'tmp1_prod',1,1,'2016-08-10 15:17:45','C',NULL,NULL),(2,'tmp1_prod_cat',1,1,'2016-08-10 15:17:45','C',NULL,NULL),(3,'tmp1_aboutus',1,1,'2016-08-10 15:17:46','C',NULL,NULL),(4,'tmp1_aboutus_cat',1,1,'2016-08-10 15:17:46','C',NULL,NULL),(5,'tmp1_contactus',1,1,'2016-08-10 15:17:46','C',NULL,NULL),(6,'tmp1_genset',1,1,'2016-08-10 15:17:46','C',NULL,NULL);
+
 /*Table structure for table `template` */
 
 DROP TABLE IF EXISTS `template`;
@@ -205,6 +225,107 @@ CREATE TABLE `templatesubcategory` (
 
 insert  into `templatesubcategory`(`TemplateSubCategoryID`,`TemplateSubCategoryName`,`TemplateCategoryID`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Casual',1,1,'2016-07-19 21:14:34','C',NULL,NULL),(2,'Sporty',2,1,'2016-07-19 21:15:04','C',NULL,NULL),(3,'Feminim',2,1,'2016-07-19 21:15:14','C',NULL,NULL),(4,'Fresh',2,1,'2016-07-19 21:15:43','C',NULL,NULL),(5,'Engineer',3,1,'2016-07-19 21:16:09','C',NULL,NULL);
 
+/*Table structure for table `tmp1_aboutus` */
+
+DROP TABLE IF EXISTS `tmp1_aboutus`;
+
+CREATE TABLE `tmp1_aboutus` (
+  `aboutus_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aboutus_desc` longtext,
+  `aboutus_cat_id` int(11) DEFAULT NULL,
+  `aboutus_date` datetime DEFAULT NULL,
+  `aboutus_user_input` int(11) DEFAULT NULL,
+  `aboutus_date_edit` datetime DEFAULT NULL,
+  `aboutus_user_edit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`aboutus_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tmp1_aboutus` */
+
+/*Table structure for table `tmp1_aboutus_cat` */
+
+DROP TABLE IF EXISTS `tmp1_aboutus_cat`;
+
+CREATE TABLE `tmp1_aboutus_cat` (
+  `aboutus_cat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aboutus_cat_name` varchar(50) DEFAULT NULL,
+  `aboutus_cat_date` datetime DEFAULT NULL,
+  `aboutus_cat_user_input` int(11) DEFAULT NULL,
+  `aboutus_cat_date_edit` datetime DEFAULT NULL,
+  `aboutus_cat_user_edit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`aboutus_cat_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tmp1_aboutus_cat` */
+
+/*Table structure for table `tmp1_contactus` */
+
+DROP TABLE IF EXISTS `tmp1_contactus`;
+
+CREATE TABLE `tmp1_contactus` (
+  `contactus_id` int(11) NOT NULL AUTO_INCREMENT,
+  `contactus_name` varchar(100) DEFAULT NULL,
+  `contactus_email` varchar(100) DEFAULT NULL,
+  `contactus_message` varchar(2000) DEFAULT NULL,
+  `contactus_isread` int(11) DEFAULT NULL,
+  `contactus_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`contactus_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tmp1_contactus` */
+
+/*Table structure for table `tmp1_genset` */
+
+DROP TABLE IF EXISTS `tmp1_genset`;
+
+CREATE TABLE `tmp1_genset` (
+  `genset_id` int(11) NOT NULL AUTO_INCREMENT,
+  `genset_type` varchar(100) DEFAULT NULL,
+  `genset_content` varchar(100) DEFAULT NULL,
+  `genset_date` datetime DEFAULT NULL,
+  `genset_user_input` int(11) DEFAULT NULL,
+  `genset_date_edit` datetime DEFAULT NULL,
+  `genset_user_edit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`genset_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tmp1_genset` */
+
+/*Table structure for table `tmp1_prod` */
+
+DROP TABLE IF EXISTS `tmp1_prod`;
+
+CREATE TABLE `tmp1_prod` (
+  `prod_id` int(11) NOT NULL AUTO_INCREMENT,
+  `prod_name` varchar(50) DEFAULT NULL,
+  `prod_desc` longtext,
+  `prod_image` varchar(100) DEFAULT NULL,
+  `prod_cat_id` int(11) DEFAULT NULL,
+  `prod_date` datetime DEFAULT NULL,
+  `prod_user_input` int(11) DEFAULT NULL,
+  `prod_date_edit` datetime DEFAULT NULL,
+  `prod_user_edit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`prod_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tmp1_prod` */
+
+/*Table structure for table `tmp1_prod_cat` */
+
+DROP TABLE IF EXISTS `tmp1_prod_cat`;
+
+CREATE TABLE `tmp1_prod_cat` (
+  `prod_cat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `prod_cat_name` varchar(50) DEFAULT NULL,
+  `prod_cat_date` datetime DEFAULT NULL,
+  `prod_cat_user_input` int(11) DEFAULT NULL,
+  `prod_cat_date_edit` datetime DEFAULT NULL,
+  `prod_cat_user_edit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`prod_cat_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tmp1_prod_cat` */
+
 /*Table structure for table `user` */
 
 DROP TABLE IF EXISTS `user`;
@@ -281,7 +402,7 @@ BEGIN
 			join mappingsp msp on sp.`SPID`=msp.SPID 
 			where msp.TemplateID=ParamTemplateID
 			limit 1);
-	SET @CallSP=CONCAT('CALL ', @SPName, '(\'', ParamStoreProjectName, '\')');
+	SET @CallSP=CONCAT('CALL ', @SPName, '(\'', ParamStoreProjectName, '\',', ParamUserID, ',', ParamStoreID, ')');
 	-- select @CallSP;
 	prepare stmt from @CallSP;
 	execute stmt;
@@ -304,15 +425,48 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerateTableCompanyProfile`(
-	in ParamStoreProjectName varchar(50)
+	in ParamStoreProjectName varchar(50),
+	in ParamUserID int,
+	in ParamStoreID int
 )
 BEGIN
 	SET @Domain = LOWER(ParamStoreProjectName);
+	
 	SET @TableProduct = CONCAT(@Domain, '_prod');
+	INSERT INTO storetable
+	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
+	VALUES
+	(@TableProduct, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');	
+	
 	SET @TableProductCategory = CONCAT(@Domain, '_prod_cat');
+	INSERT INTO storetable
+	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
+	VALUES
+	(@TableProductCategory, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
+	
 	SET @TableAboutUs = CONCAT(@Domain, '_aboutus');
+	INSERT INTO storetable
+	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
+	VALUES
+	(@TableAboutUs, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
 	SET @TableAboutUsCategory = CONCAT(@Domain, '_aboutus_cat');
+	INSERT INTO storetable
+	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
+	VALUES
+	(@TableAboutUsCategory, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
+	
 	SET @TableContactUs = CONCAT(@Domain, '_contactus');
+	INSERT INTO storetable
+	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
+	VALUES
+	(@TableContactUs, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
+	
+	SET @TableGeneralSetting = CONCAT(@Domain, '_genset');
+	INSERT INTO storetable
+	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
+	VALUES
+	(@TableGeneralSetting, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
+	
 	SET @CreateTableProd = 
 		concat('CREATE TABLE ', @TableProduct, 
 		'( ',
@@ -372,21 +526,36 @@ BEGIN
 		'contactus_date datetime '
 		' )'
 		);
+	SET @CreateTableGenSet = 
+		CONCAT('CREATE TABLE ', @TableGeneralSetting, 
+		'( ',
+		'genset_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
+		'genset_type varchar(100), ',
+		'genset_content varchar(100), ',
+		'genset_date datetime, ',
+		'genset_user_input int, ',
+		'genset_date_edit datetime, ',
+		'genset_user_edit int ',
+		' )'
+		);
 	PREPARE stmt_prod FROM @CreateTableProd;
 	PREPARE stmt_prod_cat FROM @CreateTableProdCat;
 	PREPARE stmt_aboutus FROM @CreateTableAboutUs;
 	PREPARE stmt_aboutus_cat FROM @CreateTableAboutUsCategory;
 	PREPARE stmt_contactus FROM @CreateTableContactUs;
+	PREPARE stmt_genset FROM @CreateTableGenSet;
 	EXECUTE stmt_prod;
 	EXECUTE stmt_prod_cat;
 	EXECUTE stmt_aboutus;
 	EXECUTE stmt_aboutus_cat;
 	EXECUTE stmt_contactus;
+	EXECUTE stmt_genset;
 	DEALLOCATE PREPARE stmt_prod;
 	DEALLOCATE PREPARE stmt_prod_cat;
 	DEALLOCATE PREPARE stmt_aboutus;
 	DEALLOCATE PREPARE stmt_aboutus_cat;
 	DEALLOCATE PREPARE stmt_contactus;
+	DEALLOCATE PREPARE stmt_genset;
     END */$$
 DELIMITER ;
 
