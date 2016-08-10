@@ -120,7 +120,7 @@ CREATE TABLE `store` (
 
 /*Data for the table `store` */
 
-insert  into `store`(`StoreID`,`StoreName`,`StoreDomain`,`StoreImage`,`StoreProjectName`,`UserID`,`TemplateID`,`StoreJson`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Thelana Shop','thelana.ovslab.com',NULL,NULL,5,4,'asdafdfadf',5,'2016-07-24 10:34:40','C',NULL,NULL);
+insert  into `store`(`StoreID`,`StoreName`,`StoreDomain`,`StoreImage`,`StoreProjectName`,`UserID`,`TemplateID`,`StoreJson`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Thelana Shop','thelana.ovslab.com',NULL,'tmp1',5,4,'asdafdfadf',5,'2016-07-24 10:34:40','C',NULL,NULL);
 
 /*Table structure for table `storetable` */
 
@@ -270,9 +270,11 @@ CREATE TABLE `tmp1_contactus` (
   `contactus_isread` int(11) DEFAULT NULL,
   `contactus_date` datetime DEFAULT NULL,
   PRIMARY KEY (`contactus_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tmp1_contactus` */
+
+insert  into `tmp1_contactus`(`contactus_id`,`contactus_name`,`contactus_email`,`contactus_message`,`contactus_isread`,`contactus_date`) values (1,'Angela','amuliawan93@gmail.com','Hai Testing',0,'2016-08-10 15:38:42'),(2,'Brian','alexandrobrian15@gmail.com','Haloha',0,'2016-08-11 15:39:13');
 
 /*Table structure for table `tmp1_genset` */
 
@@ -399,8 +401,8 @@ DELIMITER $$
 BEGIN
 	SET @SPName = (select SPName 
 			from sp 
-			join mappingsp msp on sp.`SPID`=msp.SPID 
-			where msp.TemplateID=ParamTemplateID
+			join mappingsp msp on sp.`SPID`=msp.SPID  and msp.AuditedActivity <> 'D'
+			where msp.TemplateID=ParamTemplateID and sp.`AuditedActivity`<>'D'
 			limit 1);
 	SET @CallSP=CONCAT('CALL ', @SPName, '(\'', ParamStoreProjectName, '\',', ParamUserID, ',', ParamStoreID, ')');
 	-- select @CallSP;
@@ -886,6 +888,31 @@ BEGIN
 		);
 		SELECT LAST_INSERT_ID() AS 'UserID';
 	END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `SD_GetStoreContactUs` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `SD_GetStoreContactUs` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `SD_GetStoreContactUs`(
+	in ParamStoreID int
+)
+BEGIN
+	SET @StoreDomain = (SELECT LOWER(StoreProjectName)
+			from store 
+			where StoreID = ParamStoreID and AuditedActivity <> 'D'
+			limit 1);
+	SET @query = CONCAT('SELECT contactus_id, contactus_name, 
+				contactus_email, contactus_message, contactus_isread,
+				DATE_FORMAT(contactus_date,\'%d %b %Y %h:%i %p\') AS contactus_date
+				FROM ', @StoreDomain, '_contactus
+				order by contactus_date desc');
+	PREPARE stmt FROM @query;
+	EXECUTE stmt;
+	DEALLOCATE PREPARE stmt;
     END */$$
 DELIMITER ;
 
