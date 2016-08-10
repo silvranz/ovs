@@ -31,6 +31,72 @@ CREATE TABLE `country` (
 
 insert  into `country`(`CountryID`,`CountryName`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Afghanistan',1,'2016-07-17 12:52:58','C',NULL,NULL),(2,'Albania',1,'2016-07-17 12:52:58','C',NULL,NULL),(3,'Algeria',1,'2016-07-17 12:52:58','C',NULL,NULL),(4,'American Samoa',1,'2016-07-17 12:52:58','C',NULL,NULL),(5,'Andorra',1,'2016-07-17 12:52:58','C',NULL,NULL),(6,'Angola',1,'2016-07-17 12:52:58','C',NULL,NULL),(7,'Anguilla',1,'2016-07-17 12:52:58','C',NULL,NULL),(8,'Antigua & Barbuda',1,'2016-07-17 12:52:58','C',NULL,NULL),(9,'Argentina',1,'2016-07-17 12:52:58','C',NULL,NULL),(10,'Armenia',1,'2016-07-17 12:52:58','C',NULL,NULL),(11,'Aruba',1,'2016-07-17 12:52:58','C',NULL,NULL),(12,'Australia',1,'2016-07-17 12:52:58','C',NULL,NULL),(13,'Austria',1,'2016-07-17 12:52:58','C',NULL,NULL),(14,'Azerbaijan',1,'2016-07-17 12:52:58','C',NULL,NULL),(15,'Bahamas, The',1,'2016-07-17 12:52:58','C',NULL,NULL),(16,'Bahrain',1,'2016-07-17 12:52:58','C',NULL,NULL),(17,'Bangladesh',1,'2016-07-17 12:52:58','C',NULL,NULL),(18,'Barbados',1,'2016-07-17 12:52:58','C',NULL,NULL),(19,'Belarus',1,'2016-07-17 12:52:58','C',NULL,NULL),(20,'Belgium',1,'2016-07-17 12:52:58','C',NULL,NULL),(21,'Belize',1,'2016-07-17 12:52:58','C',NULL,NULL),(22,'Benin',1,'2016-07-17 12:52:58','C',NULL,NULL),(23,'Bermuda',1,'2016-07-17 12:52:58','C',NULL,NULL),(24,'Bhutan',1,'2016-07-17 12:52:58','C',NULL,NULL),(25,'Bolivia',1,'2016-07-17 12:52:58','C',NULL,NULL),(26,'Bosnia & Herzegovina',1,'2016-07-17 12:52:58','C',NULL,NULL),(27,'Botswana',1,'2016-07-17 12:52:58','C',NULL,NULL),(28,'Brazil',1,'2016-07-17 12:52:58','C',NULL,NULL),(29,'British Virgin Is.',1,'2016-07-17 12:52:58','C',NULL,NULL),(30,'Brunei',1,'2016-07-17 12:52:58','C',NULL,NULL),(31,'Bulgaria',1,'2016-07-17 12:52:58','C',NULL,NULL),(32,'Burkina Faso',1,'2016-07-17 12:52:58','C',NULL,NULL),(33,'Burma',1,'2016-07-17 12:52:58','C',NULL,NULL),(34,'Burundi',1,'2016-07-17 12:52:58','C',NULL,NULL),(35,'Cambodia',1,'2016-07-17 12:52:58','C',NULL,NULL),(36,'Cameroon',1,'2016-07-17 12:52:58','C',NULL,NULL),(37,'Canada',1,'2016-07-17 12:52:58','C',NULL,NULL),(38,'Cape Verde',1,'2016-07-17 12:52:58','C',NULL,NULL),(39,'Cayman Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(40,'Central African Rep.',1,'2016-07-17 12:52:58','C',NULL,NULL),(41,'Chad',1,'2016-07-17 12:52:58','C',NULL,NULL),(42,'Chile',1,'2016-07-17 12:52:58','C',NULL,NULL),(43,'China',1,'2016-07-17 12:52:58','C',NULL,NULL),(44,'Colombia',1,'2016-07-17 12:52:58','C',NULL,NULL),(45,'Comoros',1,'2016-07-17 12:52:58','C',NULL,NULL),(46,'Congo, Dem. Rep.',1,'2016-07-17 12:52:58','C',NULL,NULL),(47,'Congo, Repub. of the',1,'2016-07-17 12:52:58','C',NULL,NULL),(48,'Cook Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(49,'Costa Rica',1,'2016-07-17 12:52:58','C',NULL,NULL),(50,'Cote d\'Ivoire',1,'2016-07-17 12:52:58','C',NULL,NULL),(51,'Croatia',1,'2016-07-17 12:52:58','C',NULL,NULL),(52,'Cuba',1,'2016-07-17 12:52:58','C',NULL,NULL),(53,'Cyprus',1,'2016-07-17 12:52:58','C',NULL,NULL),(54,'Czech Republic',1,'2016-07-17 12:52:58','C',NULL,NULL),(55,'Denmark',1,'2016-07-17 12:52:58','C',NULL,NULL),(56,'Djibouti',1,'2016-07-17 12:52:58','C',NULL,NULL),(57,'Dominica',1,'2016-07-17 12:52:58','C',NULL,NULL),(58,'Dominican Republic',1,'2016-07-17 12:52:58','C',NULL,NULL),(59,'East Timor',1,'2016-07-17 12:52:58','C',NULL,NULL),(60,'Ecuador',1,'2016-07-17 12:52:58','C',NULL,NULL),(61,'Egypt',1,'2016-07-17 12:52:58','C',NULL,NULL),(62,'El Salvador',1,'2016-07-17 12:52:58','C',NULL,NULL),(63,'Equatorial Guinea',1,'2016-07-17 12:52:58','C',NULL,NULL),(64,'Eritrea',1,'2016-07-17 12:52:58','C',NULL,NULL),(65,'Estonia',1,'2016-07-17 12:52:58','C',NULL,NULL),(66,'Ethiopia',1,'2016-07-17 12:52:58','C',NULL,NULL),(67,'Faroe Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(68,'Fiji',1,'2016-07-17 12:52:58','C',NULL,NULL),(69,'Finland',1,'2016-07-17 12:52:58','C',NULL,NULL),(70,'France',1,'2016-07-17 12:52:58','C',NULL,NULL),(71,'French Guiana',1,'2016-07-17 12:52:58','C',NULL,NULL),(72,'French Polynesia',1,'2016-07-17 12:52:58','C',NULL,NULL),(73,'Gabon',1,'2016-07-17 12:52:58','C',NULL,NULL),(74,'Gambia, The',1,'2016-07-17 12:52:58','C',NULL,NULL),(75,'Gaza Strip',1,'2016-07-17 12:52:58','C',NULL,NULL),(76,'Georgia',1,'2016-07-17 12:52:58','C',NULL,NULL),(77,'Germany',1,'2016-07-17 12:52:58','C',NULL,NULL),(78,'Ghana',1,'2016-07-17 12:52:58','C',NULL,NULL),(79,'Gibraltar',1,'2016-07-17 12:52:58','C',NULL,NULL),(80,'Greece',1,'2016-07-17 12:52:58','C',NULL,NULL),(81,'Greenland',1,'2016-07-17 12:52:58','C',NULL,NULL),(82,'Grenada',1,'2016-07-17 12:52:58','C',NULL,NULL),(83,'Guadeloupe',1,'2016-07-17 12:52:58','C',NULL,NULL),(84,'Guam',1,'2016-07-17 12:52:58','C',NULL,NULL),(85,'Guatemala',1,'2016-07-17 12:52:58','C',NULL,NULL),(86,'Guernsey',1,'2016-07-17 12:52:58','C',NULL,NULL),(87,'Guinea',1,'2016-07-17 12:52:58','C',NULL,NULL),(88,'Guinea-Bissau',1,'2016-07-17 12:52:58','C',NULL,NULL),(89,'Guyana',1,'2016-07-17 12:52:58','C',NULL,NULL),(90,'Haiti',1,'2016-07-17 12:52:58','C',NULL,NULL),(91,'Honduras',1,'2016-07-17 12:52:58','C',NULL,NULL),(92,'Hong Kong',1,'2016-07-17 12:52:58','C',NULL,NULL),(93,'Hungary',1,'2016-07-17 12:52:58','C',NULL,NULL),(94,'Iceland',1,'2016-07-17 12:52:58','C',NULL,NULL),(95,'India',1,'2016-07-17 12:52:58','C',NULL,NULL),(96,'Indonesia',1,'2016-07-17 12:52:58','C',NULL,NULL),(97,'Iran',1,'2016-07-17 12:52:58','C',NULL,NULL),(98,'Iraq',1,'2016-07-17 12:52:58','C',NULL,NULL),(99,'Ireland',1,'2016-07-17 12:52:58','C',NULL,NULL),(100,'Isle of Man',1,'2016-07-17 12:52:58','C',NULL,NULL),(101,'Israel',1,'2016-07-17 12:52:58','C',NULL,NULL),(102,'Italy',1,'2016-07-17 12:52:58','C',NULL,NULL),(103,'Jamaica',1,'2016-07-17 12:52:58','C',NULL,NULL),(104,'Japan',1,'2016-07-17 12:52:58','C',NULL,NULL),(105,'Jersey',1,'2016-07-17 12:52:58','C',NULL,NULL),(106,'Jordan',1,'2016-07-17 12:52:58','C',NULL,NULL),(107,'Kazakhstan',1,'2016-07-17 12:52:58','C',NULL,NULL),(108,'Kenya',1,'2016-07-17 12:52:58','C',NULL,NULL),(109,'Kiribati',1,'2016-07-17 12:52:58','C',NULL,NULL),(110,'Korea, North',1,'2016-07-17 12:52:58','C',NULL,NULL),(111,'Korea, South',1,'2016-07-17 12:52:58','C',NULL,NULL),(112,'Kuwait',1,'2016-07-17 12:52:58','C',NULL,NULL),(113,'Kyrgyzstan',1,'2016-07-17 12:52:58','C',NULL,NULL),(114,'Laos',1,'2016-07-17 12:52:58','C',NULL,NULL),(115,'Latvia',1,'2016-07-17 12:52:58','C',NULL,NULL),(116,'Lebanon',1,'2016-07-17 12:52:58','C',NULL,NULL),(117,'Lesotho',1,'2016-07-17 12:52:58','C',NULL,NULL),(118,'Liberia',1,'2016-07-17 12:52:58','C',NULL,NULL),(119,'Libya',1,'2016-07-17 12:52:58','C',NULL,NULL),(120,'Liechtenstein',1,'2016-07-17 12:52:58','C',NULL,NULL),(121,'Lithuania',1,'2016-07-17 12:52:58','C',NULL,NULL),(122,'Luxembourg',1,'2016-07-17 12:52:58','C',NULL,NULL),(123,'Macau',1,'2016-07-17 12:52:58','C',NULL,NULL),(124,'Macedonia',1,'2016-07-17 12:52:58','C',NULL,NULL),(125,'Madagascar',1,'2016-07-17 12:52:58','C',NULL,NULL),(126,'Malawi',1,'2016-07-17 12:52:58','C',NULL,NULL),(127,'Malaysia',1,'2016-07-17 12:52:58','C',NULL,NULL),(128,'Maldives',1,'2016-07-17 12:52:58','C',NULL,NULL),(129,'Mali',1,'2016-07-17 12:52:58','C',NULL,NULL),(130,'Malta',1,'2016-07-17 12:52:58','C',NULL,NULL),(131,'Marshall Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(132,'Martinique',1,'2016-07-17 12:52:58','C',NULL,NULL),(133,'Mauritania',1,'2016-07-17 12:52:58','C',NULL,NULL),(134,'Mauritius',1,'2016-07-17 12:52:58','C',NULL,NULL),(135,'Mayotte',1,'2016-07-17 12:52:58','C',NULL,NULL),(136,'Mexico',1,'2016-07-17 12:52:58','C',NULL,NULL),(137,'Micronesia, Fed. St.',1,'2016-07-17 12:52:58','C',NULL,NULL),(138,'Moldova',1,'2016-07-17 12:52:58','C',NULL,NULL),(139,'Monaco',1,'2016-07-17 12:52:58','C',NULL,NULL),(140,'Mongolia',1,'2016-07-17 12:52:58','C',NULL,NULL),(141,'Montserrat',1,'2016-07-17 12:52:58','C',NULL,NULL),(142,'Morocco',1,'2016-07-17 12:52:58','C',NULL,NULL),(143,'Mozambique',1,'2016-07-17 12:52:58','C',NULL,NULL),(144,'Namibia',1,'2016-07-17 12:52:58','C',NULL,NULL),(145,'Nauru',1,'2016-07-17 12:52:58','C',NULL,NULL),(146,'Nepal',1,'2016-07-17 12:52:58','C',NULL,NULL),(147,'Netherlands',1,'2016-07-17 12:52:58','C',NULL,NULL),(148,'Netherlands Antilles',1,'2016-07-17 12:52:58','C',NULL,NULL),(149,'New Caledonia',1,'2016-07-17 12:52:58','C',NULL,NULL),(150,'New Zealand',1,'2016-07-17 12:52:58','C',NULL,NULL),(151,'Nicaragua',1,'2016-07-17 12:52:58','C',NULL,NULL),(152,'Niger',1,'2016-07-17 12:52:58','C',NULL,NULL),(153,'Nigeria',1,'2016-07-17 12:52:58','C',NULL,NULL),(154,'N. Mariana Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(155,'Norway',1,'2016-07-17 12:52:58','C',NULL,NULL),(156,'Oman',1,'2016-07-17 12:52:58','C',NULL,NULL),(157,'Pakistan',1,'2016-07-17 12:52:58','C',NULL,NULL),(158,'Palau',1,'2016-07-17 12:52:58','C',NULL,NULL),(159,'Panama',1,'2016-07-17 12:52:58','C',NULL,NULL),(160,'Papua New Guinea',1,'2016-07-17 12:52:58','C',NULL,NULL),(161,'Paraguay',1,'2016-07-17 12:52:58','C',NULL,NULL),(162,'Peru',1,'2016-07-17 12:52:58','C',NULL,NULL),(163,'Philippines',1,'2016-07-17 12:52:58','C',NULL,NULL),(164,'Poland',1,'2016-07-17 12:52:58','C',NULL,NULL),(165,'Portugal',1,'2016-07-17 12:52:58','C',NULL,NULL),(166,'Puerto Rico',1,'2016-07-17 12:52:58','C',NULL,NULL),(167,'Qatar',1,'2016-07-17 12:52:58','C',NULL,NULL),(168,'Reunion',1,'2016-07-17 12:52:58','C',NULL,NULL),(169,'Romania',1,'2016-07-17 12:52:58','C',NULL,NULL),(170,'Russia',1,'2016-07-17 12:52:58','C',NULL,NULL),(171,'Rwanda',1,'2016-07-17 12:52:58','C',NULL,NULL),(172,'Saint Helena',1,'2016-07-17 12:52:58','C',NULL,NULL),(173,'Saint Kitts & Nevis',1,'2016-07-17 12:52:58','C',NULL,NULL),(174,'Saint Lucia',1,'2016-07-17 12:52:58','C',NULL,NULL),(175,'St Pierre & Miquelon',1,'2016-07-17 12:52:58','C',NULL,NULL),(176,'Saint Vincent and the Grenadines',1,'2016-07-17 12:52:58','C',NULL,NULL),(177,'Samoa',1,'2016-07-17 12:52:58','C',NULL,NULL),(178,'San Marino',1,'2016-07-17 12:52:58','C',NULL,NULL),(179,'Sao Tome & Principe',1,'2016-07-17 12:52:58','C',NULL,NULL),(180,'Saudi Arabia',1,'2016-07-17 12:52:58','C',NULL,NULL),(181,'Senegal',1,'2016-07-17 12:52:58','C',NULL,NULL),(182,'Serbia',1,'2016-07-17 12:52:58','C',NULL,NULL),(183,'Seychelles',1,'2016-07-17 12:52:58','C',NULL,NULL),(184,'Sierra Leone',1,'2016-07-17 12:52:58','C',NULL,NULL),(185,'Singapore',1,'2016-07-17 12:52:58','C',NULL,NULL),(186,'Slovakia',1,'2016-07-17 12:52:58','C',NULL,NULL),(187,'Slovenia',1,'2016-07-17 12:52:58','C',NULL,NULL),(188,'Solomon Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(189,'Somalia',1,'2016-07-17 12:52:58','C',NULL,NULL),(190,'South Africa',1,'2016-07-17 12:52:58','C',NULL,NULL),(191,'Spain',1,'2016-07-17 12:52:58','C',NULL,NULL),(192,'Sri Lanka',1,'2016-07-17 12:52:58','C',NULL,NULL),(193,'Sudan',1,'2016-07-17 12:52:58','C',NULL,NULL),(194,'Suriname',1,'2016-07-17 12:52:58','C',NULL,NULL),(195,'Swaziland',1,'2016-07-17 12:52:58','C',NULL,NULL),(196,'Sweden',1,'2016-07-17 12:52:58','C',NULL,NULL),(197,'Switzerland',1,'2016-07-17 12:52:58','C',NULL,NULL),(198,'Syria',1,'2016-07-17 12:52:58','C',NULL,NULL),(199,'Taiwan',1,'2016-07-17 12:52:58','C',NULL,NULL),(200,'Tajikistan',1,'2016-07-17 12:52:58','C',NULL,NULL),(201,'Tanzania',1,'2016-07-17 12:52:58','C',NULL,NULL),(202,'Thailand',1,'2016-07-17 12:52:58','C',NULL,NULL),(203,'Togo',1,'2016-07-17 12:52:58','C',NULL,NULL),(204,'Tonga',1,'2016-07-17 12:52:58','C',NULL,NULL),(205,'Trinidad & Tobago',1,'2016-07-17 12:52:58','C',NULL,NULL),(206,'Tunisia',1,'2016-07-17 12:52:58','C',NULL,NULL),(207,'Turkey',1,'2016-07-17 12:52:58','C',NULL,NULL),(208,'Turkmenistan',1,'2016-07-17 12:52:58','C',NULL,NULL),(209,'Turks & Caicos Is',1,'2016-07-17 12:52:58','C',NULL,NULL),(210,'Tuvalu',1,'2016-07-17 12:52:58','C',NULL,NULL),(211,'Uganda',1,'2016-07-17 12:52:58','C',NULL,NULL),(212,'Ukraine',1,'2016-07-17 12:52:58','C',NULL,NULL),(213,'United Arab Emirates',1,'2016-07-17 12:52:58','C',NULL,NULL),(214,'United Kingdom',1,'2016-07-17 12:52:58','C',NULL,NULL),(215,'United States',1,'2016-07-17 12:52:58','C',NULL,NULL),(216,'Uruguay',1,'2016-07-17 12:52:58','C',NULL,NULL),(217,'Uzbekistan',1,'2016-07-17 12:52:58','C',NULL,NULL),(218,'Vanuatu',1,'2016-07-17 12:52:58','C',NULL,NULL),(219,'Venezuela',1,'2016-07-17 12:52:58','C',NULL,NULL),(220,'Vietnam',1,'2016-07-17 12:52:58','C',NULL,NULL),(221,'Virgin Islands',1,'2016-07-17 12:52:58','C',NULL,NULL),(222,'Wallis and Futuna',1,'2016-07-17 12:52:58','C',NULL,NULL),(223,'West Bank',1,'2016-07-17 12:52:58','C',NULL,NULL),(224,'Western Sahara',1,'2016-07-17 12:52:58','C',NULL,NULL),(225,'Yemen',1,'2016-07-17 12:52:58','C',NULL,NULL),(226,'Zambia',1,'2016-07-17 12:52:58','C',NULL,NULL),(227,'Zimbabwe',1,'2016-07-17 12:52:58','C',NULL,NULL);
 
+/*Table structure for table `generateweblog` */
+
+DROP TABLE IF EXISTS `generateweblog`;
+
+CREATE TABLE `generateweblog` (
+  `GenerateWebID` int(11) NOT NULL AUTO_INCREMENT,
+  `StoreID` int(11) DEFAULT NULL,
+  `TemplateID` int(11) DEFAULT NULL,
+  `SPName` varchar(100) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL,
+  `GenerateDate` datetime DEFAULT NULL,
+  `Browser` varchar(100) DEFAULT NULL,
+  `BrowserVersion` varchar(100) DEFAULT NULL,
+  `IPAddress` varchar(100) DEFAULT NULL,
+  `Device` varchar(100) DEFAULT NULL,
+  `OS` varchar(50) DEFAULT NULL,
+  `CreatedUser` int(11) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
+  `AuditedActivity` char(1) DEFAULT NULL,
+  `AuditedUser` int(11) DEFAULT NULL,
+  `AuditedTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`GenerateWebID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `generateweblog` */
+
+insert  into `generateweblog`(`GenerateWebID`,`StoreID`,`TemplateID`,`SPName`,`UserID`,`GenerateDate`,`Browser`,`BrowserVersion`,`IPAddress`,`Device`,`OS`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,1,1,'GenerateTableCompanyProfile',1,'2016-08-10 12:13:23','Chrome','10','10.1.11.11','Windows','Windows 10',1,'2016-08-10 12:13:23','C',NULL,NULL);
+
+/*Table structure for table `mappingsp` */
+
+DROP TABLE IF EXISTS `mappingsp`;
+
+CREATE TABLE `mappingsp` (
+  `MappingID` int(11) NOT NULL AUTO_INCREMENT,
+  `SPID` int(11) DEFAULT NULL,
+  `TemplateID` int(11) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
+  `AuditedActivity` char(1) DEFAULT NULL,
+  `AuditedUser` int(11) DEFAULT NULL,
+  `AuditedTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`MappingID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `mappingsp` */
+
+insert  into `mappingsp`(`MappingID`,`SPID`,`TemplateID`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,1,1,'2016-08-10 11:37:07','C',NULL,NULL);
+
+/*Table structure for table `sp` */
+
+DROP TABLE IF EXISTS `sp`;
+
+CREATE TABLE `sp` (
+  `SPID` int(11) NOT NULL AUTO_INCREMENT,
+  `SPName` varchar(100) DEFAULT NULL,
+  `CreatedUser` int(11) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
+  `AuditedActivity` char(1) DEFAULT NULL,
+  `AuditedUser` int(11) DEFAULT NULL,
+  `AuditedTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`SPID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `sp` */
+
+insert  into `sp`(`SPID`,`SPName`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'GenerateTableCompanyProfile',1,'2016-08-10 11:36:35','C',NULL,NULL);
+
 /*Table structure for table `store` */
 
 DROP TABLE IF EXISTS `store`;
@@ -192,6 +258,45 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `ExecSpTemplate` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ExecSpTemplate` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ExecSpTemplate`(
+	IN ParamStoreProjectName VARCHAR(50),
+	in ParamTemplateID int,
+	IN ParamStoreID INT,
+	in ParamUserID int,
+	in ParamBrowser varchar(100),
+	in ParamBrowserVersion varchar(100),
+	in ParamIPAddress varchar(100),
+	in ParamDevice varchar(100),
+	in ParamOS varchar(50)
+)
+BEGIN
+	SET @SPName = (select SPName 
+			from sp 
+			join mappingsp msp on sp.`SPID`=msp.SPID 
+			where msp.TemplateID=ParamTemplateID
+			limit 1);
+	SET @CallSP=CONCAT('CALL ', @SPName, '(\'', ParamStoreProjectName, '\')');
+	-- select @CallSP;
+	prepare stmt from @CallSP;
+	execute stmt;
+	DEALLOCATE PREPARE stmt;
+	
+	-- Log Generate
+	insert into generateweblog
+	(StoreID, TemplateID, SPName, UserID, GenerateDate, Browser, BrowserVersion, IPAddress, Device, OS,
+	CreatedUser, CreatedDate, AuditedActivity)
+	values
+	(ParamStoreID, ParamTemplateID, @SPName, ParamUserID, CUrrent_timestamp(), ParamBrowser,
+	ParamBrowserVersion, ParamIPAddress, ParamDevice, ParamOS, ParamUserID, CURRENT_TIMESTAMP(), 'C');
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `GenerateTableCompanyProfile` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `GenerateTableCompanyProfile` */;
@@ -199,10 +304,7 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerateTableCompanyProfile`(
-	in ParamStoreProjectName varchar(50),
-	in ParamStoreID int,
-	in ParamUserID int,
-	in ParamTemplateID int
+	in ParamStoreProjectName varchar(50)
 )
 BEGIN
 	SET @Domain = LOWER(ParamStoreProjectName);
@@ -210,6 +312,7 @@ BEGIN
 	SET @TableProductCategory = CONCAT(@Domain, '_prod_cat');
 	SET @TableAboutUs = CONCAT(@Domain, '_aboutus');
 	SET @TableAboutUsCategory = CONCAT(@Domain, '_aboutus_cat');
+	SET @TableContactUs = CONCAT(@Domain, '_contactus');
 	SET @CreateTableProd = 
 		concat('CREATE TABLE ', @TableProduct, 
 		'( ',
@@ -258,18 +361,32 @@ BEGIN
 		'aboutus_cat_user_edit int ',
 		' )'
 		);
+	SET @CreateTableContactUs = 
+		CONCAT('CREATE TABLE ', @TableContactUs, 
+		'( ',
+		'contactus_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
+		'contactus_name varchar(100), ',
+		'contactus_email varchar(100), ',
+		'contactus_message varchar(2000), ',
+		'contactus_isread int, '
+		'contactus_date datetime '
+		' )'
+		);
 	PREPARE stmt_prod FROM @CreateTableProd;
 	PREPARE stmt_prod_cat FROM @CreateTableProdCat;
 	PREPARE stmt_aboutus FROM @CreateTableAboutUs;
 	PREPARE stmt_aboutus_cat FROM @CreateTableAboutUsCategory;
+	PREPARE stmt_contactus FROM @CreateTableContactUs;
 	EXECUTE stmt_prod;
 	EXECUTE stmt_prod_cat;
 	EXECUTE stmt_aboutus;
 	EXECUTE stmt_aboutus_cat;
+	EXECUTE stmt_contactus;
 	DEALLOCATE PREPARE stmt_prod;
 	DEALLOCATE PREPARE stmt_prod_cat;
 	DEALLOCATE PREPARE stmt_aboutus;
 	DEALLOCATE PREPARE stmt_aboutus_cat;
+	DEALLOCATE PREPARE stmt_contactus;
     END */$$
 DELIMITER ;
 
