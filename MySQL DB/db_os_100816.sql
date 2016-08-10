@@ -136,7 +136,7 @@ CREATE TABLE `storetable` (
   `AuditedUser` int(11) DEFAULT NULL,
   `AuditedTime` datetime DEFAULT NULL,
   PRIMARY KEY (`StoreTableID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `storetable` */
 
@@ -153,6 +153,7 @@ CREATE TABLE `template` (
   `TemplateSubCategoryID` int(11) DEFAULT NULL,
   `TemplateProjectName` varchar(50) DEFAULT NULL,
   `TemplateJson` longtext,
+  `TemplateType` varchar(10) DEFAULT NULL,
   `CreatedUser` int(11) DEFAULT NULL,
   `CreatedDate` datetime DEFAULT NULL,
   `AuditedActivity` char(1) DEFAULT NULL,
@@ -163,7 +164,7 @@ CREATE TABLE `template` (
 
 /*Data for the table `template` */
 
-insert  into `template`(`TemplateID`,`TemplateTitle`,`TemplateImage`,`TemplateSubCategoryID`,`TemplateProjectName`,`TemplateJson`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Sporty Ladies Shoes','asd.jpg',2,NULL,'satu',1,'2016-07-20 16:22:41','C',NULL,NULL),(2,'Monochrome','asd.jpg',3,NULL,'dua',1,'2016-07-20 16:23:15','C',NULL,NULL),(3,'Casual Much','asd.jpg',1,NULL,'tiga',1,'2016-07-20 16:23:49','C',NULL,NULL),(4,'Colourful Dress','asd.jpg',3,NULL,'empat',1,'2016-07-20 16:24:12','C',NULL,NULL);
+insert  into `template`(`TemplateID`,`TemplateTitle`,`TemplateImage`,`TemplateSubCategoryID`,`TemplateProjectName`,`TemplateJson`,`TemplateType`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'Company Profile Pink','asd.jpg',2,'template','satu','CC1',1,'2016-07-20 16:22:41','C',NULL,NULL),(2,'Monochrome','asd.jpg',3,NULL,'dua','CC1',1,'2016-07-20 16:23:15','C',NULL,NULL),(3,'Casual Much','asd.jpg',1,NULL,'tiga','CC2',1,'2016-07-20 16:23:49','C',NULL,NULL),(4,'Colourful Dress','asd.jpg',3,NULL,'empat','CC2',1,'2016-07-20 16:24:12','C',NULL,NULL);
 
 /*Table structure for table `templatecategory` */
 
@@ -241,22 +242,6 @@ CREATE TABLE `tmp1_aboutus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tmp1_aboutus` */
-
-/*Table structure for table `tmp1_aboutus_cat` */
-
-DROP TABLE IF EXISTS `tmp1_aboutus_cat`;
-
-CREATE TABLE `tmp1_aboutus_cat` (
-  `aboutus_cat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `aboutus_cat_name` varchar(50) DEFAULT NULL,
-  `aboutus_cat_date` datetime DEFAULT NULL,
-  `aboutus_cat_user_input` int(11) DEFAULT NULL,
-  `aboutus_cat_date_edit` datetime DEFAULT NULL,
-  `aboutus_cat_user_edit` int(11) DEFAULT NULL,
-  PRIMARY KEY (`aboutus_cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `tmp1_aboutus_cat` */
 
 /*Table structure for table `tmp1_contactus` */
 
@@ -451,12 +436,6 @@ BEGIN
 	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
 	VALUES
 	(@TableAboutUs, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	SET @TableAboutUsCategory = CONCAT(@Domain, '_aboutus_cat');
-	INSERT INTO storetable
-	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
-	VALUES
-	(@TableAboutUsCategory, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	
 	SET @TableContactUs = CONCAT(@Domain, '_contactus');
 	INSERT INTO storetable
 	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
@@ -498,23 +477,12 @@ BEGIN
 		CONCAT('CREATE TABLE ', @TableAboutUs, 
 		'( ',
 		'aboutus_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
+		'aboutus_title varchar(50), ',		
 		'aboutus_desc longtext, ',
-		'aboutus_cat_id int, ',
 		'aboutus_date datetime, ',
 		'aboutus_user_input int, ',
 		'aboutus_date_edit datetime, ',
 		'aboutus_user_edit int ',
-		' )'
-		);
-	SET @CreateTableAboutUsCategory = 
-		CONCAT('CREATE TABLE ', @TableAboutUsCategory, 
-		'( ',
-		'aboutus_cat_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
-		'aboutus_cat_name varchar(50), ',
-		'aboutus_cat_date datetime, ',
-		'aboutus_cat_user_input int, ',
-		'aboutus_cat_date_edit datetime, ',
-		'aboutus_cat_user_edit int ',
 		' )'
 		);
 	SET @CreateTableContactUs = 
@@ -543,19 +511,16 @@ BEGIN
 	PREPARE stmt_prod FROM @CreateTableProd;
 	PREPARE stmt_prod_cat FROM @CreateTableProdCat;
 	PREPARE stmt_aboutus FROM @CreateTableAboutUs;
-	PREPARE stmt_aboutus_cat FROM @CreateTableAboutUsCategory;
 	PREPARE stmt_contactus FROM @CreateTableContactUs;
 	PREPARE stmt_genset FROM @CreateTableGenSet;
 	EXECUTE stmt_prod;
 	EXECUTE stmt_prod_cat;
 	EXECUTE stmt_aboutus;
-	EXECUTE stmt_aboutus_cat;
 	EXECUTE stmt_contactus;
 	EXECUTE stmt_genset;
 	DEALLOCATE PREPARE stmt_prod;
 	DEALLOCATE PREPARE stmt_prod_cat;
 	DEALLOCATE PREPARE stmt_aboutus;
-	DEALLOCATE PREPARE stmt_aboutus_cat;
 	DEALLOCATE PREPARE stmt_contactus;
 	DEALLOCATE PREPARE stmt_genset;
     END */$$
@@ -888,6 +853,41 @@ BEGIN
 		);
 		SELECT LAST_INSERT_ID() AS 'UserID';
 	END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `SD_GetMenu` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `SD_GetMenu` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `SD_GetMenu`(
+	in ParamStoreID int
+)
+BEGIN
+	SET @TemplateType = (SELECT TemplateType 
+			from template 
+			where TemplateID = (SELECT TemplateID from store where StoreID = ParamStoreID and AuditedActivity<>'D')
+			and AuditedActivity <> 'D'
+			limit 1);
+	if @TemplateType = 'CC1'
+	then
+		SELECT 'About Us' as 'MenuName'
+		union
+		select 'Contact Us' AS 'MenuName'
+		UNION 
+		select 'Product' AS 'MenuName'
+		union
+		select 'General Setting' AS 'MenuName';
+	elseif @TemplateType = 'CC2'
+	then 
+		SELECT 'About Us' AS 'MenuName'
+		UNION
+		SELECT 'Contact Us' AS 'MenuName'
+		UNION
+		SELECT 'General Setting' AS 'MenuName';
+	end if;
     END */$$
 DELIMITER ;
 
