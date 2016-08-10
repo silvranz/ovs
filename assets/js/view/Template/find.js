@@ -63,7 +63,7 @@ function loadTemplate(listCategory,mode){
 						success:updateParam
 					})
 				});
-				$(".total-use",newTemplate).text(data[i].NumberOfUser);
+				$(".total-use",newTemplate).text(data[i].NumberOfUser + ' user(s)');
 				$(".total-rating",newTemplate).text(rate);
 				$(".screen-shot",newTemplate).attr("src",serviceUri+"assets/images/screen-shot/"+data[i].TemplateImage);
 				$(".previewButton",newTemplate).click(function(){

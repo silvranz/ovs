@@ -6,9 +6,9 @@ body {
 	font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
+/*h1,h2,h3,h4,h5,h6 {
 	margin: 0;
-}
+}*/
 
 .wrapper-static > .header {
 	height:70px; 
@@ -275,7 +275,7 @@ fieldset[disabled] .btn-facebook.active {
 
 /* BACKGROUND */
 .bg-white {
-	background-color: #FFFFFF;
+	background-color: #ffffff !important;
 }
 
 /* ERROR */

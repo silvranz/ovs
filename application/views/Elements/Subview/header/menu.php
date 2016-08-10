@@ -101,17 +101,8 @@
 		        </li>
 		        <?php
 		        		} else {
-		        			$method_name = ucwords($this->router->method);
-		        			$display_text = 'Login';
-
-		        			if( $method_name == 'Login' || $method_name == 'Register' ) {
-		        				if( $method_name == 'Login' ) {
-		        					$display_text = 'Register';
-		        				}
-		        			}
-
-		        			echo tag('a', $display_text, array(
-		        				'href' => $domain.'/users/'.strtolower($display_text),
+		        			echo tag('a', 'Login', array(
+		        				'href' => $domain.'/users/login',
 		        				'data-title' => 'Login',
 		        				'wrapTag' => 'li'
 		        			));
