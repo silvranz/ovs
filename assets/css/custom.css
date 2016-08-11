@@ -459,6 +459,14 @@ fieldset[disabled] .btn-facebook.active {
 	cursor: pointer;
 }
 
+/* TEMPLATE FILTER FIND */
+.wrapper-template-filter ul li:hover {
+	margin-left: 10px;
+	transition: margin .25s;
+	color: #3276b1;
+	font-weight: bold;
+}
+
 @media print {
 	a[href]:after {
 		content: none !important;

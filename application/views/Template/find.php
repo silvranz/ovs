@@ -20,6 +20,43 @@
 					</select>
 				</div>
 			</form>
+			<div class="wrapper-template-filter mt20">
+				<?php
+						$arrTemp = [];
+						$counter = 0;
+
+						$listCategory = ( !empty($request['listCategory']) ) ? $request['listCategory'] : false;
+						foreach( $listCategory as $item ) {
+							if( $item->Parent == 1 ) {
+								$arrTemp[$counter] = $item;
+								$arrTemp[$counter]->child = array();
+								$counter++;
+							} else {
+								$arrTemp[$counter-1]->child[] = $item;
+							}
+						}
+
+						foreach( $arrTemp as $item ){
+							$child = '';
+							$parent = tag('h5', $item->TemplateName, array(
+								'class' => 'fbold'
+							));
+							
+							foreach( $item->child as $subitem ) {
+								$child .= tag('li', $subitem->TemplateName, array(
+									'class' => 'btnFilterCategory cpointer mb5',
+									'data-id' => $subitem->TemplateID
+								));
+							}
+
+							echo tag('div', $parent . tag('ul', $child, array(
+								'class' => 'no-ul-type'
+							)), array(
+								'class' => 'wrapper-outer'
+							));
+						}
+				?>
+			</div>
 		</div>
 		<div class="col-sm-9 no-pd">
 			<div class="panel">
