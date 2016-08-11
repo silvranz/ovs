@@ -334,6 +334,9 @@ $.fn.scrolling = function(param){
 	if(param.startButton){
 		param.startButton.click(function(e){
 			e.preventDefault();
+			requestData["offset"] = typeof $(container).data("offset")=="undefined"?
+											0:$(container).data("offset")+requestData["limit"];
+			$(container).data("offset",requestData["offset"]);
 			$.ajax({
 				type:"POST",
 				url:param.url,
