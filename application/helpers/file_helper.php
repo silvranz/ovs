@@ -2,13 +2,13 @@
 
 if ( ! function_exists('recurse_copy')) {
 	function recursive_copy($src,$dst) {
-		if(!is_dir($src))return "Source is not directory";
+		if(!file_exists($src)&&!is_dir($src))die("Template not found");
 		$dir = opendir($src); 
 		mkdir($dst); 
 		while(false !== ( $file = readdir($dir)) ) { 
 			if (( $file != '.' ) && ( $file != '..' )) { 
 				if ( is_dir($src . '/' . $file) ) { 
-					recurse_copy($src . '/' . $file,$dst . '/' . $file); 
+					recursive_copy($src . '/' . $file,$dst . '/' . $file); 
 				} 
 				else { 
 					copy($src . '/' . $file,$dst . '/' . $file); 

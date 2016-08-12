@@ -19,12 +19,14 @@ $(document).ready(function() {
 			}
 		})
 	})
-	$("#submitForm").click(function(){
+	$("#submitForm").click(function(e){
+		e.preventDefault();
 		$.ajax({
 			url:serviceUri+"template/createStore",
 			data:{
 				storeName:$("#storeName").val(),
 				domainName:$("#domainName").val(),
+				clientInfo:navigator,
 				key:$("#keyValue").val()
 			},
 			type:"POST",
