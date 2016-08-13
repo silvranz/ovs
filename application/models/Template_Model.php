@@ -21,10 +21,16 @@ class Template_Model extends CI_Model {
 		$catString=empty($category)?"NULL":"'$category'";
 		$userString=isset($userId)?"'$userId'":"NULL";
 		$queryString = "CALL GetTemplateByCategory(".$catString.",".$userString.",'$mode',$limit,$offset)";
-		//echo $queryString;
 		return $this->db->query($queryString)->result();
 	}
 	public function getTemplateName($templateID){
 		return $this->db->query("CALL GetTemplateByTemplateID('$templateID')");
+	}
+	public function getTemplateByCategory($category,$userId, $mode, $limit, $offset ){
+		$catString = empty($category)?"NULL":"'$category'";
+		$userString = !empty($userId)?"'$userId'":"NULL";
+
+		$queryString = "CALL GetTemplateByCategory(".$catString.",".$userString.",'$mode',$limit,$offset)";
+		return $this->db->query($queryString)->result();
 	}
 }

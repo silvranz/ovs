@@ -14,9 +14,9 @@
   				<div class="form-group">
 					<label class="mr10" for="sortingOption">Sorting by</label>
 					<select id="sortingOption" name="sortingOption" class="form-control">
-						<option>Alphabetical</option>
-						<option>Most Popular</option>
-						<option>New Template</option>
+						<option value="0">Alphabetical</option>
+						<option value="1">New Template</option>
+						<option value="2">Most Popular</option>
 					</select>
 				</div>
 			</form>
