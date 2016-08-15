@@ -40,6 +40,18 @@ class Template extends ABN_Controller {
 	public function getTemplateByCategory(){
 		$input = $this->input->post();
 		$listTemplate = $this->template->getTemplateByCategory($input["categoryId"],$this->session->userdata("userid"),$input["mode"],$input["limit"],$input["offset"]);
+
+		if( !empty($input["filterByParentCategory"]) ) {
+			$listTemplateID = explode(',', $input["filterByParentCategory"]);
+
+			foreach($listTemplate as $key => $row) {
+				if( !in_array($row->TemplateID, $listTemplateID) ) {
+					unset($listTemplate[$key]);
+				}
+			}
+		}
+
+		$listTemplate = array_values($listTemplate);
 		echo json_encode($listTemplate);
 	}
 	public function checkDomain(){

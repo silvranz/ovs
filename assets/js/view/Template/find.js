@@ -44,6 +44,29 @@ $(document).ready(function() {
 		});
 	});
 
+	$('body').on('click', '.btnFilterByParentCategory', function(e){
+		e.preventDefault();
+
+		var collection = $(this).attr('data-collection-template-id');
+		$.ajax({
+			type: 'POST',
+			url:serviceUri+"template/getTemplateByCategory",
+			data:{
+				categoryId: '',
+				mode: $("#sortingOption").val(),
+				filterByParentCategory: collection,
+				limit: 10,
+				offset: 0,
+			},
+			success:function(data){
+				var dataJSON = JSON.parse(data);
+
+				$('.itemPanel:visible').remove();
+				updateContent(dataJSON);
+			}
+		});
+	});
+
 	loadTemplate();
 });
 function updateParam(){
