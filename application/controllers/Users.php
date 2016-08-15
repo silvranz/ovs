@@ -150,7 +150,7 @@ class Users extends ABN_Controller {
 					$message = 'Successfully signed up.';
 					$status = 'success';
 				} else {
-					$this->setCustomError('email', 'Email has been registerd. Please try another email.');
+					$this->setCustomError('email', 'Email has been registered. Please try another email.');
 				}
 			}
 		}
