@@ -118,7 +118,7 @@ class Users extends ABN_Controller {
 		if( !empty($post) ) {
 			
 			$this->form_validation->set_rules('fullname', 'Full name', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required');
 			$this->form_validation->set_rules('CountryID', 'Country', 'required');
