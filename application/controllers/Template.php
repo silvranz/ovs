@@ -42,10 +42,9 @@ class Template extends ABN_Controller {
 		$listTemplate = $this->template->getTemplateByCategory($input["categoryId"],$this->session->userdata("userid"),$input["mode"],$input["limit"],$input["offset"]);
 
 		if( !empty($input["filterByParentCategory"]) ) {
-			$listTemplateID = explode(',', $input["filterByParentCategory"]);
 
 			foreach($listTemplate as $key => $row) {
-				if( !in_array($row->TemplateID, $listTemplateID) ) {
+				if( $row->TemplateCategoryID != $input["filterByParentCategory"] ) {
 					unset($listTemplate[$key]);
 				}
 			}
