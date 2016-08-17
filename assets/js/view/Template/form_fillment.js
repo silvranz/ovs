@@ -19,14 +19,17 @@ $(document).ready(function() {
 			}
 		})
 	})
-	$("#submitForm").click(function(e){
-		e.preventDefault();
+	$("#submitForm").click(function(){
 		$.ajax({
 			url:serviceUri+"template/createStore",
 			data:{
 				storeName:$("#storeName").val(),
 				domainName:$("#domainName").val(),
-				clientInfo:navigator,
+				clientInfo:{
+					"appCodeName":navigator.appCodeName,
+					"appVersion":navigator.appVersion,
+					"platform":navigator.platform
+				},
 				key:$("#keyValue").val()
 			},
 			type:"POST",

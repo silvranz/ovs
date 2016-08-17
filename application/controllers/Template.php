@@ -68,7 +68,7 @@ class Template extends ABN_Controller {
 		$databaseObj = $this->template->createStore($post["storeName"],$post["domainName"],$userId,$post["key"]);
 		$newId = $databaseObj->result()[0]->StoreID;
 		$databaseObj->next_result();
-		$this->template->ExecSp($post["domainName"],$post["key"],$newId,$userId,$clientInfo->appCodeName,$clientInfo->appVersion,$this->input->ip_address(),$deviceName,$clientInfo->platform);
+		$this->template->ExecSp($post["domainName"],$post["key"],$newId,$userId,$clientInfo["appCodeName"],$clientInfo["appVersion"],$this->input->ip_address(),$deviceName,$clientInfo["platform"]);
 	}
 	public function rateTemplate(){
 		if(!$this->session->userdata('loggedin'))return;
