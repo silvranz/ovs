@@ -14,9 +14,9 @@
   				<div class="form-group">
 					<label class="mr10" for="sortingOption">Sorting by</label>
 					<select id="sortingOption" name="sortingOption" class="form-control">
-						<option>Alphabetical</option>
-						<option>Most Popular</option>
-						<option>New Template</option>
+						<option value="0">Alphabetical</option>
+						<option value="1">New Template</option>
+						<option value="2">Most Popular</option>
 					</select>
 				</div>
 			</form>
@@ -38,9 +38,6 @@
 
 						foreach( $arrTemp as $item ){
 							$child = '';
-							$parent = tag('h5', $item->TemplateName, array(
-								'class' => 'fbold'
-							));
 							
 							foreach( $item->child as $subitem ) {
 								$child .= tag('li', $subitem->TemplateName, array(
@@ -48,6 +45,16 @@
 									'data-id' => $subitem->TemplateID
 								));
 							}
+
+							$parent = tag('h5', $item->TemplateName, array(
+								'class' => 'fbold',
+								'wrapTag' => 'a',
+								'wrapAttributes' => array(
+									'href' => '#',
+									'data-template-category-id' => $item->ParentCategoryID,
+									'class' => 'btnFilterByParentCategory'
+								),
+							));
 
 							echo tag('div', $parent . tag('ul', $child, array(
 								'class' => 'no-ul-type'

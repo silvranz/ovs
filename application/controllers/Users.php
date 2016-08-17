@@ -118,7 +118,7 @@ class Users extends ABN_Controller {
 		if( !empty($post) ) {
 			
 			$this->form_validation->set_rules('fullname', 'Full name', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required');
 			$this->form_validation->set_rules('CountryID', 'Country', 'required');
@@ -150,7 +150,7 @@ class Users extends ABN_Controller {
 					$message = 'Successfully signed up.';
 					$status = 'success';
 				} else {
-					$this->setCustomError('email', 'Email has been registerd. Please try another email.');
+					$this->setCustomError('email', 'Email has been registered. Please try another email.');
 				}
 			}
 		}
