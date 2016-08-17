@@ -38,24 +38,20 @@
 
 						foreach( $arrTemp as $item ){
 							$child = '';
-							$collectionTemplateID = '';
 							
 							foreach( $item->child as $subitem ) {
 								$child .= tag('li', $subitem->TemplateName, array(
 									'class' => 'btnFilterCategory cpointer mb5',
 									'data-id' => $subitem->TemplateID
 								));
-								$collectionTemplateID .= $subitem->TemplateID.',';
 							}
-
-							$collectionTemplateID = rtrim($collectionTemplateID, ",");
 
 							$parent = tag('h5', $item->TemplateName, array(
 								'class' => 'fbold',
 								'wrapTag' => 'a',
 								'wrapAttributes' => array(
 									'href' => '#',
-									'data-collection-template-id' => $collectionTemplateID,
+									'data-template-category-id' => $item->ParentCategoryID,
 									'class' => 'btnFilterByParentCategory'
 								),
 							));

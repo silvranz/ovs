@@ -47,14 +47,14 @@ $(document).ready(function() {
 	$('body').on('click', '.btnFilterByParentCategory', function(e){
 		e.preventDefault();
 
-		var collection = $(this).attr('data-collection-template-id');
+		var templateCategoryId = $(this).attr('data-template-category-id');
 		$.ajax({
 			type: 'POST',
 			url:serviceUri+"template/getTemplateByCategory",
 			data:{
 				categoryId: '',
 				mode: $("#sortingOption").val(),
-				filterByParentCategory: collection,
+				filterByParentCategory: templateCategoryId,
 				limit: 10,
 				offset: 0,
 			},

@@ -42,10 +42,9 @@ class Template extends ABN_Controller {
 		$listTemplate = $this->template->getTemplateByCategory($input["categoryId"],$this->session->userdata("userid"),$input["mode"],$input["limit"],$input["offset"]);
 
 		if( !empty($input["filterByParentCategory"]) ) {
-			$listTemplateID = explode(',', $input["filterByParentCategory"]);
 
 			foreach($listTemplate as $key => $row) {
-				if( !in_array($row->TemplateID, $listTemplateID) ) {
+				if( $row->TemplateCategoryID != $input["filterByParentCategory"] ) {
 					unset($listTemplate[$key]);
 				}
 			}
@@ -85,7 +84,7 @@ class Template extends ABN_Controller {
 		$databaseObj = $this->template->createStore($post["storeName"],$post["domainName"],$userId,$post["key"]);
 		$newId = $databaseObj->result()[0]->StoreID;
 		$databaseObj->next_result();
-		$this->template->ExecSp($post["domainName"],$post["key"],$newId,$userId,$clientInfo->appCodeName,$clientInfo->appVersion,$this->input->ip_address(),$deviceName,$clientInfo->platform);
+		$this->template->ExecSp($post["domainName"],$post["key"],$newId,$userId,$clientInfo["appCodeName"],$clientInfo["appVersion"],$this->input->ip_address(),$deviceName,$clientInfo["platform"]);
 	}
 	public function rateTemplate(){
 		if(!$this->session->userdata('loggedin'))return;
