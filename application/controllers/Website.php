@@ -21,6 +21,13 @@ class Website extends ABN_Controller {
 		));
 		$this->render();
 	}
+
+	public function my_website(){
+		$this->load->vars(array(
+			'site_title' => 'My Website',
+		));
+		$this->render();
+	}
 	/*** end page load ***/
 	
 	/*** service ***/
