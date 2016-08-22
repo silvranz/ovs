@@ -11,27 +11,27 @@
 </head>
 <body>
 	<div id="header">
-		<h1><a href="index.html">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
+		<h1><a href="index.php">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
 		<ul id="navigation">
 			<li>
-				<a href="index.html">Home</a>
+				<a href="index.php">Home</a>
 			</li>
 			<li>
-				<a href="about.html">About</a>
+				<a href="about.php">About</a>
 			</li>
 			<li>
-				<a href="classes.html">Classes</a>
+				<a href="classes.php">Classes</a>
 				<ul>
 					<li>
-						<a href="instructors.html">Instructors</a>
+						<a href="instructors.php">Instructors</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="contact.html">Contact</a>
+				<a href="contact.php">Contact</a>
 			</li>
 			<li class="current">
-				<a href="blog.html">Blog</a>
+				<a href="blog.php">Blog</a>
 			</li>
 		</ul>
 	</div>
@@ -40,7 +40,7 @@
 		<ul class="blog">
 			<li>
 				<img src="images/group-yoga.jpg" alt="yoga in group">
-				<h3><a href="singlepost.html">Summer Yoga Classes</a></h3>
+				<h3><a href="singlepost.php">Summer Yoga Classes</a></h3>
 				<span>April 7, 2023 </span>
 				<p>
 					Duis ultrices tortor non felis convallis bibendum. Maecenas diam velit, sollicitudin at imperdiet ac, consectetur non nibh. Etiam eget dapibus nulla. Nulla placerat mauris ut elit placerat luctus. Aliquam porttitor leo non nisl scelerisque sollicitudin.
@@ -48,7 +48,7 @@
 			</li>
 			<li>
 				<img src="images/yoga-concentrating.jpg" alt="yoga concentrating">
-				<h3><a href="singlepost.html">Inner peace</a></h3>
+				<h3><a href="singlepost.php">Inner peace</a></h3>
 				<span>April 6, 2023 </span>
 				<p>
 					Nunc sit amet dapibus est, sit amet varius risus. Donec luctus lacinia mauris, at feugiat ligula facilisis ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed id ligula consectetur, iaculis dolor vitae, gravida mauris.
@@ -56,7 +56,7 @@
 			</li>
 			<li>
 				<img src="images/lying-yoga.jpg" alt="yoga lying down legs in the air">
-				<h3><a href="singlepost.html">A Strong and Flexible Body</a></h3>
+				<h3><a href="singlepost.php">A Strong and Flexible Body</a></h3>
 				<span>April 5, 2023 </span>
 				<p>
 					In felis ante, aliquet sit amet venenatis at, feugiat sed leo. Fusce pretium, velit in luctus ornare, elit lorem ultrices tortor, sed consectetur orci risus mollis ante. Cras ut aliquam nulla. Aliquam convallis sapien quis cursus condimentum.

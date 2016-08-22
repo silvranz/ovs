@@ -11,27 +11,27 @@
 </head>
 <body>
 	<div id="header">
-		<h1><a href="index.html">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
+		<h1><a href="index.php">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
 		<ul id="navigation">
 			<li>
-				<a href="index.html">Home</a>
+				<a href="index.php">Home</a>
 			</li>
 			<li>
-				<a href="about.html">About</a>
+				<a href="about.php">About</a>
 			</li>
 			<li>
-				<a href="classes.html">Classes</a>
+				<a href="classes.php">Classes</a>
 				<ul>
 					<li>
-						<a href="instructors.html">Instructors</a>
+						<a href="instructors.php">Instructors</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="contact.html">Contact</a>
+				<a href="contact.php">Contact</a>
 			</li>
 			<li>
-				<a href="blog.html">Blog</a>
+				<a href="blog.php">Blog</a>
 			</li>
 		</ul>
 	</div>
@@ -53,15 +53,15 @@
 				<h3>Recent Posts</h3>
 				<ul>
 					<li>
-						<h4><a href="singlepost.html">Summer Yoga Classes</a></h4>
+						<h4><a href="singlepost.php">Summer Yoga Classes</a></h4>
 						<span>April 7, 2023 </span>
 					</li>
 					<li>
-						<h4><a href="singlepost.html">Inner peace</a></h4>
+						<h4><a href="singlepost.php">Inner peace</a></h4>
 						<span>April 6, 2023 </span>
 					</li>
 					<li>
-						<h4><a href="singlepost.html">What is Yoga?</a></h4>
+						<h4><a href="singlepost.php">What is Yoga?</a></h4>
 						<span>April 5, 2023 </span>
 					</li>
 				</ul>

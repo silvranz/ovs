@@ -4,64 +4,59 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Instructors - Belle &amp; Carrie Rehabilitation Yoga Web Template</title>
+	<title>Contact - Belle &amp; Carrie Rehabilitation Yoga Web Template</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css">
 	<script type='text/javascript' src='js/mobile.js'></script>
 </head>
 <body>
 	<div id="header">
-		<h1><a href="index.html">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
+		<h1><a href="index.php">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
 		<ul id="navigation">
 			<li>
-				<a href="index.html">Home</a>
+				<a href="index.php">Home</a>
 			</li>
 			<li>
-				<a href="about.html">About</a>
+				<a href="about.php">About</a>
 			</li>
 			<li>
-				<a href="classes.html">Classes</a>
+				<a href="classes.php">Classes</a>
 				<ul>
-					<li class="current">
-						<a href="instructors.html">Instructors</a>
+					<li>
+						<a href="instructors.php">Instructors</a>
 					</li>
 				</ul>
 			</li>
-			<li>
-				<a href="contact.html">Contact</a>
+			<li class="current">
+				<a href="contact.php">Contact</a>
 			</li>
 			<li>
-				<a href="blog.html">Blog</a>
+				<a href="blog.php">Blog</a>
 			</li>
 		</ul>
 	</div>
 	<div id="body">
-		<h2>Instructors</h2>
-		<div class="content">
-			<div>
-				<ul class="section">
-					<li>
-						<img src="images/instructor1.jpg" alt="Yoga instructor one">
-						<h4>Belle Humpfree</h4>
-					</li>
-					<li>
-						<img src="images/instructor2.jpg" alt="Yoga instructor two">
-						<h4>Jacob Collern</h4>
-					</li>
-				</ul>
-				<ul class="section">
-					<li>
-						<img src="images/instructor3.jpg" alt="Yoga instructor three">
-						<h4>Edward Blanche</h4>
-					</li>
-					<li>
-						<img src="images/instructor4.jpg" alt="Yoga instructor four">
-						<h4>Carrie Waldorf</h4>
-					</li>
-				</ul>
-			</div>
-			<img src="images/lady-in-yoga.jpg" alt="lady doing yoga" class="figure">
-		</div>
+		<h2>Contact</h2>
+		<form action="index.php">
+			<h3>Inquiries</h3>
+			<label for="name">
+				<span>Name</span>
+				<input type="text" id="name">
+			</label>
+			<label for="email">
+				<span>Email</span>
+				<input type="text" id="email">
+			</label>
+			<label for="subject">
+				<span>Subject</span>
+				<input type="text" id="subject">
+			</label>
+			<label for="message">
+				<span>Message</span>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			</label>
+			<input type="submit" id="send" value="Send">
+		</form>
 	</div>
 	<div id="footer">
 		<div>
