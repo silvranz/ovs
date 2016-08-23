@@ -58,8 +58,10 @@ class Template extends ABN_Controller {
 		echo json_encode($result[0]->Result);
 	}
 	public function createStore(){
+		$this->load->dbforge();
 		$this->load->helper('file_helper');
 		$this->load->helper('Mobile_Detect_helper');
+		$this->load->helper('create_db_helper');
 		$detect = new Mobile_Detect;
 		$deviceName="";
 		if($detect->isMobile()){
@@ -81,10 +83,10 @@ class Template extends ABN_Controller {
 		recursive_copy("assets/template/".$projectName,"../".$post["domainName"]);
 		copy("assets/images/screen-shot/".$projectImage,"assets/images/screen-shot/".$post["domainName"].".jpg");
 		$databaseObj->next_result();
-		$databaseObj = $this->template->createStore($post["storeName"],$post["domainName"],$userId,$post["key"]);
-		$newId = $databaseObj->result()[0]->StoreID;
+		$databaseObj = $this->template->createStore($post["storeName"],$post["domainName"],$userId,$post["key"],$clientInfo["appCodeName"],$clientInfo["appVersion"],$this->input->ip_address(),$deviceName,$clientInfo["platform"]);
+		$newStore = $databaseObj->result()[0];
 		$databaseObj->next_result();
-		$this->template->ExecSp($post["domainName"],$post["key"],$newId,$userId,$clientInfo["appCodeName"],$clientInfo["appVersion"],$this->input->ip_address(),$deviceName,$clientInfo["platform"]);
+		execSql($newStore->TemplateType,$post["domainName"],get_instance());
 	}
 	public function rateTemplate(){
 		if(!$this->session->userdata('loggedin'))return;

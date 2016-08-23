@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Template_Model extends CI_Model {
-	public function createStore($storeName,$domainName,$userId,$templateId){
-		return $this->db->query("CALL InsertStore('$storeName','$domainName','".$domainName.".jpg','$domainName','$userId','$templateId',NULL)");
+	public function createStore($storeName,$domainName,$userId,$templateId,$browser,$browserVersion,$ip,$device,$os){
+		return $this->db->query("CALL InsertStore('$storeName','$domainName','".$domainName.".jpg','$domainName','$userId','$templateId',NULL,'$browser','$browserVersion','$ip','$device','$os')");
 	}
-	public function ExecSp($projectName,$templateId,$storeId,$userId,$browser,$browserVersion,$ip,$device,$os){
+	public function ExecSp($projectName,$templateId,$storeId,$userId){
 		return $this->db->query("CALL ExecSpTemplate('$projectName','$templateId','$storeId','$userId','$browser','$browserVersion','$ip','$device','$os')")->result();
 	}
 	public function checkDomain($domainName){
