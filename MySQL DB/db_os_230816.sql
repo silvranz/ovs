@@ -78,24 +78,27 @@ CREATE TABLE `mappingsp` (
 
 insert  into `mappingsp`(`MappingID`,`SPID`,`TemplateID`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,1,1,'2016-08-10 11:37:07','C',1,NULL),(2,1,2,'2016-08-17 09:50:10','C',1,NULL),(3,1,3,'2016-08-17 09:50:12','C',1,NULL),(4,1,4,'2016-08-17 09:50:15','C',1,NULL);
 
-/*Table structure for table `sp` */
+/*Table structure for table `menu` */
 
-DROP TABLE IF EXISTS `sp`;
+DROP TABLE IF EXISTS `menu`;
 
-CREATE TABLE `sp` (
-  `SPID` int(11) NOT NULL AUTO_INCREMENT,
-  `SPName` varchar(100) DEFAULT NULL,
+CREATE TABLE `menu` (
+  `MenuID` int(11) NOT NULL AUTO_INCREMENT,
+  `MenuName` varchar(100) DEFAULT NULL,
+  `MenuSeq` int(11) DEFAULT NULL,
+  `BackendMenuName` varchar(100) DEFAULT NULL,
+  `TemplateType` varchar(10) DEFAULT NULL,
   `CreatedUser` int(11) DEFAULT NULL,
   `CreatedDate` datetime DEFAULT NULL,
   `AuditedActivity` char(1) DEFAULT NULL,
   `AuditedUser` int(11) DEFAULT NULL,
   `AuditedTime` datetime DEFAULT NULL,
-  PRIMARY KEY (`SPID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`MenuID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-/*Data for the table `sp` */
+/*Data for the table `menu` */
 
-insert  into `sp`(`SPID`,`SPName`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'GenerateTableCompanyProfile',1,'2016-08-10 11:36:35','C',NULL,NULL);
+insert  into `menu`(`MenuID`,`MenuName`,`MenuSeq`,`BackendMenuName`,`TemplateType`,`CreatedUser`,`CreatedDate`,`AuditedActivity`,`AuditedUser`,`AuditedTime`) values (1,'General Setting',1,'genset','CC1',1,'2016-08-10 11:36:35','C',NULL,NULL),(2,'About Us',2,'about-us','CC1',1,'2016-08-10 11:36:35','C',NULL,NULL),(3,'Product',3,'product','CC1',1,'2016-08-10 11:36:35','C',NULL,NULL),(4,'Contact Us',4,'contact-us','CC1',1,'2016-08-10 11:36:35','C',NULL,NULL);
 
 /*Table structure for table `store` */
 
@@ -275,172 +278,6 @@ BEGIN
 		SELECT -1 AS result;
 	END IF;
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `ExecSpTemplate` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ExecSpTemplate` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ExecSpTemplate`(
-	IN ParamStoreProjectName VARCHAR(50),
-	in ParamTemplateID int,
-	IN ParamStoreID INT,
-	in ParamUserID int,
-	in ParamBrowser varchar(100),
-	in ParamBrowserVersion varchar(100),
-	in ParamIPAddress varchar(100),
-	in ParamDevice varchar(100),
-	in ParamOS varchar(50)
-)
-BEGIN
-	SET @SPName = (select SPName 
-			from sp 
-			join mappingsp msp on sp.`SPID`=msp.SPID  and msp.AuditedActivity <> 'D'
-			where msp.TemplateID=ParamTemplateID and sp.`AuditedActivity`<>'D'
-			limit 1);
-	
-	IF @SPName is not null
-	then
-		SET @CallSP=CONCAT('CALL ', @SPName, '(\'', ParamStoreProjectName, '\',', ParamUserID, ',', ParamStoreID, ')');
-		-- select @CallSP;
-		prepare stmt from @CallSP;
-		execute stmt;
-		DEALLOCATE PREPARE stmt;
-		
-		-- Log Generate
-		insert into generateweblog
-		(StoreID, TemplateID, SPName, UserID, GenerateDate, Browser, BrowserVersion, IPAddress, Device, OS,
-		CreatedUser, CreatedDate, AuditedActivity)
-		values
-		(ParamStoreID, ParamTemplateID, @SPName, ParamUserID, CUrrent_timestamp(), ParamBrowser,
-		ParamBrowserVersion, ParamIPAddress, ParamDevice, ParamOS, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	else
-		SELECT -1 as result;
-	END if;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `GenerateTableCompanyProfile` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `GenerateTableCompanyProfile` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerateTableCompanyProfile`(
-	in ParamStoreProjectName varchar(50),
-	in ParamUserID int,
-	in ParamStoreID int
-)
-BEGIN
-	SET @Domain = LOWER(ParamStoreProjectName);
-	
-	SET @TableProduct = CONCAT(@Domain, '_prod');
-	INSERT INTO storetable
-	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
-	VALUES
-	(@TableProduct, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');	
-	
-	SET @TableProductCategory = CONCAT(@Domain, '_prod_cat');
-	INSERT INTO storetable
-	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
-	VALUES
-	(@TableProductCategory, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	
-	SET @TableAboutUs = CONCAT(@Domain, '_aboutus');
-	INSERT INTO storetable
-	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
-	VALUES
-	(@TableAboutUs, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	SET @TableContactUs = CONCAT(@Domain, '_contactus');
-	INSERT INTO storetable
-	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
-	VALUES
-	(@TableContactUs, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	
-	SET @TableGeneralSetting = CONCAT(@Domain, '_genset');
-	INSERT INTO storetable
-	(StoreTableName, StoreID, CreatedUser, CreatedDate, AuditedActivity)
-	VALUES
-	(@TableGeneralSetting, ParamStoreID, ParamUserID, CURRENT_TIMESTAMP(), 'C');
-	
-	SET @CreateTableProd = 
-		concat('CREATE TABLE ', @TableProduct, 
-		'( ',
-		'prod_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
-		'prod_name varchar(50), ',
-		'prod_desc longtext, ',
-		'prod_image varchar(100), ',
-		'prod_cat_id int, ',
-		'prod_date datetime, ',
-		'prod_user_input int, ',
-		'prod_date_edit datetime, ',
-		'prod_user_edit int ',
-		' )'
-		);
-	SET @CreateTableProdCat = 
-		CONCAT('CREATE TABLE ', @TableProductCategory, 
-		'( ',
-		'prod_cat_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
-		'prod_cat_name varchar(50), ',
-		'prod_cat_date datetime, ',
-		'prod_cat_user_input int, ',
-		'prod_cat_date_edit datetime, ',
-		'prod_cat_user_edit int ',
-		' )'
-		);
-	SET @CreateTableAboutUs = 
-		CONCAT('CREATE TABLE ', @TableAboutUs, 
-		'( ',
-		'aboutus_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
-		'aboutus_title varchar(50), ',		
-		'aboutus_desc longtext, ',
-		'aboutus_date datetime, ',
-		'aboutus_user_input int, ',
-		'aboutus_date_edit datetime, ',
-		'aboutus_user_edit int ',
-		' )'
-		);
-	SET @CreateTableContactUs = 
-		CONCAT('CREATE TABLE ', @TableContactUs, 
-		'( ',
-		'contactus_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
-		'contactus_name varchar(100), ',
-		'contactus_email varchar(100), ',
-		'contactus_message varchar(2000), ',
-		'contactus_isread int, '
-		'contactus_date datetime '
-		' )'
-		);
-	SET @CreateTableGenSet = 
-		CONCAT('CREATE TABLE ', @TableGeneralSetting, 
-		'( ',
-		'genset_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,',
-		'genset_type varchar(100), ',
-		'genset_content varchar(100), ',
-		'genset_date datetime, ',
-		'genset_user_input int, ',
-		'genset_date_edit datetime, ',
-		'genset_user_edit int ',
-		' )'
-		);
-	PREPARE stmt_prod FROM @CreateTableProd;
-	PREPARE stmt_prod_cat FROM @CreateTableProdCat;
-	PREPARE stmt_aboutus FROM @CreateTableAboutUs;
-	PREPARE stmt_contactus FROM @CreateTableContactUs;
-	PREPARE stmt_genset FROM @CreateTableGenSet;
-	EXECUTE stmt_prod;
-	EXECUTE stmt_prod_cat;
-	EXECUTE stmt_aboutus;
-	EXECUTE stmt_contactus;
-	EXECUTE stmt_genset;
-	DEALLOCATE PREPARE stmt_prod;
-	DEALLOCATE PREPARE stmt_prod_cat;
-	DEALLOCATE PREPARE stmt_aboutus;
-	DEALLOCATE PREPARE stmt_contactus;
-	DEALLOCATE PREPARE stmt_genset;
-    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `GetCountry` */
