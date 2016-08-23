@@ -11,27 +11,27 @@
 </head>
 <body>
 	<div id="header">
-		<h1><a href="index.html">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
+		<h1><a href="index.php">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
 		<ul id="navigation">
 			<li>
-				<a href="index.html">Home</a>
+				<a href="index.php">Home</a>
 			</li>
 			<li class="current">
-				<a href="about.html">About</a>
+				<a href="about.php">About</a>
 			</li>
 			<li>
-				<a href="classes.html">Classes</a>
+				<a href="classes.php">Classes</a>
 				<ul>
 					<li>
-						<a href="instructors.html">Instructors</a>
+						<a href="instructors.php">Instructors</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="contact.html">Contact</a>
+				<a href="contact.php">Contact</a>
 			</li>
 			<li>
-				<a href="blog.html">Blog</a>
+				<a href="blog.php">Blog</a>
 			</li>
 		</ul>
 	</div>

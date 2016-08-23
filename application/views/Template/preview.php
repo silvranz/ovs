@@ -20,4 +20,4 @@
 		</div>
 	</div>
 </div>
-<iframe style="width:100%" src="<?=$this->domain."/assets/template/".$page."/index.html"?>">
+<iframe style="width:100%" src="<?=$this->domain."/assets/template/".$page."/index.php"?>">
