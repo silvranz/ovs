@@ -5,4 +5,8 @@ class Website_Model extends CI_Model {
 		$queryString = "CALL GetMyWebsite('$userId',$limit,$offset)";
 		return $this->db->query($queryString)->result();
 	}
+	public function getMenu($storeId){
+		$queryString = "CALL SD_GETMENU('$storeId')";
+		return $this->db->query($queryString)->result();
+	}
 }

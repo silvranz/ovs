@@ -20,7 +20,8 @@ $(document).ready(function() {
 				});
 				$(".editButton",newWebsite).click(function(e){
 					e.preventDefault();
-					location.href=serviceUri+"website/edit";
+					var storeId = $(this).closest(".itemPanel").data("templateId");
+					location.href=serviceUri+"website/edit/"+storeId;
 				});
 				$("#websiteContainer").append(newWebsite);
 			}

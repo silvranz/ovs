@@ -14,7 +14,7 @@ class Website extends ABN_Controller {
 		));
 		$this->render();
 	}
-	public function edit(){
+	public function edit1(){
 		$this->load->vars(array(
 			'site_title' => 'Edit website',
 			"additional_js"=>["view/Website/edit"]
@@ -22,11 +22,12 @@ class Website extends ABN_Controller {
 		$this->render();
 	}
 
-	public function my_website(){
+	public function edit($storeId){
 		$this->load->vars(array(
 			'site_title' => 'My Website',
 		));
-		$this->render();
+		$listMenu = $this->website->getMenu($storeId);
+		$this->render(array("listMenu"=>$listMenu));
 	}
 	/*** end page load ***/
 	
