@@ -10,7 +10,8 @@ public function ExecSQL_CC1(){
 		    $prod_fields = array(
                         'prod_id' => array(
                                                  'type' => 'INT',
-                                                 'constraint' => 11
+                                                 'constraint' => 11,
+                                                  'auto_increment' => TRUE
                                           ),
                         'prod_name' => array(
                                                  'type' => 'VARCHAR',
@@ -57,7 +58,8 @@ public function ExecSQL_CC1(){
 		    		    $prod_cat_fields = array(
                         'prod_cat_id' => array(
                                                  'type' => 'INT',
-                                                 'constraint' => 11
+                                                 'constraint' => 11,
+                                                  'auto_increment' => TRUE
                                           ),
                         'prod_cat_name' => array(
                                                  'type' => 'VARCHAR',
@@ -90,7 +92,8 @@ public function ExecSQL_CC1(){
 		    		    $aboutus_fields = array(
                         'aboutus_id' => array(
                                                  'type' => 'INT',
-                                                 'constraint' => 11
+                                                 'constraint' => 11,
+                                                  'auto_increment' => TRUE
                                           ),
                         'aboutus_title' => array(
                                                  'type' => 'VARCHAR',
@@ -127,7 +130,8 @@ public function ExecSQL_CC1(){
 		    		    $contactus_fields = array(
                         'contactus_id' => array(
                                                  'type' => 'INT',
-                                                 'constraint' => 11
+                                                 'constraint' => 11,
+                                                  'auto_increment' => TRUE
                                           ),
                         'contactus_name' => array(
                                                  'type' => 'VARCHAR',
@@ -160,7 +164,8 @@ public function ExecSQL_CC1(){
 		    		    $genset_fields = array(
                         'genset_id' => array(
                                                  'type' => 'INT',
-                                                 'constraint' => 11
+                                                 'constraint' => 11,
+                                                  'auto_increment' => TRUE
                                           ),
                         'genset_type' => array(
                                                  'type' => 'VARCHAR',
@@ -194,6 +199,17 @@ public function ExecSQL_CC1(){
 		   	$this->dbforge->add_field($genset_fields);
 		   	$this->dbforge->add_key('genset_id', TRUE);
 		    $this->dbforge->create_table('genset');
+
+        /*insert logo, banner, name*/
+        $this->db->query("INSERT INTO genset
+            (genset_type, genset_content, genset_date, genset_user_input)
+            VALUES('logo', NULL, CURRENT_TIMESTAMP(), ".$this->SESSION->userdata('userid'));
+        $this->db->query("INSERT INTO genset
+            (genset_type, genset_content, genset_date, genset_user_input)
+            VALUES('home_banner', NULL, CURRENT_TIMESTAMP(), ".$this->SESSION->userdata('userid'));
+        $this->db->query("INSERT INTO genset
+            (genset_type, genset_content, genset_date, genset_user_input)
+            VALUES('display_name', '".$dn."', CURRENT_TIMESTAMP(), ".$this->SESSION->userdata('userid'));
 		}
 	}
 ?>

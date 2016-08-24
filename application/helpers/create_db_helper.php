@@ -15,7 +15,8 @@ function ExecSQL_CC1($dn,$CI){
 		$prod_fields = array(
 					'prod_id' => array(
 											 'type' => 'INT',
-											 'constraint' => 11
+											 'constraint' => 11,
+                                              'auto_increment' => TRUE
 									  ),
 					'prod_name' => array(
 											 'type' => 'VARCHAR',
@@ -62,7 +63,8 @@ function ExecSQL_CC1($dn,$CI){
 					$prod_cat_fields = array(
 					'prod_cat_id' => array(
 											 'type' => 'INT',
-											 'constraint' => 11
+											 'constraint' => 11,
+                                                  'auto_increment' => TRUE
 									  ),
 					'prod_cat_name' => array(
 											 'type' => 'VARCHAR',
@@ -95,7 +97,8 @@ function ExecSQL_CC1($dn,$CI){
 					$aboutus_fields = array(
 					'aboutus_id' => array(
 											 'type' => 'INT',
-											 'constraint' => 11
+											 'constraint' => 11,
+                                                  'auto_increment' => TRUE
 									  ),
 					'aboutus_title' => array(
 											 'type' => 'VARCHAR',
@@ -132,7 +135,8 @@ function ExecSQL_CC1($dn,$CI){
 					$contactus_fields = array(
 					'contactus_id' => array(
 											 'type' => 'INT',
-											 'constraint' => 11
+											 'constraint' => 11,
+                                                  'auto_increment' => TRUE
 									  ),
 					'contactus_name' => array(
 											 'type' => 'VARCHAR',
@@ -165,7 +169,8 @@ function ExecSQL_CC1($dn,$CI){
 					$genset_fields = array(
 					'genset_id' => array(
 											 'type' => 'INT',
-											 'constraint' => 11
+											 'constraint' => 11,
+                                                  'auto_increment' => TRUE
 									  ),
 					'genset_type' => array(
 											 'type' => 'VARCHAR',
@@ -199,6 +204,20 @@ function ExecSQL_CC1($dn,$CI){
 		$CI->dbforge->add_field($genset_fields);
 		$CI->dbforge->add_key('genset_id', TRUE);
 		$CI->dbforge->create_table('genset');
+
+		$userId = $CI->session->userdata("userid");
+		$input = $CI->input->post();
+		$CI->db->QUERY("use ".$dn);
+		 $CI->db->QUERY("INSERT INTO genset
+            (genset_type, genset_content, genset_date, genset_user_input)
+            VALUES('logo', NULL, CURRENT_TIMESTAMP(), ".$userId.")");
+          $CI->db->QUERY("INSERT INTO genset
+            (genset_type, genset_content, genset_date, genset_user_input)
+            VALUES('home_banner', NULL, CURRENT_TIMESTAMP(), ".$userId.")");
+          $CI->db->QUERY("INSERT INTO genset
+            (genset_type, genset_content, genset_date, genset_user_input)
+            VALUES('display_name', '".$dn."', CURRENT_TIMESTAMP(), ".$userId.")");
+            die();
 	}
 }
 ?>
