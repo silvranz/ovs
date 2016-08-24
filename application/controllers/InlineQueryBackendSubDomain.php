@@ -32,6 +32,18 @@
 				VALUES('".$aboutus_title."', '".$aboutus_desc."', CURRENT_TIMESTAMP(),'".$userid."')");
 		} 
 
+		public function UpdateAboutUs(){	
+			$dn = 'thelana'; //domain name
+			$aboutus_title = 'Hai';
+			$aboutus_desc = 'longlongtext';
+			$userid = $this->session->userdata("userid");
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("UPDATE aboutus SET aboutus_title= '".$aboutus_title."', 
+								aboutus_desc='".$aboutus_desc."',
+								aboutus_date_edit = CURRENT_TIMESTAMP(),
+								aboutus_user_edit=".$userid);
+		} 
+
 		public function DeleteAboutUs(){	
 			$dn = 'thelana'; //domain name
 			$aboutus_id = 1;
