@@ -25,9 +25,23 @@ class Website extends ABN_Controller {
 	public function edit($storeId){
 		$this->load->vars(array(
 			'site_title' => 'My Website',
+			"additional_js"=>["view/Website/edit"]
 		));
-		$listMenu = $this->website->getMenu($storeId);
-		$this->render(array("listMenu"=>$listMenu));
+		$templateType = $this->website->getTemplateType($storeId);
+		$listMenu = $this->website->GetMenu($templateType[0]->TemplateType);
+		$this->website->setDomainNameStore($storeId);
+		$generalSetting = $this->website->getGeneralInfo();
+		$listAboutUs = $this->website->GetAboutUs();
+		$listProduct = $this->website->GetProducts();
+		$listContactUs = $this->website->GetContactUs();
+		$this->render(array(
+			"listMenu"=>$listMenu,
+			"generalSetting"=>$generalSetting,
+			"aboutUs"=>$listAboutUs,
+			"Product"=>$listProduct,
+			"ContactUs"=>$listContactUs,
+			"storeId"=>$storeId
+		));
 	}
 	/*** end page load ***/
 	
@@ -36,6 +50,22 @@ class Website extends ABN_Controller {
 		$input = $this->input->post();
 		$listWebsite = $this->website->getWebsite($this->session->userdata("userid"),$input["limit"],$input["offset"]);
 		echo json_encode($listWebsite);
+	}
+	public function addAboutUs(){
+		$post = $this->input->post();
+		$this->website->setDomainNameStore($post["store"]);
+		$this->website->InsertAboutUs($post["title"],$post["content"]);
+	}
+	public function editAboutUs(){
+		$post = $this->input->post();
+		$this->website->setDomainNameStore($post["store"]);
+		//$post["aboutUs"] -> id aboutus nya yang mau diganti
+		$this->website->UpdateAboutUs($post["title"],$post["content"]);
+	}
+	public function delAboutUs(){
+		$post = $this->input->post();
+		$this->website->setDomainNameStore($post["store"]);
+		$this->website->DeleteAboutUs($post["aboutUs"]);
 	}
 	/*** end service ***/
 }

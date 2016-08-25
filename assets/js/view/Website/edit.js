@@ -1,19 +1,48 @@
 $(document).ready(function() {
-	$("#websiteContainer").scrolling({
-		url:serviceUri+"website/getWebsite",
-		startButton:$("#startLoad"),
-		itemPerLoad:2,
-		callback:function(data){
-			var ajaxObj = this;
-			for(var i=0;i<data.length;i++){
-				var newWebsite = $("#templateItem").clone().removeAttr("id").removeClass("hide").data("templateId",data[i].TemplateID);
-				$(".website-title",newWebsite).text(data[i].StoreName);
-				$(".created-date",newWebsite).text(data[i].CreatedDate);
-				$(".domain-name",newWebsite).text(data[i].StoreDomain).attr("href","http://"+data[i].StoreDomain);
-				$(".screen-shot",newWebsite).attr("src",serviceUri+"assets/images/screen-shot/"+data[i].StoreImage);
-				$("#websiteContainer").append(newWebsite);
-				console.log(newWebsite);
+	$(".editButton").click(function(){
+		$("#triggerPopup").click();
+		$("#customAboutUs").attr("edit",$(this).closest(".aboutus-item").attr("dataTag"));
+	})
+	$(".delButton").click(function(){
+		$.ajax({
+			type: 'POST',
+			url:serviceUri+"website/delAboutUs",
+			data:{
+				store:$("#container").attr("store"),
+				aboutUs:$(this).closest(".aboutus-item").attr("dataTag")
+			},
+			success:function(data){
 			}
+		});
+	})
+	$("#customAboutUs").click(function(){
+		var parent = $(this).closest(".modal-content");
+		var target = "";
+		var data = {};
+		if($(this)[0].hasAttribute("edit")){
+			target = serviceUri+"website/editAboutUs";
+			data = {
+					title:$("#titleTxt",parent).val(),
+					content:$("#contentTxt",parent).val(),
+					store:$("#container").attr("store"),
+					aboutUs:$(this).attr("edit")
+				};
+			$(this).removeAttr("edit");
 		}
+		else{
+			target = serviceUri+"website/addAboutUs";
+			data = {
+					title:$("#titleTxt",parent).val(),
+					content:$("#contentTxt",parent).val(),
+					store:$("#container").attr("store")
+				};
+		}
+		$.ajax({
+			type: 'POST',
+			url:target,
+			data:data,
+			success:function(data){
+			}
+		});
 	})
 });

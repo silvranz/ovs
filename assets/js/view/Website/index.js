@@ -9,7 +9,7 @@ $(document).ready(function() {
 		callback:function(data){
 			var ajaxObj = this;
 			for(var i=0;i<data.length;i++){
-				var newWebsite = $("#templateItem").clone().removeAttr("id").removeClass("hide").data("templateId",data[i].TemplateID);
+				var newWebsite = $("#templateItem").clone().removeAttr("id").removeClass("hide").data("storeId",data[i].StoreID);
 				$(".website-title",newWebsite).text(data[i].StoreName);
 				$(".created-date",newWebsite).text(data[i].CreatedDate);
 				$(".domain-name",newWebsite).text(data[i].StoreDomain).attr("href","http://localhost/"+data[i].StoreDomain);
@@ -20,7 +20,7 @@ $(document).ready(function() {
 				});
 				$(".editButton",newWebsite).click(function(e){
 					e.preventDefault();
-					var storeId = $(this).closest(".itemPanel").data("templateId");
+					var storeId = $(this).closest(".itemPanel").data("storeId");
 					location.href=serviceUri+"website/edit/"+storeId;
 				});
 				$("#websiteContainer").append(newWebsite);

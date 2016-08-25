@@ -104,7 +104,7 @@
 	}
 </style>
 
-<div class="container">
+<div class="container" id="container" store="<?=$request["storeId"]?>">
 	<div class="row">
 		<div class="col-sm-12">
 			<h2>Thelana</h2>
@@ -134,7 +134,7 @@
 						  	<div class="form-group">
 						    	<label class="col-sm-2 control-label taleft">Website Name</label>
 						    	<span class="col-sm-1 control-label taleft">:</span>
-						      	<span class="col-sm-9 control-label taleft">Thelana Shop ( <a href="#"><b>www.thelanashop.com</b></a> )</span>
+						      	<span class="col-sm-9 control-label taleft"><?=$request['generalSetting']['name']?> ( <a href="#"><b>www.thelanashop.com</b></a> )</span>
 						  	</div>
 						  	<div class="form-group">
 						    	<label class="col-sm-2 control-label taleft">Logo</label>
@@ -194,40 +194,24 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<?php 
+									$countProduct = count($request["Product"]);
+									for($i=0;$i<$countProduct;$i++){
+								?>
+								<tr dataTag="<?=$request["Product"][$i]->prod_id?>">
 									<td>
 										<img src="<?php echo $domain; ?>/assets/images/placeholder/image.png" style="width: 120px;" />
 									</td>
-									<td>Jual Tas Zara manggo lengkap no defect</td>
-									<td>
-										Jual Tas Zara manggo lengkap no defect
-									</td>
-									<td>
-										Category 1
-									</td>
+									<td><?=$request["Product"][$i]->prod_name?></td>
+									<td><?=$request["Product"][$i]->prod_desc?></td>
+									<td><?=$request["Product"][$i]->prod_cat_name?></td>
 									<td>
 										<a href="#" class="fbold">Edit</a>
 										<span>|</span>
 										<a href="#" class="fbold">Delete</a>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<img src="<?php echo $domain; ?>/assets/images/placeholder/image.png" style="width: 120px;" />
-									</td>
-									<td>Jual tas c&k yang mau beli no refund</td>
-									<td>
-										BBB
-									</td>
-									<td>
-										Category 2
-									</td>
-									<td>
-										<a href="#" class="fbold">Edit</a>
-										<span>|</span>
-										<a href="#" class="fbold">Delete</a>
-									</td>
-								</tr>
+								<?php }?>
 							</tbody>
 						</table>
 					</div>
@@ -236,7 +220,7 @@
 					<div>
 						<h3 class="no-mg pull-left">About Us</h3>
 						<h4 class="no-mg pull-right">
-							<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+							<button type="submit" id="triggerPopup" class="btn btn-success" data-toggle="modal" data-target="#myModal">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add New
 							</button>
@@ -245,88 +229,50 @@
 					<div class="clearfix tab-heading"></div>
 
 					<div class="wrapper-aboutus-setting mb20">
-						<div class="aboutus-item mt20 pb20">
-							<h4><b>History</b></h4>
-							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-							</p>
-							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-							</p>
-
+						<?php 
+							$countAbout = count($request["aboutUs"]);
+							for($i=0;$i<$countAbout;$i++){
+						?>
+						<div class="aboutus-item mt20 pb20" dataTag="<?=$request["aboutUs"][$i]->aboutus_id?>">
+							<h4><b><?=$request["aboutUs"][$i]->aboutus_title?></b></h4>
+							<p><?=$request["aboutUs"][$i]->aboutus_desc?></p>
 							<div class="wrapper-action">
-								<a href="#" class="fbold">Edit</a>
+								<a href="#" class="fbold editButton">Edit</a>
 								<span>|</span>
-								<a href="#" class="fbold">Delete</a>
+								<a href="#" class="fbold delButton">Delete</a>
 							</div>
 						</div>
-
-						<div class="aboutus-item mt20 pb20">
-							<h4><b>Vision & Mission</b></h4>
-							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-							</p>
-							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-							</p>
-
-							<div class="wrapper-action">
-								<a href="#" class="fbold">Edit</a>
-								<span>|</span>
-								<a href="#" class="fbold">Delete</a>
-							</div>
-						</div>
+						<?php }?>
 					</div>
 				</div>
 				<div class="tab-pane" id="contactus">
 					<h3 class="no-mg tab-heading">Contact Us</h3>
 					<div class="wrapper-contactus-setting mt20 pb20">
-						<div class="contactus-item">
+						<?php 
+							$countContact = count($request["ContactUs"]);
+						for($i=0;$i<$countContact;$i++){?>
+						<div class="contactus-item" dataTag="<?=$request["ContactUs"][$i]->contactus_id?>">
 							<form class="form-horizontal" role="form">
 							  	<div class="form-group">
 							    	<label class="col-sm-1 control-label taleft">Name</label>
 							    	<span class="col-sm-1 control-label taleft">:</span>
-							      	<span class="col-sm-10 control-label taleft">Angela</span>
+							      	<span class="col-sm-10 control-label taleft"><?=$request["ContactUs"][$i]->contactus_name?></span>
 							  	</div>
 							  	<div class="form-group">
 							    	<label class="col-sm-1 control-label taleft">Email</label>
 							    	<span class="col-sm-1 control-label taleft">:</span>
-							      	<span class="col-sm-10 control-label taleft">amuliawan93@gmail.com</span>
+							      	<span class="col-sm-10 control-label taleft"><?=$request["ContactUs"][$i]->contactus_email?></span>
 							  	</div>
 							  	<div class="form-group">
 							    	<label class="col-sm-1 control-label taleft">Message</label>
 							    	<span class="col-sm-1 control-label taleft">:</span>
 							      	<span class="col-sm-10 control-label taleft">
-							      		<p>
-							      			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-							      		</p>
+							      		<p><?=$request["ContactUs"][$i]->contactus_message?></p>
 							      	</span>
 							  	</div>
 							</form>
 						</div>
-						<div class="contactus-item">
-							<form class="form-horizontal" role="form">
-							  	<div class="form-group">
-							    	<label class="col-sm-1 control-label taleft">Name</label>
-							    	<span class="col-sm-1 control-label taleft">:</span>
-							      	<span class="col-sm-10 control-label taleft">Angela</span>
-							  	</div>
-							  	<div class="form-group">
-							    	<label class="col-sm-1 control-label taleft">Email</label>
-							    	<span class="col-sm-1 control-label taleft">:</span>
-							      	<span class="col-sm-10 control-label taleft">amuliawan93@gmail.com</span>
-							  	</div>
-							  	<div class="form-group">
-							    	<label class="col-sm-1 control-label taleft">Message</label>
-							    	<span class="col-sm-1 control-label taleft">:</span>
-							      	<span class="col-sm-10 control-label taleft">
-							      		<p>
-							      			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-							      		</p>
-							      	</span>
-							  	</div>
-							</form>
-						</div>
+						<?php }?>
 					</div>
 				</div>
           	</div>
@@ -346,20 +292,20 @@
 				  	<div class="form-group">
 				    	<label class="col-sm-2 control-label taleft">Title</label>
 				      	<span class="col-sm-10">
-				      		<input type="text" class="form-control" />
+				      		<input type="text" class="form-control" id="titleTxt"/>
 				      	</span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-2 control-label taleft">Content</label>
 				      	<span class="col-sm-10">
-				      		<textarea class="form-control" rows="5"></textarea>
+				      		<textarea class="form-control" rows="5" id="contentTxt"></textarea>
 				      	</span>
 				  	</div>
 				</form>
 	      	</div>
 	      	<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        	<button type="button" class="btn btn-success">Save</button>
+	        	<button type="button" class="btn btn-success" id="customAboutUs">Save</button>
 	      	</div>
     	</div>
   	</div>
