@@ -15,9 +15,9 @@
 							<div class="panel-heading text-center website-title">Template Title or Name</div>
 							<div class="panel-body">
 								<img class="screen-shot" style="width:100%"/>
-								<h4 class="col-sm-4">Created Date:</h4>
+								<div class="col-sm-4">Created Date:</div>
 								<div class="created-date col-sm-8 text-right"></div>
-								<h4 class="col-sm-4">Domain Name:</h4>
+								<div class="col-sm-4">Domain Name:</div>
 								<a class="domain-name col-sm-8 text-right" target="_blank"></a>
 							</div>
 							<div class="panel-footer">
