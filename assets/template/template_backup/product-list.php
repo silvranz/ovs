@@ -1,13 +1,4 @@
-<?php 
-include("config/global.php") ;
-$sql = "SELECT aboutus_title, aboutus_desc FROM aboutus ORDER BY UNIX_TIMESTAMP(aboutus_date) DESC";
-$result = $conn->query($sql);
-$aboutUs = [];
-if ($result->num_rows > 0) {
-	array_push($aboutUs,$result->fetch_assoc());
-}
-$countAbout = count($aboutUs);
-?>
+<?php include("config/global.php") ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -20,7 +11,7 @@ $countAbout = count($aboutUs);
 	<body ><!--pinknya: #ffb6c1, greynya #999999-->
 		<div class="container">
 			<div class="row">
-				<img class="col-sm-2 col-sm-offset-5" src="images/<?=$logo?>"></img>
+				<img class="col-sm-2 col-sm-offset-5" src="images/a.jpg"></img>
 				<h3 class="col-sm-6 col-sm-offset-3 text-center">Header</h3>
 			</div>
 		</div>
@@ -36,23 +27,27 @@ $countAbout = count($aboutUs);
 		</nav>
 		<div class="container">
 			<div class="row">
-				<h3>About Us</h3>
+				<h3>Our Products</h3>
 				<div class="col-sm-2">
 					<ul class="nav nav-pills nav-stacked sideMenu">
-						<?php for($i=0;$i<$countAbout;$i++){?>
-						<li <?=$i==0?'class="active"':""?>>
-							<a data-toggle="pill" href="#<?=strtolower(str_replace(" ","",$aboutUs[$i]["aboutus_title"]))?>"><?=$aboutUs[$i]["aboutus_title"]?></a>
-						</li>
-						<?php }?>
+						<li class="active"><a data-toggle="pill" href="#whole">Whole Cake</a></li>
+						<li><a data-toggle="pill" href="#slice">Slice</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-10 tab-content contentContainer">
-					<?php for($i=0;$i<$countAbout;$i++){?>
-					<div id="<?=strtolower(str_replace(" ","",$aboutUs[$i]["aboutus_title"]))?>" class="tab-pane fade<?=$i==0?" in active":""?>">
-						<h3><?=$aboutUs[$i]["aboutus_title"]?></h3>
-						<p><?=$aboutUs[$i]["aboutus_desc"]?></p>
+					<div id="whole" class="tab-pane fade in active">
+						<h3>Whole Cake</h3>
+						<div class="list-product">
+							<a class="col-sm-3" href="<?=$base_url?>product-detail.php?item=1">
+								<h5 class="col-sm-12 text-center">Item 1</h5>
+								<img class="col-sm-12" src="images/a.jpg" />
+							</a>
+						</div>
 					</div>
-					<?php }?>
+					<div id="slice" class="tab-pane fade">
+						<h3>Slice</h3>
+						<p>Some content in menu 1.</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -61,4 +56,3 @@ $countAbout = count($aboutUs);
 		</footer>
 	</body>
 </html>
-<?php include("config/end.php") ?>

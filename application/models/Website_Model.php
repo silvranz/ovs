@@ -8,6 +8,15 @@ class Website_Model extends CI_Model {
 		$this->dn = $dbObj->result()[0]->StoreDomain;
 		$dbObj->next_result();
 	}
+	public function GetNewestProducts(){  
+		$dn = 'thelana'; //domain name 
+		$this->db->query('use '.$dn); 
+		$query = $this->db->query("SELECT prod_id, prod_name,  
+					prod_desc, prod_image 
+					FROM prod p 
+					ORDER BY UNIX_TIMESTAMP(prod_date) DESC LIMIT 2"); 
+		echo json_encode($query->result()); 
+	}
 	public function setDomainName($newDn){
 		$this->dn = $newDn;
 	}

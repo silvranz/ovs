@@ -1,0 +1,30 @@
+body{
+	background-color:#ffb6c1;
+}
+.navbar{
+	background-color: #999999;
+	border-color: #999999;
+}
+.navbar a{
+	color:white;
+}
+.sideMenu a{
+	color:black;
+}
+img.banner{
+	padding:0;
+}
+.header{
+	padding:10px;
+	background-color: #999999;
+	color:white;
+}
+.contentContainer{
+	border-left:5px solid black;
+}
+footer{
+	margin-top:25px;
+	padding:10px;
+	background-color: #999999;
+	color:white;
+}
