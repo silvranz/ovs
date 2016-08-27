@@ -34,6 +34,7 @@
 
 		public function UpdateAboutUs(){	
 			$dn = 'thelana'; //domain name
+			$aboutus_id = 1;
 			$aboutus_title = 'Hai';
 			$aboutus_desc = 'longlongtext';
 			$userid = $this->session->userdata("userid");
@@ -41,7 +42,7 @@
 			$query = $this->db->query("UPDATE aboutus SET aboutus_title= '".$aboutus_title."', 
 								aboutus_desc='".$aboutus_desc."',
 								aboutus_date_edit = CURRENT_TIMESTAMP(),
-								aboutus_user_edit=".$userid);
+								aboutus_user_edit=".$userid." WHERE aboutus_id=".$aboutus_id);
 		} 
 
 		public function DeleteAboutUs(){	
@@ -62,6 +63,13 @@
 			echo json_encode($query->result());
 		} 
 
+		public function GetProductCategory(){	
+			$dn = 'thelana'; //domain name
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("SELECT DISTINCT prod_cat_id, prod_cat_name from prod_cat order by prod_cat_id");
+			echo json_encode($query->result());
+		} 
+
 		public function GetProducts(){	
 			$dn = 'thelana'; //domain name
 			$this->db->query('use '.$dn);
@@ -72,6 +80,45 @@
 						ORDER BY UNIX_TIMESTAMP(prod_date) DESC");
 			echo json_encode($query->result());
 		} 
+
+		public function InsertProducts(){	
+			$dn = 'thelana'; //domain name
+			$param_prod_cat_id = 1; //kalo insert baru lempar null
+			$param_prod_cat_name='cat2';
+			$user_id=$this->session->userdata("userid");
+			$param_prod_name='prod2';
+			$param_prod_desc='prod_desc2';
+			$param_prod_image='prod_image2';
+
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("IF ".$param_prod_cat_id." IS NOT NULL
+				THEN
+					SET @prod_cat_id_inserted = ".$param_prod_cat_id.";
+					
+				ELSE
+					IF EXISTS(SELECT prod_cat_name FROM prod_cat WHERE prod_cat_name='".$param_prod_cat_name."')
+					THEN 
+						SET @prod_cat_id_inserted = (SELECT prod_cat_id FROM prod_cat WHERE prod_cat_name='".$param_prod_cat_name."');
+					ELSE
+						INSERT INTO prod_cat(prod_cat_name, prod_cat_date, prod_cat_user_input)
+						VALUES ('".$param_prod_cat_name."', CURRENT_TIMESTAMP(), ".$user_id.");
+						SET @prod_cat_id_inserted = LAST_INSERT_ID();
+					END IF;
+				END IF;
+				INSERT INTO prod
+				(prod_name, prod_desc, prod_image, prod_cat_id, prod_date, prod_user_input)
+				VALUES
+				('".$param_prod_name."', '".$param_prod_desc."', '".$param_prod_image."', @prod_cat_id_inserted, CURRENT_TIMESTAMP(), ".$user_id.");");
+			echo json_encode($query->result());
+		} 
+
+		public function UpdateProducts(){	
+			$dn = 'thelana'; //domain name
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("");
+			echo json_encode($query->result());
+		} 
+
 
 		public function DeleteProducts(){	
 			$dn = 'thelana'; //domain name
