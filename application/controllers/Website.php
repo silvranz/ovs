@@ -21,6 +21,13 @@ class Website extends ABN_Controller {
 		));
 		$this->render();
 	}
+	public function my_website(){
+		$this->load->vars(array(
+			'site_title' => 'Edit website',
+			"additional_js"=>["view/Website/edit"]
+		));
+		$this->render();
+	}
 
 	public function edit($storeId){
 		$this->load->vars(array(
@@ -33,12 +40,14 @@ class Website extends ABN_Controller {
 		$generalSetting = $this->website->getGeneralInfo();
 		$listAboutUs = $this->website->GetAboutUs();
 		$listProduct = $this->website->GetProducts();
+		$listProductCat = $this->website->GetProductCategory();
 		$listContactUs = $this->website->GetContactUs();
 		$this->render(array(
 			"listMenu"=>$listMenu,
 			"generalSetting"=>$generalSetting,
 			"aboutUs"=>$listAboutUs,
 			"Product"=>$listProduct,
+			"ProductCat"=>$listProductCat,
 			"ContactUs"=>$listContactUs,
 			"storeId"=>$storeId
 		));
@@ -66,6 +75,21 @@ class Website extends ABN_Controller {
 		$post = $this->input->post();
 		$this->website->setDomainNameStore($post["store"]);
 		$this->website->DeleteAboutUs($post["aboutUs"]);
+	}
+	public function addProduct(){
+		$post = $this->input->post();
+		$this->website->setDomainNameStore($post["store"]);
+		$this->website->InsertProducts($post["category"],$post["categoryName"],$post["name"],$post["desc"],$post["image"]);
+	}
+	public function editProduct(){
+		$post = $this->input->post();
+		$this->website->setDomainNameStore($post["store"]);
+		$this->website->UpdateProducts();
+	}
+	public function delProduct(){
+		$post = $this->input->post();
+		$this->website->setDomainNameStore($post["store"]);
+		$this->website->DeleteProducts($post["product"]);
 	}
 	/*** end service ***/
 }

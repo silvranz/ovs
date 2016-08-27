@@ -174,7 +174,7 @@
 					<div>
 						<h3 class="no-mg pull-left">Product</h3>
 						<h4 class="no-mg pull-right">
-							<button type="submit" class="btn btn-success">
+							<button id="newProduct" type="submit" class="btn btn-success" data-toggle="modal" data-target="#addProductModal">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add New Product
 							</button>
@@ -206,9 +206,9 @@
 									<td><?=$request["Product"][$i]->prod_desc?></td>
 									<td><?=$request["Product"][$i]->prod_cat_name?></td>
 									<td>
-										<a href="#" class="fbold">Edit</a>
+										<a href="#" class="fbold editProduct">Edit</a>
 										<span>|</span>
-										<a href="#" class="fbold">Delete</a>
+										<a href="#" class="fbold delProduct">Delete</a>
 									</td>
 								</tr>
 								<?php }?>
@@ -220,7 +220,7 @@
 					<div>
 						<h3 class="no-mg pull-left">About Us</h3>
 						<h4 class="no-mg pull-right">
-							<button type="submit" id="triggerPopup" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+							<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#aboutUsModal">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add New
 							</button>
@@ -237,9 +237,9 @@
 							<h4><b><?=$request["aboutUs"][$i]->aboutus_title?></b></h4>
 							<p><?=$request["aboutUs"][$i]->aboutus_desc?></p>
 							<div class="wrapper-action">
-								<a href="#" class="fbold editButton">Edit</a>
+								<a href="#" class="fbold editAbout">Edit</a>
 								<span>|</span>
-								<a href="#" class="fbold delButton">Delete</a>
+								<a href="#" class="fbold delAbout">Delete</a>
 							</div>
 						</div>
 						<?php }?>
@@ -280,12 +280,12 @@
 	</div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="aboutUsModal" tabindex="-1" role="dialog" aria-labelledby="aboutUsModalLabel" aria-hidden="true">
   	<div class="modal-dialog">
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h4 class="modal-title" id="myModalLabel">Add / Edit About Us</h4>
+        		<h4 class="modal-title" id="aboutUsModalLabel">Add / Edit About Us</h4>
       		</div>
 	      	<div class="modal-body">
 	       		 <form class="form-horizontal" role="form">
@@ -306,6 +306,68 @@
 	      	<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        	<button type="button" class="btn btn-success" id="customAboutUs">Save</button>
+	      	</div>
+    	</div>
+  	</div>
+</div>
+
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+  	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        		<h4 class="modal-title" id="addProductModalLabel">Add / Edit Product</h4>
+      		</div>
+	      	<div class="modal-body">
+	       		 <form class="form-horizontal" role="form">
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Product Name</label>
+				      	<span class="col-sm-9">
+				      		<input type="text" class="form-control" id="name" />
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Product Desc</label>
+				      	<span class="col-sm-9">
+				      		<input type="text" class="form-control" id="desc" />
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Image</label>
+				      	<span class="col-sm-9">
+				      		<button type="submit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-plus"></span>
+								Upload Image
+							</button>
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Price</label>
+				      	<span class="col-sm-9">
+				      		<input type="text" id="price" class="form-control" placeholder="Rp. 300.000" />
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Category</label>
+				      	<span class="col-sm-9">
+				      		<select id="cat" class="form-control" toggle-visible-on-option="3" target-selector="#newCategory">
+								<?php 
+									$countProductCat = count($request["ProductCat"]);
+									for($i=0;$i<$countProductCat;$i++){
+								?>
+								<option value="<?=$request["ProductCat"][$i]->prod_cat_id?>">
+									<?=$request["ProductCat"][$i]->prod_cat_name?>
+								</option>
+								<?php }?>
+				      		</select>
+				      		<input id="newCategory" type="text" class="form-control mt10 hide" placeholder="Type new category here &hellip;" />
+				      	</span>
+				  	</div>
+				</form>
+	      	</div>
+	      	<div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        	<button type="button" class="btn btn-success" id="customProduct">Save</button>
 	      	</div>
     	</div>
   	</div>

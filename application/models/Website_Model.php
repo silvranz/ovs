@@ -9,8 +9,8 @@ class Website_Model extends CI_Model {
 		$dbObj->next_result();
 	}
 	public function GetNewestProducts(){  
-		$dn = 'thelana'; //domain name 
-		$this->db->query('use '.$dn); 
+		$this->dn = 'thelana'; //domain name 
+		$this->db->query('use '.$this->dn); 
 		$query = $this->db->query("SELECT prod_id, prod_name,  
 					prod_desc, prod_image 
 					FROM prod p 
@@ -93,9 +93,47 @@ class Website_Model extends CI_Model {
 					ORDER BY UNIX_TIMESTAMP(prod_date) DESC");
 		return $query->result();
 	} 
+	public function GetProductCategory(){
+		$this->db->query('use '.$this->dn);
+		$query = $this->db->query("SELECT DISTINCT prod_cat_id, prod_cat_name from prod_cat order by prod_cat_id");
+		return $query->result();
+	}
+	public function InsertProducts($param_prod_cat_id,$param_prod_cat_name,$param_prod_name,$param_prod_desc,$param_prod_image){
+		/*$param_prod_cat_id = 1; //kalo insert baru lempar null
+		$param_prod_cat_name='cat2';
+		$user_id=$this->session->userdata("userid");
+		$param_prod_name='prod2';
+		$param_prod_desc='prod_desc2';
+		$param_prod_image='prod_image2';*/
 
-	public function DeleteProducts(){
-		$prod_id = 1;
+		$this->db->query('use '.$this->dn);
+		$query = $this->db->query("IF ".$param_prod_cat_id." IS NOT NULL
+			THEN
+				SET @prod_cat_id_inserted = ".$param_prod_cat_id.";
+				
+			ELSE
+				IF EXISTS(SELECT prod_cat_name FROM prod_cat WHERE prod_cat_name='".$param_prod_cat_name."')
+				THEN 
+					SET @prod_cat_id_inserted = (SELECT prod_cat_id FROM prod_cat WHERE prod_cat_name='".$param_prod_cat_name."');
+				ELSE
+					INSERT INTO prod_cat(prod_cat_name, prod_cat_date, prod_cat_user_input)
+					VALUES ('".$param_prod_cat_name."', CURRENT_TIMESTAMP(), ".$user_id.");
+					SET @prod_cat_id_inserted = LAST_INSERT_ID();
+				END IF;
+			END IF;
+			INSERT INTO prod
+			(prod_name, prod_desc, prod_image, prod_cat_id, prod_date, prod_user_input)
+			VALUES
+			('".$param_prod_name."', '".$param_prod_desc."', '".$param_prod_image."', @prod_cat_id_inserted, CURRENT_TIMESTAMP(), ".$user_id.");");
+		return $query->result();
+	}
+	public function UpdateProducts(){
+		$this->db->query('use '.$this->dn);
+		$query = $this->db->query("");
+		return $query->result();
+	}
+
+	public function DeleteProducts($prod_id){
 		$this->db->query('use '.$this->dn);
 		$query = $this->db->query("DELETE FROM prod WHERE prod_id =".$prod_id);
 	} 
