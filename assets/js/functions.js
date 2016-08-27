@@ -33,6 +33,18 @@ $(document).ready(function() {
 });
 
 $.customFunction = function() {
+    $('body').on('click', '*[toggle-visible-on-option]', function(e) {
+        e.preventDefault();
+        var self = $(this);
+        var _selector = self.attr('target-selector');
+        var _option = self.attr('toggle-visible-on-option');
+
+        if( self.val() == _option ) {
+            $(_selector).removeClass('hide');
+        } else {
+            $(_selector).addClass('hide');
+        }
+    });
     $('body').on('click', '*[slide-toggle-on-click]', function(e) {
         e.preventDefault();
         var self = $(this);

@@ -1,86 +1,87 @@
 <style>
 	.tabs-left, .tabs-right {
-	  border-bottom: none;
-	  padding-top: 2px;
+	  	border-bottom: none;
+	  	padding-top: 2px;
 	}
 	.tabs-left {
-	  border-right: 1px solid #ddd;
+	  	border-right: 1px solid #ddd;
 	}
 	.tabs-right {
-	  border-left: 1px solid #ddd;
+	  	border-left: 1px solid #ddd;
 	}
 	.tabs-left>li, .tabs-right>li {
-	  float: none;
-	  margin-bottom: 2px;
+	  	float: none;
+	  	margin-bottom: 2px;
 	}
 	.tabs-left>li {
-	  margin-right: -1px;
+	  	margin-right: -1px;
 	}
 	.tabs-right>li {
-	  margin-left: -1px;
+	  	margin-left: -1px;
 	}
 	.tabs-left>li.active>a,
 	.tabs-left>li.active>a:hover,
 	.tabs-left>li.active>a:focus {
-	  border-bottom-color: #ddd;
-	  border-right-color: transparent;
+	  	border-bottom-color: #ddd;
+	  	border-right-color: transparent;
 	}
 
 	.tabs-right>li.active>a,
 	.tabs-right>li.active>a:hover,
 	.tabs-right>li.active>a:focus {
-	  border-bottom: 1px solid #ddd;
-	  border-left-color: transparent;
+	  	border-bottom: 1px solid #ddd;
+	  	border-left-color: transparent;
 	}
 	.tabs-left>li>a {
-	  border-radius: 4px 0 0 4px;
-	  margin-right: 0;
-	  display:block;
+	  	border-radius: 4px 0 0 4px;
+	  	margin-right: 0;
+	  	display:block;
 	}
 	.tabs-right>li>a {
-	  border-radius: 0 4px 4px 0;
-	  margin-right: 0;
+	  	border-radius: 0 4px 4px 0;
+	  	margin-right: 0;
 	}.tabs-left, .tabs-right {
-	  border-bottom: none;
-	  padding-top: 2px;
+	  	border-bottom: none;
+	  	padding-top: 2px;
 	}
 	.tabs-left {
-	  border-right: 1px solid #ddd;
+	  	border-right: 1px solid #ddd;
 	}
 	.tabs-right {
-	  border-left: 1px solid #ddd;
+	  	border-left: 1px solid #ddd;
 	}
 	.tabs-left>li, .tabs-right>li {
-	  float: none;
-	  margin-bottom: 2px;
+	  	float: none;
+	  	margin-bottom: 2px;
 	}
 	.tabs-left>li {
-	  margin-right: -1px;
+	  	margin-right: -1px;
 	}
 	.tabs-right>li {
-	  margin-left: -1px;
+	  	margin-left: -1px;
 	}
 	.tabs-left>li.active>a,
 	.tabs-left>li.active>a:hover,
 	.tabs-left>li.active>a:focus {
-	  border-bottom-color: #ddd;
-	  border-right-color: transparent;
+	  	border-bottom-color: #ddd;
+	  	border-right-color: transparent;
 	}
 
 	.tabs-right>li.active>a,
 	.tabs-right>li.active>a:hover,
 	.tabs-right>li.active>a:focus {
-	  border-bottom: 1px solid #ddd;
-	  border-left-color: transparent;
+	  	border-bottom: 1px solid #ddd;
+	  	border-left-color: transparent;
 	}
 	.tabs-left>li>a {
-	  border-radius: 4px 0 0 4px;
-	  margin-right: 0;
-	  display:block;
+	  	border-radius: 4px 0 0 4px;
+	  	margin-right: 0;
+	  	display:block;
+	  	font-weight: bold;
 	}
 	.tabs-right>li>a {
-	  border-radius: 0 4px 4px 0;
-	  margin-right: 0;
+	  	border-radius: 0 4px 4px 0;
+	  	margin-right: 0;
 	}
 
 	.wrapper-product-setting table thead tr th:last-child {
@@ -169,7 +170,7 @@
 					<div>
 						<h3 class="no-mg pull-left">Product</h3>
 						<h4 class="no-mg pull-right">
-							<button type="submit" class="btn btn-success">
+							<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#addProductModal">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add New Product
 							</button>
@@ -231,7 +232,7 @@
 					<div>
 						<h3 class="no-mg pull-left">About Us</h3>
 						<h4 class="no-mg pull-right">
-							<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+							<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#aboutUsModal">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add New
 							</button>
@@ -329,12 +330,12 @@
 	</div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="aboutUsModal" tabindex="-1" role="dialog" aria-labelledby="aboutUsModalLabel" aria-hidden="true">
   	<div class="modal-dialog">
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h4 class="modal-title" id="myModalLabel">Add / Edit About Us</h4>
+        		<h4 class="modal-title" id="aboutUsModalLabel">Add / Edit About Us</h4>
       		</div>
 	      	<div class="modal-body">
 	       		 <form class="form-horizontal" role="form">
@@ -348,6 +349,63 @@
 				    	<label class="col-sm-2 control-label taleft">Content</label>
 				      	<span class="col-sm-10">
 				      		<textarea class="form-control" rows="5"></textarea>
+				      	</span>
+				  	</div>
+				</form>
+	      	</div>
+	      	<div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        	<button type="button" class="btn btn-success">Save</button>
+	      	</div>
+    	</div>
+  	</div>
+</div>
+
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+  	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        		<h4 class="modal-title" id="addProductModalLabel">Add / Edit Product</h4>
+      		</div>
+	      	<div class="modal-body">
+	       		 <form class="form-horizontal" role="form">
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Product Name</label>
+				      	<span class="col-sm-9">
+				      		<input type="text" class="form-control" />
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Product Desc</label>
+				      	<span class="col-sm-9">
+				      		<input type="text" class="form-control" />
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Image</label>
+				      	<span class="col-sm-9">
+				      		<button type="submit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-plus"></span>
+								Upload Image
+							</button>
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Price</label>
+				      	<span class="col-sm-9">
+				      		<input type="text" class="form-control" placeholder="Rp. 300.000" />
+				      	</span>
+				  	</div>
+				  	<div class="form-group">
+				    	<label class="col-sm-3 control-label taleft">Category</label>
+				      	<span class="col-sm-9">
+				      		<select class="form-control" toggle-visible-on-option="3" target-selector="#newCategory">
+				      			<option value="1">Category 1</option>
+				      			<option value="2">Category 2</option>
+				      			<option value="3">- New Category</option>
+				      		</select>
+				      		<input id="newCategory" type="text" class="form-control mt10 hide" placeholder="Type new category here &hellip;" />
 				      	</span>
 				  	</div>
 				</form>
