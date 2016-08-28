@@ -70,6 +70,16 @@
 			echo json_encode($query->result());
 		} 
 
+		public function GetNewestProducts(){	
+			$dn = 'thelana'; //domain name
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("SELECT prod_id, prod_name, 
+						prod_desc, prod_image
+						FROM prod p
+						ORDER BY UNIX_TIMESTAMP(prod_date) DESC LIMIT 2");
+			echo json_encode($query->result());
+		} 
+
 		public function GetProducts(){	
 			$dn = 'thelana'; //domain name
 			$this->db->query('use '.$dn);
