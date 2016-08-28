@@ -1,13 +1,4 @@
-<?php 
-include("config/global.php") ;
-$sql = "SELECT aboutus_title, aboutus_desc FROM aboutus ORDER BY UNIX_TIMESTAMP(aboutus_date) DESC";
-$result = $conn->query($sql);
-$aboutUs = [];
-if ($result->num_rows > 0) {
-	array_push($aboutUs,$result->fetch_assoc());
-}
-$countAbout = count($aboutUs);
-?>
+<?php include("config/global.php") ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -20,7 +11,7 @@ $countAbout = count($aboutUs);
 	<body ><!--pinknya: #ffb6c1, greynya #999999-->
 		<div class="container">
 			<div class="row">
-				<img class="col-sm-2 col-sm-offset-5" src="images/<?=$logo?>"></img>
+				<img class="col-sm-2 col-sm-offset-5" src="images/a.jpg"></img>
 				<h3 class="col-sm-6 col-sm-offset-3 text-center">Header</h3>
 			</div>
 		</div>
@@ -36,23 +27,23 @@ $countAbout = count($aboutUs);
 		</nav>
 		<div class="container">
 			<div class="row">
-				<h3>About Us</h3>
-				<div class="col-sm-2">
-					<ul class="nav nav-pills nav-stacked sideMenu">
-						<?php for($i=0;$i<$countAbout;$i++){?>
-						<li <?=$i==0?'class="active"':""?>>
-							<a data-toggle="pill" href="#<?=strtolower(str_replace(" ","",$aboutUs[$i]["aboutus_title"]))?>"><?=$aboutUs[$i]["aboutus_title"]?></a>
-						</li>
-						<?php }?>
-					</ul>
-				</div>
-				<div class="col-sm-10 tab-content contentContainer">
-					<?php for($i=0;$i<$countAbout;$i++){?>
-					<div id="<?=strtolower(str_replace(" ","",$aboutUs[$i]["aboutus_title"]))?>" class="tab-pane fade<?=$i==0?" in active":""?>">
-						<h3><?=$aboutUs[$i]["aboutus_title"]?></h3>
-						<p><?=$aboutUs[$i]["aboutus_desc"]?></p>
+				<h3>Contact Us</h3>
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="form-group">
+						<label>Your name</label>
+						<input class="form-control" type="text" placeholder="Input your name here" />
 					</div>
-					<?php }?>
+					<div class="form-group">
+						<label>Your email</label>
+						<input class="form-control" type="text" placeholder="Input your email here" />
+					</div>
+					<div class="form-group">
+						<label>Your message</label>
+						<textarea class="form-control" rows="5" placeholder="Input your message here" /></textarea>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="submit" value="Submit" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -61,4 +52,3 @@ $countAbout = count($aboutUs);
 		</footer>
 	</body>
 </html>
-<?php include("config/end.php") ?>

@@ -1,4 +1,18 @@
-<?php include("config/global.php") ?>
+<?php
+	include("config/global.php");
+	$sql = "SELECT genset_content FROM genset WHERE genset_type='home_banner'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		$banner = $result->fetch_assoc()["genset_content"];
+	}
+	$sql = "SELECT prod_name,prod_desc, prod_image FROM prod p ORDER BY UNIX_TIMESTAMP(prod_date) DESC LIMIT 2";
+	$result = $conn->query($sql);
+	$newestProduct = [];
+	if ($result->num_rows > 0) {
+		array_push($newestProduct,$result->fetch_assoc());
+	}
+	$countNewest = count($newestProduct);
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -11,7 +25,7 @@
 	<body ><!--pinknya: #ffb6c1, greynya #999999-->
 		<div class="container">
 			<div class="row">
-				<img class="col-sm-2 col-sm-offset-5" src="images/a.jpg"></img>
+				<img class="col-sm-2 col-sm-offset-5" src="images/<?=$logo?>"></img>
 				<h3 class="col-sm-6 col-sm-offset-3 text-center">Header</h3>
 			</div>
 		</div>
@@ -27,22 +41,17 @@
 		</nav>
 		<div class="container">
 			<div class="row">
-				<img class="col-sm-12 banner" src="images/b.jpg">
+				<img class="col-sm-12 banner" src="images/<?=$banner?>">
 				<h3 class="col-sm-12 header">Our Newest Product</h3>
+				<?php for($i=0;$i<$countNewest;$i++){?>
 				<div class="newestProduct col-sm-6">
-					<img class="col-sm-4" src="images/a.jpg">
+					<img class="col-sm-4" src="images/<?=$newestProduct[$i]["prod_image"]?>">
 					<div class="col-sm-8">
-						<h4>Product Title 1</h4>
-						<p>A product description.A product description.A product description.A product description.</p>
+						<h4><?=$newestProduct[$i]["prod_name"]?></h4>
+						<p><?=$newestProduct[$i]["prod_desc"]?></p>
 					</div>
 				</div>
-				<div class="newestProduct col-sm-6">
-					<img class="col-sm-4" src="images/a.jpg">
-					<div class="col-sm-8">
-						<h4>Product Title 1</h4>
-						<p>A product description.A product description.A product description.A product description.</p>
-					</div>
-				</div>
+				<?php }?>
 			</div>
 		</div>
 		<footer class="bs-docs-footer"> 
@@ -50,3 +59,4 @@
 		</footer>
 	</body>
 </html>
+<?php include("config/end.php") ?>

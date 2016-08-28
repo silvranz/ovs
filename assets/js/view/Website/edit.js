@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	$(".editButton").click(function(){
+	$(".editAbout").click(function(){
 		$("#triggerPopup").click();
 		$("#customAboutUs").attr("edit",$(this).closest(".aboutus-item").attr("dataTag"));
 	})
-	$(".delButton").click(function(){
+	$(".delAbout").click(function(){
 		$.ajax({
 			type: 'POST',
 			url:serviceUri+"website/delAboutUs",
@@ -15,7 +15,55 @@ $(document).ready(function() {
 			}
 		});
 	})
-	$("#customAboutUs").click(function(){
+	$(".editProduct").click(function(){
+		$("#newProduct").click();
+		$("#customProduct").attr("edit",$(this).closest("tr").attr("dataTag"));
+	})
+	$(".delProduct").click(function(){
+		$.ajax({
+			type: 'POST',
+			url:serviceUri+"website/delProduct",
+			data:{
+				store:$("#container").attr("store"),
+				product:$(this).closest("tr").attr("dataTag")
+			},
+			success:function(data){
+			}
+		});
+	})
+	$("#customProduct").click(function(){
+		var parent = $(this).closest(".modal-content");
+		var target = "";
+		var data = {};
+		if($(this)[0].hasAttribute("edit")){
+			target = serviceUri+"website/editProduct";
+			data = {
+					store:$("#container").attr("store"),
+					name:$("#name",parent).val(),
+					desc:$("#desc",parent).val(),
+					image:$("#desc",parent).val(),
+					category:$("#cat",parent).val(),
+					categoryName:$("#cat option:selected",parent).text()
+				};
+			$(this).removeAttr("edit");
+		}
+		else{
+			target = serviceUri+"website/addProduct";
+			data = {
+					title:$("#titleTxt",parent).val(),
+					content:$("#contentTxt",parent).val(),
+					store:$("#container").attr("store")
+				};
+		}
+		$.ajax({
+			type: 'POST',
+			url:target,
+			data:data,
+			success:function(data){
+			}
+		});
+	})
+	$("#customProduct").click(function(){
 		var parent = $(this).closest(".modal-content");
 		var target = "";
 		var data = {};

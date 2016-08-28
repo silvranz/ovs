@@ -1,4 +1,4 @@
-<?php include("config/global.php") ?>
+<?php include("config/global.php");?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -7,11 +7,25 @@
 		<link rel="stylesheet" href="css/main.css"></link>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script>$(function(){
+			$("#contactUsForm").submit(function(e){
+				e.preventDefault();
+				$.ajax({
+					url:"<?=$base_url?>send-contact-us.php",
+					type:"POST",
+					data:{
+						name:$("#nameContact").val(),
+						email:$("#emailContact").val(),
+						message:$("#messageTxt").text()
+					}
+				})
+			})
+		})</script>
 	</head>
 	<body ><!--pinknya: #ffb6c1, greynya #999999-->
 		<div class="container">
 			<div class="row">
-				<img class="col-sm-2 col-sm-offset-5" src="images/a.jpg"></img>
+				<img class="col-sm-2 col-sm-offset-5" src="images/<?=$logo?>"></img>
 				<h3 class="col-sm-6 col-sm-offset-3 text-center">Header</h3>
 			</div>
 		</div>
@@ -28,23 +42,25 @@
 		<div class="container">
 			<div class="row">
 				<h3>Contact Us</h3>
+				<form id="contactUsForm">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="form-group">
 						<label>Your name</label>
-						<input class="form-control" type="text" placeholder="Input your name here" />
+						<input class="form-control" type="text" placeholder="Input your name here" id="nameContact"/>
 					</div>
 					<div class="form-group">
 						<label>Your email</label>
-						<input class="form-control" type="text" placeholder="Input your email here" />
+						<input class="form-control" type="text" placeholder="Input your email here"  id="emailContact"/>
 					</div>
 					<div class="form-group">
 						<label>Your message</label>
-						<textarea class="form-control" rows="5" placeholder="Input your message here" /></textarea>
+						<textarea class="form-control" rows="5" placeholder="Input your message here"  id="messageTxt"/></textarea>
 					</div>
 					<div class="form-group">
 						<input class="form-control" type="submit" value="Submit" />
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 		<footer class="bs-docs-footer"> 
@@ -52,3 +68,4 @@
 		</footer>
 	</body>
 </html>
+<?php include("config/end.php") ?>
