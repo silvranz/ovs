@@ -2,7 +2,7 @@
 
 class Template_Model extends CI_Model {
 	public function createStore($storeName,$domainName,$userId,$templateId,$browser,$browserVersion,$ip,$device,$os){
-		return $this->db->query("CALL InsertStore('$storeName','$domainName','".$domainName.".jpg','$domainName','$userId','$templateId',NULL,'$browser','$browserVersion','$ip','$device','$os')");
+		return $this->db->query("CALL InsertStore('$domainName','$domainName','".$domainName.".jpg','$domainName','$userId','$templateId',NULL,'$browser','$browserVersion','$ip','$device','$os')");
 	}
 	public function ExecSp($projectName,$templateId,$storeId,$userId){
 		return $this->db->query("CALL ExecSpTemplate('$projectName','$templateId','$storeId','$userId','$browser','$browserVersion','$ip','$device','$os')")->result();

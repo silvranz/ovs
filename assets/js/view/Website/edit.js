@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	$(".editAbout").click(function(){
-		$("#triggerPopup").click();
+		var parent =$(this).closest(".aboutus-item");
+		$("#aboutUsModal #titleTxt").val($(".titleAbout",parent).text());
+		$("#aboutUsModal #contentTxt").val($(".descAbout",parent).text());
+		console.log($(".descAbout",parent).text());
+		$("#addNewAbout").click();
 		$("#customAboutUs").attr("edit",$(this).closest(".aboutus-item").attr("dataTag"));
 	})
 	$(".delAbout").click(function(){
@@ -63,7 +67,7 @@ $(document).ready(function() {
 			}
 		});
 	})
-	$("#customProduct").click(function(){
+	$("#customAboutUs").click(function(){
 		var parent = $(this).closest(".modal-content");
 		var target = "";
 		var data = {};

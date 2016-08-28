@@ -220,7 +220,7 @@
 					<div>
 						<h3 class="no-mg pull-left">About Us</h3>
 						<h4 class="no-mg pull-right">
-							<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#aboutUsModal">
+							<button id="addNewAbout" type="submit" class="btn btn-success" data-toggle="modal" data-target="#aboutUsModal">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add New
 							</button>
@@ -234,8 +234,8 @@
 							for($i=0;$i<$countAbout;$i++){
 						?>
 						<div class="aboutus-item mt20 pb20" dataTag="<?=$request["aboutUs"][$i]->aboutus_id?>">
-							<h4><b><?=$request["aboutUs"][$i]->aboutus_title?></b></h4>
-							<p><?=$request["aboutUs"][$i]->aboutus_desc?></p>
+							<h4 class="titleAbout"><b><?=$request["aboutUs"][$i]->aboutus_title?></b></h4>
+							<p class="descAbout"><?=$request["aboutUs"][$i]->aboutus_desc?></p>
 							<div class="wrapper-action">
 								<a href="#" class="fbold editAbout">Edit</a>
 								<span>|</span>
