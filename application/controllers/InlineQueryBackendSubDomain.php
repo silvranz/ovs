@@ -172,6 +172,14 @@
 			echo json_encode($query->result());
 		}
 
+		public function UpdateLogo(){
+			$logo='url';
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("UPDATE genset SET genset_content = '".$logo."' 
+						WHERE genset_type='logo'");
+			echo json_encode($query->result());
+		}
+
 		public function GetDisplayName(){
 			$this->db->query('use '.$dn);
 			$query = $this->db->query("SELECT genset_content FROM genset
@@ -179,9 +187,25 @@
 			echo json_encode($query->result());
 		}
 
+		public function UpdateDisplayName(){
+			$display_name='Thelana Shop'
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("UPDATE genset SET genset_content='".$display_name."' 
+						WHERE genset_type='display_name'");
+			echo json_encode($query->result());
+		}
+
 		public function GetBanner(){
 			$this->db->query('use '.$dn);
 			$query = $this->db->query("SELECT genset_content FROM genset
+						WHERE genset_type='home_banner'");
+			echo json_encode($query->result());
+		}
+
+		public function UpdateBanner(){
+			$banner='url_banner'
+			$this->db->query('use '.$dn);
+			$query = $this->db->query("UPDATE genset SET genset_content='".$banner."' 
 						WHERE genset_type='home_banner'");
 			echo json_encode($query->result());
 		}
