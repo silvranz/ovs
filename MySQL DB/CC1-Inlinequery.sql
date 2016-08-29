@@ -42,5 +42,5 @@ JOIN angela_prod_cat pc ON pc.prod_cat_id=p.prod_cat_id
 WHERE p.prod_id = '$prod_id'
 
 -- insert contact us
-INSERT INTO '$domain_name'_contactus (contactus_name, contactus_email, contactus_message, contactus_isread, contactus_date)
+INSERT INTO contactus (contactus_name, contactus_email, contactus_message, contactus_isread, contactus_date)
 VALUES ('$cu_name', '$cu_email', '$cu_message', 1, CURRENT_TIMESTAMP())
