@@ -1,12 +1,22 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Website_Model extends CI_Model {
-	private static $dn = "os";
+	public $dn;
+	public function __construct(){
+		$this->dn = $this->session->userdata('currentDomain');
+	}
 	public function setDomainNameStore($storeId){
 		$queryString = "CALL GetDomainName ('$storeId')";
 		$dbObj = $this->db->query($queryString);
 		$this->dn = $dbObj->result()[0]->StoreDomain;
 		$dbObj->next_result();
+	}
+	public function getDomainNameStore($storeId){
+		$queryString = "CALL GetDomainName ('$storeId')";
+		$dbObj = $this->db->query($queryString);
+		$dn = $dbObj->result()[0]->StoreDomain;
+		$dbObj->next_result();
+		return $dn;
 	}
 	public function GetNewestProducts(){  
 		$this->dn = 'thelana'; //domain name 
@@ -67,7 +77,20 @@ class Website_Model extends CI_Model {
 							aboutus_desc='".$aboutus_desc."',
 							aboutus_date_edit = CURRENT_TIMESTAMP(),
 							aboutus_user_edit=".$userid);
-	} 
+	}
+	
+	public function UpdateLogo($logo){
+		$this->db->query('use '.$this->dn);
+		$query = $this->db->query("UPDATE genset SET genset_content = '".$logo."' 
+					WHERE genset_type='logo'");
+		return $query->result();
+	}
+	public function UpdateBanner($banner){
+		$this->db->query('use '.$this->dn);
+		$query = $this->db->query("UPDATE genset SET genset_content='".$banner."' 
+					WHERE genset_type='home_banner'");
+		echo json_encode($query->result());
+	}
 
 	public function DeleteAboutUs($aboutus_id){
 		$this->db->query('use '.$this->dn);
@@ -101,10 +124,10 @@ class Website_Model extends CI_Model {
 	public function InsertProducts($param_prod_cat_id,$param_prod_cat_name,$param_prod_name,$param_prod_desc,$param_prod_image){
 		/*$param_prod_cat_id = 1; //kalo insert baru lempar null
 		$param_prod_cat_name='cat2';
-		$user_id=$this->session->userdata("userid");
 		$param_prod_name='prod2';
 		$param_prod_desc='prod_desc2';
 		$param_prod_image='prod_image2';*/
+		$user_id=$this->session->userdata("userid");
 
 		$this->db->query('use '.$this->dn);
 		$query = $this->db->query("IF ".$param_prod_cat_id." IS NOT NULL
@@ -127,9 +150,38 @@ class Website_Model extends CI_Model {
 			('".$param_prod_name."', '".$param_prod_desc."', '".$param_prod_image."', @prod_cat_id_inserted, CURRENT_TIMESTAMP(), ".$user_id.");");
 		return $query->result();
 	}
-	public function UpdateProducts(){
+	public function UpdateProducts($prod_id,$param_prod_cat_id,$param_prod_cat_name,$param_prod_name,$param_prod_desc,$param_prod_image){
+		/*$dn = 'thelana'; //domain name
+		$prod_id=1
+		$param_prod_cat_id = 1; //kalo insert baru lempar null
+		$param_prod_cat_name='cat2';
+		$param_prod_name='prod2';
+		$param_prod_desc='prod_desc2';
+		$param_prod_image='prod_image2';*/
+		$user_id=$this->session->userdata("userid");
 		$this->db->query('use '.$this->dn);
-		$query = $this->db->query("");
+		$query = $this->db->query("IF ".$param_prod_cat_id." IS NOT NULL
+			THEN
+				SET @prod_cat_id_inserted = ".$param_prod_cat_id.";
+				
+			ELSE
+				IF EXISTS(SELECT prod_cat_name FROM prod_cat WHERE prod_cat_name='".$param_prod_cat_name."')
+				THEN 
+					SET @prod_cat_id_inserted = (SELECT prod_cat_id FROM prod_cat WHERE prod_cat_name='".$param_prod_cat_name."');
+				ELSE
+					INSERT INTO prod_cat(prod_cat_name, prod_cat_date, prod_cat_user_input)
+					VALUES ('".$param_prod_cat_name."', CURRENT_TIMESTAMP(), ".$user_id.");
+					SET @prod_cat_id_inserted = LAST_INSERT_ID();
+				END IF;
+			END IF;
+			UPDATE prod SET 
+			prod_name ='".$param_prod_name."', 
+			prod_desc = '".$param_prod_desc."',
+			prod_image = '".$param_prod_image."',
+			prod_cat_id = @prod_cat_id_inserted,
+			prod_date_edit=CURRENT_TIMESTAMP(),
+			prod_user_edit=".$user_id."
+			WHERE prod_id=".$prod_id);
 		return $query->result();
 	}
 

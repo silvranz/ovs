@@ -36,7 +36,7 @@ class Website extends ABN_Controller {
 		));
 		$templateType = $this->website->getTemplateType($storeId);
 		$listMenu = $this->website->GetMenu($templateType[0]->TemplateType);
-		$this->website->setDomainNameStore($storeId);
+		$this->session->set_userdata('currentDomain', $this->website->getDomainNameStore($storeId));
 		$generalSetting = $this->website->getGeneralInfo();
 		$listAboutUs = $this->website->GetAboutUs();
 		$listProduct = $this->website->GetProducts();
@@ -60,35 +60,150 @@ class Website extends ABN_Controller {
 		$listWebsite = $this->website->getWebsite($this->session->userdata("userid"),$input["limit"],$input["offset"]);
 		echo json_encode($listWebsite);
 	}
+	public function updateLogo(){
+		$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
+        $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+        $config['max_size'] = 1024 * 8;
+        $config['encrypt_name'] = TRUE;
+ 
+        $this->load->library('upload', $config);
+ 
+        if (!$this->upload->do_upload("logoImage"))
+        {
+            $status = 'error';
+            $msg = $this->upload->display_errors('', '');
+        }
+        else
+        {
+            $data = $this->upload->data();
+            $file_id = $this->website->updateLogo($data['file_name']);
+            /*if($file_id)
+            {
+                $status = "success";
+                $msg = "File successfully uploaded";
+            }
+            else
+            {
+                unlink($data['full_path']);
+                $status = "error";
+                $msg = "Something went wrong when saving the file, please try again.";
+            }*/
+        }
+        @unlink($_FILES["logoImage"]);
+	}
+	public function updateBanner(){
+		$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
+        $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+        $config['max_size'] = 1024 * 8;
+        $config['encrypt_name'] = TRUE;
+ 
+        $this->load->library('upload', $config);
+ 
+        if (!$this->upload->do_upload("bannerImage"))
+        {
+            $status = 'error';
+            $msg = $this->upload->display_errors('', '');
+        }
+        else
+        {
+            $data = $this->upload->data();
+            $file_id = $this->website->updateBanner($data['file_name']);
+            /*if($file_id)
+            {
+                $status = "success";
+                $msg = "File successfully uploaded";
+            }
+            else
+            {
+                unlink($data['full_path']);
+                $status = "error";
+                $msg = "Something went wrong when saving the file, please try again.";
+            }*/
+        }
+        @unlink($_FILES["bannerImage"]);
+	}
 	public function addAboutUs(){
 		$post = $this->input->post();
-		$this->website->setDomainNameStore($post["store"]);
 		$this->website->InsertAboutUs($post["title"],$post["content"]);
 	}
 	public function editAboutUs(){
 		$post = $this->input->post();
-		$this->website->setDomainNameStore($post["store"]);
 		//$post["aboutUs"] -> id aboutus nya yang mau diganti
 		$this->website->UpdateAboutUs($post["title"],$post["content"]);
 	}
 	public function delAboutUs(){
 		$post = $this->input->post();
-		$this->website->setDomainNameStore($post["store"]);
 		$this->website->DeleteAboutUs($post["aboutUs"]);
 	}
 	public function addProduct(){
 		$post = $this->input->post();
-		$this->website->setDomainNameStore($post["store"]);
-		$this->website->InsertProducts($post["category"],$post["categoryName"],$post["name"],$post["desc"],$post["image"]);
+		print_r($post);
+		$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
+        $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+        $config['max_size'] = 1024 * 8;
+        $config['encrypt_name'] = TRUE;
+ 
+        $this->load->library('upload', $config);
+ 
+        if (!$this->upload->do_upload("productImage"))
+        {
+            $status = 'error';
+            $msg = $this->upload->display_errors('', '');
+        }
+        else
+        {
+            $data = $this->upload->data();
+			$this->website->InsertProducts($post["cat"],$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
+            /*if($file_id)
+            {
+                $status = "success";
+                $msg = "File successfully uploaded";
+            }
+            else
+            {
+                unlink($data['full_path']);
+                $status = "error";
+                $msg = "Something went wrong when saving the file, please try again.";
+            }*/
+        }
+        @unlink($_FILES["productImage"]);
 	}
 	public function editProduct(){
 		$post = $this->input->post();
-		$this->website->setDomainNameStore($post["store"]);
+		print_r($post);
+		$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
+        $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+        $config['max_size'] = 1024 * 8;
+        $config['encrypt_name'] = TRUE;
+ 
+        $this->load->library('upload', $config);
+ 
+        if (!$this->upload->do_upload("productImage"))
+        {
+            $status = 'error';
+            $msg = $this->upload->display_errors('', '');
+        }
+        else
+        {
+            $data = $this->upload->data();
+			$this->website->UpdateProducts($post["prodId"],$post["cat"],$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
+            /*if($file_id)
+            {
+                $status = "success";
+                $msg = "File successfully uploaded";
+            }
+            else
+            {
+                unlink($data['full_path']);
+                $status = "error";
+                $msg = "Something went wrong when saving the file, please try again.";
+            }*/
+        }
+        @unlink($_FILES["productImage"]);
 		$this->website->UpdateProducts();
 	}
 	public function delProduct(){
 		$post = $this->input->post();
-		$this->website->setDomainNameStore($post["store"]);
 		$this->website->DeleteProducts($post["product"]);
 	}
 	/*** end service ***/

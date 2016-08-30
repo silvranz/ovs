@@ -104,6 +104,15 @@
 	}
 </style>
 
+<form id="formLogo" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="">
+	<input type="file" name="logoImage" id="logoImage" style="width:0;height:0;">
+</form>
+<form id="formBanner" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="">
+	<input type="file" name="bannerImage" id="bannerImage" style="width:0;height:0;">
+</form>
+											<form>
+												<input type="file" id="bannerImage" style="width:0;height:0;">
+											</form>
 <div class="container" id="container" store="<?=$request["storeId"]?>">
 	<div class="row">
 		<div class="col-sm-12">
@@ -142,10 +151,12 @@
 						      	<span class="col-sm-9 control-label taleft">
 						      		<img src="<?php echo $domain; ?>/assets/images/placeholder/logo.jpg" style="width: 150px;" />
 						      		<div class="mt10">
-						      			<button type="button" class="btn btn-primary">
-						      				<span class="glyphicon glyphicon-plus"></span>
-						      				Upload New
-						      			</button>
+										<label for="logoImage">
+											<button type="button" id="logoBtn" class="btn btn-primary">
+												<span class="glyphicon glyphicon-plus"></span>
+												Upload New
+											</button>
+										</label>
 						      		</div>
 						      	</span>
 						  	</div>
@@ -155,17 +166,14 @@
 						      	<span class="col-sm-9 control-label taleft">
 						      		<img src="<?php echo $domain; ?>/assets/images/placeholder/banner.png" style="width: 320px;" />
 						      		<div class="mt10">
-						      			<button type="button" class="btn btn-primary">
-						      				<span class="glyphicon glyphicon-plus"></span>
-						      				Upload New
-						      			</button>
+										<label for="bannerImage">
+											<button type="button" id="bannerBtn" class="col-sm-12 btn btn-primary">
+												<span class="glyphicon glyphicon-plus"></span>
+												Upload New
+											</button>
+										</label>
 						      		</div>
 						      	</span>
-						  	</div>
-						  	<div class="form-group">
-						    	<div class="col-sm-offset-3 col-sm-9">
-						      		<button type="submit" class="btn btn-success">Save My Settings</button>
-						    	</div>
 						  	</div>
 						</form>
 					</div>
@@ -319,38 +327,33 @@
         		<h4 class="modal-title" id="addProductModalLabel">Add / Edit Product</h4>
       		</div>
 	      	<div class="modal-body">
-	       		 <form class="form-horizontal" role="form">
+	       		 <form id="formProduct" class="form-horizontal" role="form" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="">
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Product Name</label>
 				      	<span class="col-sm-9">
-				      		<input type="text" class="form-control" id="name" />
+				      		<input type="text" class="form-control" name="name" id="name" />
 				      	</span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Product Desc</label>
 				      	<span class="col-sm-9">
-				      		<input type="text" class="form-control" id="desc" />
+				      		<input type="text" class="form-control" name="desc" id="desc" />
 				      	</span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Image</label>
 				      	<span class="col-sm-9">
-				      		<button type="submit" class="btn btn-primary">
+							<input type="file" name="productImage">
+				      		<!--button type="submit" class="btn btn-primary">
 								<span class="glyphicon glyphicon-plus"></span>
 								Upload Image
-							</button>
-				      	</span>
-				  	</div>
-				  	<div class="form-group">
-				    	<label class="col-sm-3 control-label taleft">Price</label>
-				      	<span class="col-sm-9">
-				      		<input type="text" id="price" class="form-control" placeholder="Rp. 300.000" />
+							</button-->
 				      	</span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Category</label>
 				      	<span class="col-sm-9">
-				      		<select id="cat" class="form-control" toggle-visible-on-option="3" target-selector="#newCategory">
+				      		<select id="cat" name="cat" class="form-control" toggle-visible-on-option="3" target-selector="#newCategory">
 								<?php 
 									$countProductCat = count($request["ProductCat"]);
 									for($i=0;$i<$countProductCat;$i++){
