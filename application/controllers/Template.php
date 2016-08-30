@@ -17,9 +17,13 @@ class Template extends ABN_Controller {
 		$listCategory = $this->template->getCategory();
 		$this->render(array("listCategory"=>$listCategory));
 	}
-	public function preview($templateID) {
-		$pageData = $this->template->getTemplateName($templateID)->result()[0]->TemplateProjectName;
-		$this->load->view("Template/preview",array("page"=>$pageData));
+	public function preview($templateID,$pageName = "index.php") {
+		$projectName = $this->template->getTemplateName($templateID)->result()[0]->TemplateProjectName;
+		$pageData = "assets/preview/".$projectName."/".$pageName;
+		$this->load->view("Template/preview",array(
+					"templateName"=>$projectName,
+					"page_base"=>$this->domain."/assets/preview/".$projectName."/",
+					"page"=>$pageData));
 	}
 	public function form_fillment(){
 		if(!$this->session->userdata('loggedin')){
@@ -32,6 +36,9 @@ class Template extends ABN_Controller {
 	/*** end page load ***/
 	
 	/*** service ***/
+	public function getTemplatePage(){
+		
+	}
 	public function getTemplate(){
 		$input = $this->input->post();
 		$listTemplate = $this->template->getTemplate($input["categoryId"],$this->session->userdata("userid"),$input["mode"],$input["limit"],$input["offset"]);

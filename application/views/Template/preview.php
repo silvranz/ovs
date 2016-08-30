@@ -13,11 +13,12 @@
 ?>
 <div class="container">
 	<div class="row text-center">
-		<div class="col-sm-8 col-sm-offset-2">
+		<div class="col-sm-12">
 			<div class="form-group text-center">
-				<h3>Template info</h3>
+				<h3><?=$templateName?></h3>
+				<button class="btn btn-default">Use this template</button>
 			</div>
 		</div>
 	</div>
 </div>
-<iframe style="width:100%" src="<?=$this->domain."/assets/template/".$page."/index.php"?>">
+<?php include($page)?>
