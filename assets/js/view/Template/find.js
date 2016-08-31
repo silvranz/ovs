@@ -102,7 +102,7 @@ function updateContent(data){
 		$(".total-rating",newTemplate).text(rate);
 		$(".screen-shot",newTemplate).attr("src",serviceUri+"assets/images/screen-shot/"+data[i].TemplateImage);
 		$(".previewButton",newTemplate).click(function(){
-			location.href=serviceUri+"template/preview/"+$(this).closest(".itemPanel").data("templateId");
+			location.href=serviceUri+"template/preview/"+$(this).closest(".itemPanel").data("templateId")+"/index.php";
 		});
 		$(".useButton",newTemplate).click(function(){
 			location.href=serviceUri+"template/form-fillment?key="+$(this).closest(".itemPanel").data("templateId");
