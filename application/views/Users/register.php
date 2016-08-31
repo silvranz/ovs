@@ -21,6 +21,7 @@
 						  					'type' => 'text',
 						  					'name' => 'fullname',
 						  					'class' => 'form-control',
+						  					'value' => set_value('fullname'),
 						  					'placeholder' => 'Full name',
 						  				));
 										echo form_error('fullname');
@@ -36,6 +37,7 @@
 						  					'type' => 'text',
 						  					'name' => 'email',
 						  					'class' => 'form-control',
+						  					'value' => set_value('email'),
 						  					'placeholder' => 'Email',
 						  				));
 										echo form_error('email');
@@ -59,8 +61,8 @@
 							<div class="form-group">
 								<label for="gender" class="control-label">Gender</label>
 								<select class="form-control" name="gender">
-									<option value="M">Male</option>
-									<option value="F">Female</option>
+									<option <?php echo ( $request['gender'] == 'M' ) ? 'selected' : ''; ?> value="M">Male</option>
+									<option <?php echo ( $request['gender'] == 'F' ) ? 'selected' : ''; ?> value="F">Female</option>
 								</select>
 							</div>
 							<div class="form-group">

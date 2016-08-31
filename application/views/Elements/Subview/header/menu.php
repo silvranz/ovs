@@ -1,3 +1,9 @@
+<?php
+		$method_name = ucwords($this->router->method);
+
+		// echo $method_name; die;
+?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   	<div class="container">
     	<div class="navbar-header">
@@ -36,11 +42,6 @@
 
 						echo tag('a', 'Template', array(
 							'href' => $domain.'/template/find',
-							'wrapTag' => 'li',
-						));
-      					
-						echo tag('a', 'Example', array(
-							'href' => $domain.'/pages/example',
 							'wrapTag' => 'li',
 						));
 
