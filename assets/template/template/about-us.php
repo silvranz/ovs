@@ -4,14 +4,16 @@ $sql = "SELECT aboutus_title, aboutus_desc FROM aboutus ORDER BY UNIX_TIMESTAMP(
 $result = $conn->query($sql);
 $aboutUs = [];
 if ($result->num_rows > 0) {
-	array_push($aboutUs,$result->fetch_assoc());
+	while($row =$result->fetch_assoc()){
+		array_push($aboutUs,$row);
+	}
 }
 $countAbout = count($aboutUs);
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Testing</title>
+		<title><?=$projectName?></title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="css/main.css"></link>
 		<script src="js/jquery.min.js"></script>

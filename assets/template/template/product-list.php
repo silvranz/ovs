@@ -6,7 +6,9 @@
 	$result = $conn->query($sql);
 	$category = [];
 	if ($result->num_rows > 0) {
-		array_push($category,$result->fetch_assoc());
+		while($row=$result->fetch_assoc()){
+			array_push($category,$row);
+		}
 	}
 	$countCategory = count($category);
 	$sql = "SELECT prod_id, prod_name, prod_image, p.prod_cat_id
@@ -17,20 +19,21 @@
 	$product = [];
 	$tempProduct = "";
 	if ($result->num_rows > 0) {
-		$tempProduct = $result->fetch_assoc();
-		$product[$tempProduct["prod_cat_id"]] = [];
-		array_push($product[$tempProduct["prod_cat_id"]],
-				array("prod_id"=>$tempProduct["prod_id"],
-					"prod_name"=>$tempProduct["prod_name"],
-					"prod_image"=>$tempProduct["prod_image"]
-					));
+		while($tempProduct = $result->fetch_assoc()){
+			$product[$tempProduct["prod_cat_id"]] = [];
+			array_push($product[$tempProduct["prod_cat_id"]],
+					array("prod_id"=>$tempProduct["prod_id"],
+						"prod_name"=>$tempProduct["prod_name"],
+						"prod_image"=>$tempProduct["prod_image"]
+						));
+		}
 	}
 	$countProduct = count($product);
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Testing</title>
+		<title><?=$projectName?></title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="css/main.css"></link>
 		<script src="js/jquery.min.js"></script>

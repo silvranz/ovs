@@ -21,6 +21,7 @@ class Template extends ABN_Controller {
 		$projectName = $this->template->getTemplateName($templateID)->result()[0]->TemplateProjectName;
 		$pageData = "assets/preview/".$projectName."/".$pageName;
 		$this->load->view("Template/preview",array(
+					"use_url"=>$this->domain."/template/form-fillment?key=".$templateID,
 					"templateName"=>$projectName,
 					"page_base"=>$this->domain."/assets/preview/".$projectName."/",
 					"page"=>$pageData));

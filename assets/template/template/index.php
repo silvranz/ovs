@@ -9,14 +9,16 @@
 	$result = $conn->query($sql);
 	$newestProduct = [];
 	if ($result->num_rows > 0) {
-		array_push($newestProduct,$result->fetch_assoc());
+		while($row=$result->fetch_assoc()){
+			array_push($newestProduct,$row);
+		}
 	}
 	$countNewest = count($newestProduct);
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Testing</title>
+		<title><?=$projectName?></title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="css/main.css"></link>
 		<script src="js/jquery.min.js"></script>

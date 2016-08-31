@@ -34,9 +34,13 @@ class Website extends ABN_Controller {
 			'site_title' => 'My Website',
 			"additional_js"=>["view/Website/edit"]
 		));
+		$splitDomain = explode("/",$this->domain);
+		$websiteProject = $this->website->getDomainNameStore($storeId);
 		$templateType = $this->website->getTemplateType($storeId);
+		$domainName = $splitDomain[0]."/".$splitDomain[1]."/".$splitDomain[2]."/".$websiteProject."/";
 		$listMenu = $this->website->GetMenu($templateType[0]->TemplateType);
-		$this->session->set_userdata('currentDomain', $this->website->getDomainNameStore($storeId));
+		$this->session->set_userdata('currentDomain', $websiteProject);
+		$this->website->__construct();
 		$generalSetting = $this->website->getGeneralInfo();
 		$listAboutUs = $this->website->GetAboutUs();
 		$listProduct = $this->website->GetProducts();
@@ -44,6 +48,7 @@ class Website extends ABN_Controller {
 		$listContactUs = $this->website->GetContactUs();
 		$this->render(array(
 			"listMenu"=>$listMenu,
+			"website_domain"=>$domainName,
 			"generalSetting"=>$generalSetting,
 			"aboutUs"=>$listAboutUs,
 			"Product"=>$listProduct,
@@ -137,7 +142,6 @@ class Website extends ABN_Controller {
 	}
 	public function addProduct(){
 		$post = $this->input->post();
-		print_r($post);
 		$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
         $config['allowed_types'] = 'gif|jpg|png|doc|txt';
         $config['max_size'] = 1024 * 8;
@@ -170,7 +174,6 @@ class Website extends ABN_Controller {
 	}
 	public function editProduct(){
 		$post = $this->input->post();
-		print_r($post);
 		$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
         $config['allowed_types'] = 'gif|jpg|png|doc|txt';
         $config['max_size'] = 1024 * 8;
@@ -200,7 +203,6 @@ class Website extends ABN_Controller {
             }*/
         }
         @unlink($_FILES["productImage"]);
-		$this->website->UpdateProducts();
 	}
 	public function delProduct(){
 		$post = $this->input->post();

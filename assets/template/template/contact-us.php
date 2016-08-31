@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Testing</title>
+		<title><?=$projectName?></title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="css/main.css"></link>
 		<script src="js/jquery.min.js"></script>

@@ -110,9 +110,6 @@
 <form id="formBanner" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="">
 	<input type="file" name="bannerImage" id="bannerImage" style="width:0;height:0;">
 </form>
-											<form>
-												<input type="file" id="bannerImage" style="width:0;height:0;">
-											</form>
 <div class="container" id="container" store="<?=$request["storeId"]?>">
 	<div class="row">
 		<div class="col-sm-12">
@@ -143,13 +140,13 @@
 						  	<div class="form-group">
 						    	<label class="col-sm-2 control-label taleft">Website Name</label>
 						    	<span class="col-sm-1 control-label taleft">:</span>
-						      	<span class="col-sm-9 control-label taleft"><?=$request['generalSetting']['name']?> ( <a href="#"><b>www.thelanashop.com</b></a> )</span>
+						      	<span class="col-sm-9 control-label taleft"><?=$request['generalSetting']['name']?> ( <a href="<?=$request['website_domain']?>"><b><?=$request['website_domain']?></b></a> )</span>
 						  	</div>
 						  	<div class="form-group">
 						    	<label class="col-sm-2 control-label taleft">Logo</label>
 						    	<span class="col-sm-1 control-label taleft">:</span>
 						      	<span class="col-sm-9 control-label taleft">
-						      		<img src="<?php echo $domain; ?>/assets/images/placeholder/logo.jpg" style="width: 150px;" />
+						      		<img src="<?=$request['website_domain']."images/".$request['generalSetting']['logo']?>" style="width: 150px;" />
 						      		<div class="mt10">
 										<label for="logoImage">
 											<button type="button" id="logoBtn" class="btn btn-primary">
@@ -164,7 +161,7 @@
 						    	<label class="col-sm-2 control-label taleft">Home Banner</label>
 						    	<span class="col-sm-1 control-label taleft">:</span>
 						      	<span class="col-sm-9 control-label taleft">
-						      		<img src="<?php echo $domain; ?>/assets/images/placeholder/banner.png" style="width: 320px;" />
+						      		<img src="<?=$request['website_domain']."images/".$request['generalSetting']['banner']?>" style="width: 320px;" />
 						      		<div class="mt10">
 										<label for="bannerImage">
 											<button type="button" id="bannerBtn" class="col-sm-12 btn btn-primary">
@@ -208,7 +205,7 @@
 								?>
 								<tr dataTag="<?=$request["Product"][$i]->prod_id?>">
 									<td>
-										<img src="<?php echo $domain; ?>/assets/images/placeholder/image.png" style="width: 120px;" />
+										<img src="<?=$request['website_domain']."images/".$request['Product'][$i]->prod_image?>" style="width: 120px;" />
 									</td>
 									<td><?=$request["Product"][$i]->prod_name?></td>
 									<td><?=$request["Product"][$i]->prod_desc?></td>
