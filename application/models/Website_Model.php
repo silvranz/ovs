@@ -83,13 +83,11 @@ class Website_Model extends CI_Model {
 		$this->db->query('use '.$this->dn);
 		$query = $this->db->query("UPDATE genset SET genset_content = '".$logo."' 
 					WHERE genset_type='logo'");
-		return $query->result();
 	}
 	public function UpdateBanner($banner){
 		$this->db->query('use '.$this->dn);
 		$query = $this->db->query("UPDATE genset SET genset_content='".$banner."' 
 					WHERE genset_type='home_banner'");
-		return $query->result();
 	}
 
 	public function DeleteAboutUs($aboutus_id){
