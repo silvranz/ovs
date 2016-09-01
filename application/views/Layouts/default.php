@@ -47,8 +47,6 @@
 		<link rel="icon" href="<?php echo $domain.'/assets/images/logos/favicon.ico'; ?>" type="image/x-icon">
 
 		<?php
-				echo tag('title', 'Oversign');
-
 				load_css(array(
 					'bootstrap/bootstrap',
 					'bootstrap/docs',

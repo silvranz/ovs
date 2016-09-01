@@ -21,6 +21,7 @@
 						  					'type' => 'text',
 						  					'name' => 'email',
 						  					'class' => 'form-control',
+						  					'value' => set_value('email'),
 						  					'placeholder' => 'Enter your email',
 						  				));
 										echo form_error('email');
