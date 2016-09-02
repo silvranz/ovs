@@ -21,6 +21,41 @@ class Users extends ABN_Controller {
 			$this->render(array("profile"=>$userProfile[0],"country"=>$country));
 		}
 	}
+	public function updateProfilePic(){
+		$config['upload_path'] = 'assets/images';
+        $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+        $config['max_size'] = 1024 * 8;
+        $config['encrypt_name'] = TRUE;
+ 
+        $this->load->library('upload', $config);
+ 
+        if (!$this->upload->do_upload("profilePic"))
+        {
+            $status = 'error';
+            $msg = $this->upload->display_errors('', '');
+        }
+        else
+        {
+            $data = $this->upload->data();
+			$this->user->updateProfilePic($this->session->userdata("userid"),$data['file_name']);
+            /*if($file_id)
+            {
+                $status = "success";
+                $msg = "File successfully uploaded";
+            }
+            else
+            {
+                unlink($data['full_path']);
+                $status = "error";
+                $msg = "Something went wrong when saving the file, please try again.";
+            }*/
+        }
+        @unlink($_FILES["profilePic"]);
+	}
+	public function updateProfile(){
+		$post = $this->input->post();
+		$this->user->updateProfile($this->session->userdata("userid"),$post["name"],$post["gender"],$post["country"]);
+	}
 	/*** selesai tambahan nicholas ***/
 	
 	public function login() {
