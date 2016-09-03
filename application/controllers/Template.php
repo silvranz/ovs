@@ -31,8 +31,12 @@ class Template extends ABN_Controller {
 			$this->load->helper('url');
 			redirect($this->domain."/users/login");
 		}
+
+		$this->load->library('form_validation');
+		$this->load->helper('form');
+		
 		$this->load->vars(array("additional_js"=>["view/Template/form_fillment"]));
-		$this->render(["key"=>$this->input->get("key")]);
+		$this->render(["key"=>$this->input->get("key")], 'Template/_form_fillment');
 	}
 	/*** end page load ***/
 	

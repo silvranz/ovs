@@ -1,30 +1,40 @@
 $(document).ready(function() {
-	$("#domainName").blur(function(){
-		$.ajax({
-			url:serviceUri+"template/checkDomain",
-			data:{domainName:$(this).val()},
-			type:"POST",
-			dataType:"JSON",
-			success:function(data){
-				if(data==1){
-					if($(".availability").hasClass("glyphicon-remove")){
+	$("#domainName").keyup(function(){
+		var value = $(this).val();
+		if( value != '' && value.length > 2 ) {
+			$.ajax({
+				url:serviceUri+"template/checkDomain",
+				data:{
+					domainName:value
+				},
+				type:"POST",
+				dataType:"JSON",
+				global: false,
+				success:function(data){
+					if( data == 1) {
 						$(".availability").removeClass("glyphicon-remove").addClass("glyphicon-ok");
-					}
-				}
-				else{
-					if($(".availability").hasClass("glyphicon-ok")){
+						$("#submitForm").removeAttr('disabled');
+					} else {
 						$(".availability").removeClass("glyphicon-ok").addClass("glyphicon-remove");
+						$("#submitForm").attr('disabled', 'disabled');
 					}
 				}
-			}
-		})
+			})
+		} else {
+			$(".availability").removeClass("glyphicon-ok").addClass("glyphicon-remove");
+			$("#submitForm").attr('disabled', 'disabled');
+		}
 	})
-	$("#submitForm").click(function(){
+
+	$("#formFullfillment").submit(function(e){
+		e.preventDefault();
+
+		var value = $("#domainName").val();
 		$.ajax({
 			url:serviceUri+"template/createStore",
 			data:{
-				storeName:$("#storeName").val(),
-				domainName:$("#domainName").val(),
+				storeName:value,
+				domainName:value,
 				clientInfo:{
 					"appCodeName":navigator.appCodeName,
 					"appVersion":navigator.appVersion,
@@ -34,7 +44,7 @@ $(document).ready(function() {
 			},
 			type:"POST",
 			success:function(data){
-				location.href=serviceUri+"website";
+				location.href = serviceUri + "website";
 			}
 		})
 	})

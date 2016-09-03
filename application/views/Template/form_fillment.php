@@ -1,24 +1,61 @@
+<style>
+	#formFullfillment .custom-input {
+		border-width: 0 0 1px 0;
+		box-shadow: none;
+	}
+
+	#formFullfillment #domainName {
+		width: 100%; 
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+
+	#formFullfillment #wrapper-availability {
+		width: 4%; 
+		display:inline-block; 
+		text-align:center; 
+		font-size: 16px;
+	}
+
+	#formFullfillment #wrapper-availability span {
+		font-size: 30px;
+	}
+
+	#formFullfillment #wrapper-availability .glyphicon-ok {
+		color: #05C767; 
+	}
+
+	#formFullfillment #wrapper-availability .glyphicon-remove {
+		color: 	#CB002E;
+	}
+
+	#lblDomainName {
+		font-size: 30px;
+	}
+
+</style>
+
 <div class="container">
-	<div class="row text-center">
+	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
 			<div class="form-group text-center">
 				<h3>Create your new website</h3>
 			</div>
 			<div class="wrapper-static bg-white">
-				<div class="header">
+				<form id="formFullfillment">
 					<input id="keyValue" type="hidden" value="<?=$request["key"]?>">
-					<div class="input-group form-group">
-						<span class="input-group-addon">Store Name</span>
-						<input type="text" class="form-control" id="storeName"/>
+					<div class="form-group text-center">
+						<label id="lblDomainName" for="domainName" class="control-label">Domain Name</label>
+						<div>
+							<input id="domainName" type="text" name="domainName" class="form-control custom-input" value="" placeholder="Type domain name here &hellip;">
+							<div id="wrapper-availability">
+								<span class="glyphicon glyphicon-remove availability"></span>
+							</div>
+						</div>
 					</div>
-					<div class="input-group form-group">
-						<span class="input-group-addon">Domain Name</span>
-						<input type="text" class="form-control" id="domainName"/>
-						<span class="input-group-addon" title="availability">.ovslab.com</span>
-					</div>
-					<button id="submitForm" class="btn btn-default col-sm-12">Create my website</button>
-					<div class=" form-group col-sm-12"></div>
-				</div>
+
+					<button id="submitForm" disabled class="btn btn-success full-width mb20">Create my website</button>
+				</form>
 			</div>
 		</div>
 	</div>

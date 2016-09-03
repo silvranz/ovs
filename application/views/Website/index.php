@@ -1,37 +1,84 @@
+<style>
+	.screen-shot {
+		width:100%; 
+		height: auto;
+
+		max-width: 260px;
+		max-height: 130px;
+
+		margin: 0 auto;
+	}
+	.wrapper-desc {
+		height: 100px;
+	}
+	.website-title {
+		font-size: 30px;
+	}
+	.domain-name {
+		font-size: 16px;
+	}
+	.itemPanel {
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+	}
+	.itemPanel button {
+		max-width: 100px;
+		width: 100%;
+	}
+</style>
+
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="text-center">My Website</h3>
-					<div class="form-group"></div>
-					<div class="form-group">
-						<button class="form-control btn btn-default" id="createWebsite">Add new website</button>
+		<div class="col-sm-9">
+			<div class="mt20">
+				<h2 class="no-mg pull-left">My Website</h2>
+				<h4 class="no-mg pull-right">
+					<button id="createWebsite" type="button" class="btn btn-success">
+						<span class="glyphicon glyphicon-plus"></span>
+						Create New Website
+					</button>
+				</h4>
+			</div>
+			<div class="clearfix mb20"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-9">
+			<div id="websiteContainer">
+				<div id="templateItem" class="row hide itemPanel">
+					<div class="col-sm-4">
+						<img class="screen-shot" />
 					</div>
-				</div>
-				<div class="panel-body" id="websiteContainer">
-					<div id="templateItem" class="col-sm-6 hide itemPanel">
-						<div class="panel panel-default">
-							<div class="panel-heading text-center website-title">Template Title or Name</div>
-							<div class="panel-body">
-								<img class="screen-shot" style="width:100%"/>
-								<div class="col-sm-4">Created Date:</div>
-								<div class="created-date col-sm-8 text-right"></div>
-								<div class="col-sm-4">Domain Name:</div>
-								<a class="domain-name col-sm-8 text-right" target="_blank"></a>
+					<div class="col-sm-8">
+						<div class="wrapper-desc">
+							<div class="fbold website-title"></div>
+							<div class="fbold">
+								<a href="#" class="domain-name" target="_blank"></a>
 							</div>
-							<div class="panel-footer">
-								<div class="btn-group col-sm-12">
-								<button class="btn btn-default col-sm-6 previewButton">Preview</button>
-								<button class="btn btn-default col-sm-6 editButton">Edit</button>
-								</div>
-								<div style="clear:both"></div>
+							<div class="mt10">
+								<button type="button" class="btn btn-primary previewButton">
+									Preview
+								</button>
+								<button type="button" class="btn btn-success editButton">
+									Edit
+								</button>
+								<button type="button" class="btn btn-danger">
+									Deactivate
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<a href="#" id="startLoad"><div class="panel-footer text-center">Load More</div></a>
 			</div>
+			<a href="#" id="startLoad">
+				<div class="panel-footer text-center">Load More</div>
+			</a>
+		</div>
+
+		<div class="col-sm-3">
+			<h3>Ads</h3>
 		</div>
 	</div>
 </div>
