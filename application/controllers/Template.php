@@ -36,7 +36,7 @@ class Template extends ABN_Controller {
 		$this->load->helper('form');
 		
 		$this->load->vars(array("additional_js"=>["view/Template/form_fillment"]));
-		$this->render(["key"=>$this->input->get("key")], 'Template/_form_fillment');
+		$this->render(["key"=>$this->input->get("key")], 'Template/form_fillment');
 	}
 	/*** end page load ***/
 	
