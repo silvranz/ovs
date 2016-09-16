@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	if(activeMenu==""){
+		$("#generalsetting").addClass("active");
+	}
+	else{
+		$("#"+activeMenu).addClass("active");
+	}
 	$("#logoImage").change(function(e){
 		$(this).closest("form").submit();
 	})
@@ -13,7 +19,7 @@ $(document).ready(function() {
             contentType : false,
             processData : false,
             success : function(data) {
-				console.log(data);
+				location.href=basePage+"generalsetting";
             }
         });
 	})
@@ -37,15 +43,18 @@ $(document).ready(function() {
             contentType : false,
             processData : false,
             success : function(data) {
-				console.log(data);
+				location.href=basePage+"generalsetting";
             }
         });
 	})
+	$("#addNewAbout").click(function(){
+		$("#aboutUsModal #titleTxt").val("");
+		$("#aboutUsModal #contentTxt").val("");
+	});
 	$(".editAbout").click(function(){
 		var parent =$(this).closest(".aboutus-item");
 		$("#aboutUsModal #titleTxt").val($(".titleAbout",parent).text());
 		$("#aboutUsModal #contentTxt").val($(".descAbout",parent).text());
-		console.log($(".descAbout",parent).text());
 		$("#addNewAbout").click();
 		$("#customAboutUs").attr("edit",$(this).closest(".aboutus-item").attr("dataTag"));
 	})
@@ -58,6 +67,7 @@ $(document).ready(function() {
 				aboutUs:$(this).closest(".aboutus-item").attr("dataTag")
 			},
 			success:function(data){
+				location.href=basePage+"aboutus";
 			}
 		});
 	})
@@ -65,6 +75,11 @@ $(document).ready(function() {
 		$("#newProduct").click();
 		$("#formProduct").attr("edit",$(this).closest("tr").attr("dataTag"));
 	})
+	$("#newProduct").click(function(){
+		$("#addProductModal #name").val("");
+		$("#addProductModal #desc").val("");
+		$("#addProductModal #productImage").val("");
+	});
 	$(".delProduct").click(function(){
 		$.ajax({
 			type: 'POST',
@@ -74,6 +89,7 @@ $(document).ready(function() {
 				product:$(this).closest("tr").attr("dataTag")
 			},
 			success:function(data){
+				location.href=basePage+"product";
 			}
 		});
 	})
@@ -99,10 +115,15 @@ $(document).ready(function() {
             type : 'POST',
             data : formData,
             cache : false,
-            contentType : false,
+            contentType : "json",
             processData : false,
             success : function(data) {
-				console.log(data);
+				if(data!=""){
+					$("#productError").text(data);
+				}
+				else{
+					location.href=basePage+"product";
+				}
             }
         });
 	})
@@ -133,6 +154,12 @@ $(document).ready(function() {
 			url:target,
 			data:data,
 			success:function(data){
+				if(data!=""){
+					$("#aboutUsError").text(data);
+				}
+				else{
+					location.href=basePage+"aboutUs";
+				}
 			}
 		});
 	})

@@ -103,7 +103,10 @@
 		margin-bottom: 20px;
 	}
 </style>
-
+<script>
+	var activeMenu = "<?=$request["activeMenu"]?>";
+	var basePage = "<?=$this->domain?>/website/edit/<?=$request["storeId"]?>/";
+</script>
 <form id="formLogo" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="">
 	<input type="file" name="logoImage" id="logoImage" style="width:0;height:0;">
 </form>
@@ -125,7 +128,7 @@
 					for($i=0;$i<$count;$i++){
 						$tempName = $request['listMenu'][$i]->MenuName;
 						$targetId = strtolower(str_replace(" ","",$request['listMenu'][$i]->MenuName));
-						echo '<li'.($i==0?' class="active"':'').'><a href="#'.$targetId.'" data-toggle="tab">'.$tempName.'</a></li>';
+						echo '<li'.(empty($request['activeMenu'])?($i==0?' class="active"':''):($request['activeMenu']==$targetId?' class="active"':'')).'><a href="#'.$targetId.'" data-toggle="tab">'.$tempName.'</a></li>';
 					}
 				?>
 	        </ul>
@@ -133,7 +136,7 @@
 		<div class="col-sm-10">
 			<!-- Tab panes -->
           	<div class="tab-content">
-				<div class="tab-pane active" id="generalsetting">
+				<div class="tab-pane" id="generalsetting">
 					<h3 class="no-mg tab-heading">General Setting</h3>
 					<div class="wrapper-general-setting mt20">
 						<form class="form-horizontal" role="form">
@@ -309,8 +312,8 @@
 				</form>
 	      	</div>
 	      	<div class="modal-footer">
-	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        	<button type="button" class="btn btn-success" id="customAboutUs">Save</button>
+	        	<button type="button" class="btn btn-default" id="closeAboutUs" data-dismiss="modal">Close</button>
+	        	<button type="button" class="btn btn-success" id="customAboutUs" data-dismiss="modal">Save</button>
 	      	</div>
     	</div>
   	</div>
@@ -340,7 +343,7 @@
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Image</label>
 				      	<span class="col-sm-9">
-							<input type="file" name="productImage">
+							<input type="file" name="productImage" id="productImage">
 				      		<!--button type="submit" class="btn btn-primary">
 								<span class="glyphicon glyphicon-plus"></span>
 								Upload Image
@@ -366,8 +369,9 @@
 				</form>
 	      	</div>
 	      	<div class="modal-footer">
-	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        	<button type="button" class="btn btn-default" id="closeProduct" data-dismiss="modal">Close</button>
 	        	<button type="button" class="btn btn-success" id="customProduct">Save</button>
+				<span class="error-message" id="productError"></span>
 	      	</div>
     	</div>
   	</div>

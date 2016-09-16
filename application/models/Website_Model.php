@@ -70,13 +70,13 @@ class Website_Model extends CI_Model {
 			VALUES('".$aboutus_title."', '".$aboutus_desc."', CURRENT_TIMESTAMP(),'".$userid."')");
 	} 
 
-	public function UpdateAboutUs($aboutus_title,$aboutus_desc){
+	public function UpdateAboutUs($aboutus_title,$aboutus_desc,$aboutus_id){
 		$userid = $this->session->userdata("userid");
 		$this->db->query('use '.$this->dn);
 		$query = $this->db->query("UPDATE aboutus SET aboutus_title= '".$aboutus_title."', 
-							aboutus_desc='".$aboutus_desc."',
-							aboutus_date_edit = CURRENT_TIMESTAMP(),
-							aboutus_user_edit=".$userid);
+								aboutus_desc='".$aboutus_desc."',
+								aboutus_date_edit = CURRENT_TIMESTAMP(),
+								aboutus_user_edit=".$userid." WHERE aboutus_id=".$aboutus_id);
 	}
 	
 	public function UpdateLogo($logo){
