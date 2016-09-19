@@ -67,6 +67,7 @@ $(document).ready(function() {
 				aboutUs:$(this).closest(".aboutus-item").attr("dataTag")
 			},
 			success:function(data){
+				alert("About us deleted");
 				location.href=basePage+"aboutus";
 			}
 		});
@@ -89,6 +90,7 @@ $(document).ready(function() {
 				product:$(this).closest("tr").attr("dataTag")
 			},
 			success:function(data){
+				alert("Product deleted");
 				location.href=basePage+"product";
 			}
 		});
@@ -104,24 +106,26 @@ $(document).ready(function() {
 		if($(this)[0].hasAttribute("edit")){
 			target = serviceUri+"website/editProduct";
 			formData.append("prodId",$(this).attr("edit"));
-			$(this).removeAttr("edit");
 		}
 		else{
 			target = serviceUri+"website/addProduct";
 		}
 		formData.append("categoryName",$("#cat option:selected",parent).text());
+		formData.append("fileName",$("#productImage").val());
         $.ajax({
             url : target,
             type : 'POST',
             data : formData,
             cache : false,
-            contentType : "json",
+            contentType : false,
             processData : false,
+			popup:this,
             success : function(data) {
 				if(data!=""){
 					$("#productError").text(data);
 				}
 				else{
+					$(this.popup).removeAttr("edit");
 					location.href=basePage+"product";
 				}
             }
@@ -139,7 +143,6 @@ $(document).ready(function() {
 					store:$("#container").attr("store"),
 					aboutUs:$(this).attr("edit")
 				};
-			$(this).removeAttr("edit");
 		}
 		else{
 			target = serviceUri+"website/addAboutUs";
@@ -153,12 +156,15 @@ $(document).ready(function() {
 			type: 'POST',
 			url:target,
 			data:data,
+			popup:this,
 			success:function(data){
+				console.log(data);
 				if(data!=""){
 					$("#aboutUsError").text(data);
 				}
 				else{
-					location.href=basePage+"aboutUs";
+					$(this.popup).removeAttr("edit");
+					location.href=basePage+"aboutus";
 				}
 			}
 		});
