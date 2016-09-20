@@ -30,7 +30,35 @@ $(document).ready(function() {
     $.tabs();
     $.replaceText();
 
+    $.fileUpload();
 });
+
+$.fileUpload = function() {
+    var action_type = '';
+    if ($('#fileupload').attr('action-type') !== undefined) {
+        action_type = $('#fileupload').attr('action-type');
+    }
+    $('#fileupload').fileupload({
+        url: serviceUri + 'ajax/upload_image/' + action_type,
+        dataType: 'html',
+        done: function(e, data) {
+
+            // var result = data.result;
+            // var filename = $(result).attr('data-name');
+            // $('#fileupload').closest('.wrapper-ajax-upload').find('.wrapper-photo').empty().append(result);
+            // $('#progress .progress-bar').css('width', 0);
+            // $('#fuHiddenField').val(filename);
+            // if ($('#fileupload').attr('data-show') !== undefined) {
+            //     var target_class = $('#fileupload').attr('data-show');
+            //     $(target_class).show();
+            // }
+        },
+        progressall: function(e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css('width', progress + '%');
+        }
+    }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+}
 
 $.customFunction = function() {
     $('body').on('click', '*[toggle-visible-on-option]', function(e) {

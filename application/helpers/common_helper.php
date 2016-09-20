@@ -96,7 +96,7 @@ if ( ! function_exists('isLoggedIn')) {
 
 if ( ! function_exists('loadMessage')) {
 
-	function loadMessage( $message = 'Field yang dibutuhkan tidak valid', $status = 'error', $display_on_error = false ) {
+	function loadMessage( $message = 'Necessary field is invalid', $status = 'error', $display_on_error = false ) {
 		$data = array(
 			'message' => $message,
 			'status' => $status,

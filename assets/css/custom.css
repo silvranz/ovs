@@ -284,6 +284,12 @@ fieldset[disabled] .btn-facebook.active {
 	display: block;
 }
 
+/* ERROR */
+.success-message {
+	color: #5cb85c !important;
+	display: block;
+}
+
 /* Overlay for Loading */
 .overlay {
 	position: fixed;
@@ -465,6 +471,39 @@ fieldset[disabled] .btn-facebook.active {
 	transition: margin .25s;
 	color: #3276b1;
 	font-weight: bold;
+}
+
+/* USER PROFILE */
+.wrapper-profile .wrapper-photo img {
+	width:100%; 
+	height:auto;
+	display:inline-block;
+}
+
+@media (max-width: 428px) {
+	.wrapper-profile .wrapper-photo img {
+		max-height: 170px !important;
+		max-width: 230px !important; 
+	}
+}
+
+@media (max-width: 767px) {
+	.wrapper-adv-search {
+		display: none;
+	}
+	.desktop-only {
+		display: none !important;
+	}
+	.mobile-only {
+		display: block !important;
+	}
+	.wrapper-profile .wrapper-photo img {
+		width: auto !important;
+		max-height: 230px; 
+	}
+	.wrapper-profile .btn.btn-success {
+		width: 100%;
+	}
 }
 
 @media print {

@@ -11,7 +11,7 @@
 	}
 
 	#formFullfillment #wrapper-availability {
-		width: 4%; 
+		width: 100%; 
 		display:inline-block; 
 		text-align:center; 
 		font-size: 16px;
@@ -49,6 +49,7 @@
 						<div>
 							<input id="domainName" type="text" name="domainName" class="form-control custom-input" value="" placeholder="Type domain name here &hellip;">
 							<div id="wrapper-availability">
+								<label class="lblStatus error-message"></label>
 								<span class="glyphicon glyphicon-remove availability"></span>
 							</div>
 						</div>
