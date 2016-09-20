@@ -30,10 +30,10 @@ $(document).ready(function() {
     $.tabs();
     $.replaceText();
 
-    //$.fileUpload();
+    $.fileUpload();
 });
 
-/*$.fileUpload = function() {
+$.fileUpload = function() {
     var action_type = '';
     if ($('#fileupload').attr('action-type') !== undefined) {
         action_type = $('#fileupload').attr('action-type');
@@ -59,7 +59,7 @@ $(document).ready(function() {
         }
     }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 }
-*/
+
 $.customFunction = function() {
     $('body').on('click', '*[toggle-visible-on-option]', function(e) {
         e.preventDefault();
