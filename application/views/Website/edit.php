@@ -313,7 +313,8 @@
 	      	</div>
 	      	<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" id="closeAboutUs" data-dismiss="modal">Close</button>
-	        	<button type="button" class="btn btn-success" id="customAboutUs" data-dismiss="modal">Save</button>
+	        	<button type="button" class="btn btn-success" id="customAboutUs">Save</button>
+				<span class="error-message" id="aboutUsError"></span>
 	      	</div>
     	</div>
   	</div>

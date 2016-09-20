@@ -129,6 +129,7 @@ class Website extends ABN_Controller {
         @unlink($_FILES["bannerImage"]);
 	}
 	public function addAboutUs(){
+		$post = $this->input->post();
 		if(empty($post["title"])){
 			$msg = "Title must be filled";
 		}
@@ -136,13 +137,13 @@ class Website extends ABN_Controller {
 			$msg = "Content must be filled";
 		}
 		else{
-			$post = $this->input->post();
 			$this->website->InsertAboutUs($post["title"],$post["content"]);
 			$msg="";
 		}
 		echo $msg;
 	}
 	public function editAboutUs(){
+		$post = $this->input->post();
 		if(empty($post["title"])){
 			$msg = "Title must be filled";
 		}
@@ -150,7 +151,6 @@ class Website extends ABN_Controller {
 			$msg = "Content must be filled";
 		}
 		else{
-			$post = $this->input->post();
 			$this->website->UpdateAboutUs($post["title"],$post["content"],$post["aboutUs"]);
 			$msg="";
 		}
@@ -161,8 +161,8 @@ class Website extends ABN_Controller {
 		$this->website->DeleteAboutUs($post["aboutUs"]);
 	}
 	public function addProduct(){
+		$post = $this->input->post();
 		if(!(empty($post["cat"])||empty($post["categoryName"])||empty($post["name"])||empty($post["desc"]))){
-			$post = $this->input->post();
 			$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
 			$config['allowed_types'] = 'gif|jpg|png|doc|txt';
 			$config['max_size'] = 1024 * 8;
@@ -170,23 +170,19 @@ class Website extends ABN_Controller {
 	 
 			$this->load->library('upload', $config);
 	 
-			if (!$this->upload->do_upload("productImage"))
+			if(empty($post["fileName"])){
+				$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),$post["name"],$post["desc"],$post["fileName"]);
+				$msg = "";
+			}
+			else if (!$this->upload->do_upload("productImage"))
 			{
 				$msg = $this->upload->display_errors('', '');
 			}
 			else
 			{
 				$data = $this->upload->data();
-				if($file_id)
-				{
-					$this->website->InsertProducts($post["cat"],$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
-					$msg = "";
-				}
-				else
-				{
-					unlink($data['full_path']);
-					$msg = "Something went wrong when saving the file, please try again.";
-				}
+				$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),$post["name"],$post["desc"],$data['file_name']);
+				$msg = "";
 			}
 			@unlink($_FILES["productImage"]);
 		}
@@ -196,15 +192,20 @@ class Website extends ABN_Controller {
 		echo $msg;
 	}
 	public function editProduct(){
+		$post = $this->input->post();
 		if(!(empty($post["cat"])||empty($post["categoryName"])||empty($post["name"])||empty($post["desc"]))){
-			$post = $this->input->post();
 			$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
 			$config['allowed_types'] = 'gif|jpg|png|doc|txt';
 			$config['max_size'] = 1024 * 8;
 			$config['encrypt_name'] = TRUE;
 	 
 			$this->load->library('upload', $config);
-	 
+			
+			/*if(empty($post["fileName"])){
+				$this->website->UpdateProducts($post["prodId"],$post["cat"],$post["categoryName"],$post["name"],$post["desc"],$post["fileName"]);
+				$msg = "";
+			}
+			else*/ 
 			if (!$this->upload->do_upload("productImage"))
 			{
 				$status = 'error';
@@ -214,15 +215,7 @@ class Website extends ABN_Controller {
 			{
 				$data = $this->upload->data();
 				$this->website->UpdateProducts($post["prodId"],$post["cat"],$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
-				if($file_id)
-				{
-					$msg = "";
-				}
-				else
-				{
-					unlink($data['full_path']);
-					$msg = "Something went wrong when saving the file, please try again.";
-				}
+				$msg = "";
 			}
 			@unlink($_FILES["productImage"]);
 		}
