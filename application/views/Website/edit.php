@@ -210,9 +210,9 @@
 									<td>
 										<img src="<?=$request['website_domain']."images/".$request['Product'][$i]->prod_image?>" style="width: 120px;" />
 									</td>
-									<td><?=$request["Product"][$i]->prod_name?></td>
-									<td><?=$request["Product"][$i]->prod_desc?></td>
-									<td><?=$request["Product"][$i]->prod_cat_name?></td>
+									<td class="name"><?=$request["Product"][$i]->prod_name?></td>
+									<td class="desc"><?=$request["Product"][$i]->prod_desc?></td>
+									<td class="cat"><?=$request["Product"][$i]->prod_cat_name?></td>
 									<td>
 										<a href="#" class="fbold editProduct">Edit</a>
 										<span>|</span>
@@ -293,7 +293,7 @@
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h4 class="modal-title" id="aboutUsModalLabel">Add / Edit About Us</h4>
+        		<h4 class="modal-title" id="aboutUsModalLabel"></h4>
       		</div>
 	      	<div class="modal-body">
 	       		 <form class="form-horizontal" role="form">
@@ -302,12 +302,14 @@
 				      	<span class="col-sm-10">
 				      		<input type="text" class="form-control" id="titleTxt"/>
 				      	</span>
+						<span class="error-message errorValidation" id="titleError"></span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-2 control-label taleft">Content</label>
 				      	<span class="col-sm-10">
 				      		<textarea class="form-control" rows="5" id="contentTxt"></textarea>
 				      	</span>
+						<span class="error-message errorValidation" id="contentError"></span>
 				  	</div>
 				</form>
 	      	</div>
@@ -325,7 +327,7 @@
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h4 class="modal-title" id="addProductModalLabel">Add / Edit Product</h4>
+        		<h4 class="modal-title" id="addProductModalLabel"></h4>
       		</div>
 	      	<div class="modal-body">
 	       		 <form id="formProduct" class="form-horizontal" role="form" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="">
@@ -334,12 +336,14 @@
 				      	<span class="col-sm-9">
 				      		<input type="text" class="form-control" name="name" id="name" />
 				      	</span>
+						<span class="error-message errorValidation" id="nameError"></span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Product Desc</label>
 				      	<span class="col-sm-9">
 				      		<input type="text" class="form-control" name="desc" id="desc" />
 				      	</span>
+						<span class="error-message errorValidation" id="descError"></span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Image</label>
@@ -350,11 +354,12 @@
 								Upload Image
 							</button-->
 				      	</span>
+						<span class="error-message errorValidation" id="imageError"></span>
 				  	</div>
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Category</label>
 				      	<span class="col-sm-9">
-				      		<select id="cat" name="cat" class="form-control" toggle-visible-on-option="3" target-selector="#newCategory">
+				      		<select id="cat" name="cat" class="form-control"><!-- toggle-visible-on-option="3" target-selector="#newCategory"-->
 								<?php 
 									$countProductCat = count($request["ProductCat"]);
 									for($i=0;$i<$countProductCat;$i++){
@@ -362,10 +367,15 @@
 								<option value="<?=$request["ProductCat"][$i]->prod_cat_id?>">
 									<?=$request["ProductCat"][$i]->prod_cat_name?>
 								</option>
-								<?php }?>
+								<?php };
+								if($countProductCat==0){?>
+								<option value="-1">No Category Available</option>
+								<?php	}
+								?>
 				      		</select>
-				      		<input id="newCategory" type="text" class="form-control mt10 hide" placeholder="Type new category here &hellip;" />
+				      		<input id="newCategory" type="text" class="form-control mt10" placeholder="Type new category here &hellip;" />
 				      	</span>
+						<span class="error-message errorValidation" id="categoryError"></span>
 				  	</div>
 				</form>
 	      	</div>
