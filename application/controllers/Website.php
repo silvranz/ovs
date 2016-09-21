@@ -132,29 +132,35 @@ class Website extends ABN_Controller {
 		$post = $this->input->post();
 		if(empty($post["title"])){
 			$msg = "Title must be filled";
+			$errorType = "title";
 		}
 		else if(empty($post["content"])){
 			$msg = "Content must be filled";
+			$errorType = "content";
 		}
 		else{
 			$this->website->InsertAboutUs($post["title"],$post["content"]);
+			$errorType = "";
 			$msg="";
 		}
-		echo $msg;
+		echo json_encode(array("type"=>$errorType,"msg"=>$msg));
 	}
 	public function editAboutUs(){
 		$post = $this->input->post();
 		if(empty($post["title"])){
 			$msg = "Title must be filled";
+			$errorType = "title";
 		}
 		else if(empty($post["content"])){
 			$msg = "Content must be filled";
+			$errorType = "content";
 		}
 		else{
 			$this->website->UpdateAboutUs($post["title"],$post["content"],$post["aboutUs"]);
+			$errorType = "";
 			$msg="";
 		}
-		echo $msg;
+		echo array("type"=>$errorType,"msg"=>$msg);
 	}
 	public function delAboutUs(){
 		$post = $this->input->post();
@@ -172,24 +178,36 @@ class Website extends ABN_Controller {
 	 
 			if(empty($post["fileName"])){
 				$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),$post["name"],$post["desc"],$post["fileName"]);
+				$errorType = "";
 				$msg = "";
 			}
 			else if (!$this->upload->do_upload("productImage"))
 			{
 				$msg = $this->upload->display_errors('', '');
+				$errorType = "image";
 			}
 			else
 			{
 				$data = $this->upload->data();
 				$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),$post["name"],$post["desc"],$data['file_name']);
+				$errorType = "";
 				$msg = "";
 			}
 			@unlink($_FILES["productImage"]);
 		}
-		else{
-			$msg = "Data must be filled.";
+		else if(empty($post["cat"])){
+			$msg = "Category must be filled.";
+			$errorType = "category";
 		}
-		echo $msg;
+		else if(empty($post["name"])){
+			$msg = "Name must be filled.";
+			$errorType = "name";
+		}
+		else if(empty($post["desc"])){
+			$msg = "Description must be filled.";
+			$errorType = "desc";
+		}
+		echo array("type"=>$errorType,"msg"=>$msg);
 	}
 	public function editProduct(){
 		$post = $this->input->post();
@@ -210,19 +228,30 @@ class Website extends ABN_Controller {
 			{
 				$status = 'error';
 				$msg = $this->upload->display_errors('', '');
+				$errorType = "image";
 			}
 			else
 			{
 				$data = $this->upload->data();
 				$this->website->UpdateProducts($post["prodId"],$post["cat"],$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
+				$errorType = "";
 				$msg = "";
 			}
 			@unlink($_FILES["productImage"]);
 		}
-		else{
-			$msg = "Data must be filled.";
+		else if(empty($post["cat"])){
+			$msg = "Category must be filled.";
+			$errorType = "category";
 		}
-		echo $msg;
+		else if(empty($post["name"])){
+			$msg = "Name must be filled.";
+			$errorType = "name";
+		}
+		else if(empty($post["desc"])){
+			$msg = "Description must be filled.";
+			$errorType = "desc";
+		}
+		echo array("type"=>$errorType,"msg"=>$msg);
 	}
 	public function delProduct(){
 		$post = $this->input->post();
