@@ -82,16 +82,20 @@
 				echo tag('div', $imageLoading, array(
 					'class' => 'overlay'
 				));
-				
+
+				/* Load core library first, then load additional script */
 				load_script(array(
 					'jquery/jquery.min',
 					'bootstrap/bootstrap.min',
-					'functions',
 				));
 
 				if(isset($additional_js) && !empty($additional_js)) {
 	                load_script($additional_js);
 	            }
+
+	            load_script(array(
+					'functions',
+				));
 		?>
 	</body>
 </html>
