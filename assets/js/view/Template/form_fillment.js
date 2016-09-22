@@ -11,7 +11,7 @@ $(document).ready(function() {
 			value = '';
 		} else if( value.length < 3 || value.length > 20 ) {
 			text_status = 'Website Name must between 3-20 character';
-		} else if( /^[a-zA-Z- ]*$/.test(value) == false) {
+		} else if( /^[a-zA-Z0-9- ]*$/.test(value) == false) {
 			text_status = 'Website Name cannot contains symbol except alphanumeric and "-"';
 		} else if( value.split('-').length > 2 ) {
 			text_status = 'Website Name cannot contains symbol "-" more than once';
