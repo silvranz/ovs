@@ -160,7 +160,7 @@ class Website extends ABN_Controller {
 			$errorType = "";
 			$msg="";
 		}
-		echo array("type"=>$errorType,"msg"=>$msg);
+		echo json_encode(array("type"=>$errorType,"msg"=>$msg));
 	}
 	public function delAboutUs(){
 		$post = $this->input->post();
@@ -207,7 +207,7 @@ class Website extends ABN_Controller {
 			$msg = "Description must be filled.";
 			$errorType = "desc";
 		}
-		echo array("type"=>$errorType,"msg"=>$msg);
+		echo json_encode(array("type"=>$errorType,"msg"=>$msg));
 	}
 	public function editProduct(){
 		$post = $this->input->post();
@@ -251,7 +251,7 @@ class Website extends ABN_Controller {
 			$msg = "Description must be filled.";
 			$errorType = "desc";
 		}
-		echo array("type"=>$errorType,"msg"=>$msg);
+		echo json_encode(array("type"=>$errorType,"msg"=>$msg));
 	}
 	public function delProduct(){
 		$post = $this->input->post();

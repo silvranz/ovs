@@ -149,9 +149,10 @@ $(document).ready(function() {
             contentType : false,
             processData : false,
 			popup:this,
+			dataType:"json",
             success : function(data) {
 				if(data.msg!=""){
-					$("#"+data.type).text(data.msg);
+					$("#"+data.type+"Error").text(data.msg);
 				}
 				else{
 					location.href=basePage+"product";
