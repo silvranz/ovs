@@ -168,7 +168,8 @@ class Website extends ABN_Controller {
 	}
 	public function addProduct(){
 		$post = $this->input->post();
-		if(!(empty($post["cat"])||empty($post["categoryName"])||empty($post["name"])||empty($post["desc"]))){
+		if(!(($post["cat"]==-1&&empty($post["newCat"]))
+				||empty($post["categoryName"])||empty($post["name"])||empty($post["desc"]))){
 			$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
 			$config['allowed_types'] = 'gif|jpg|png|doc|txt';
 			$config['max_size'] = 1024 * 8;
@@ -177,9 +178,10 @@ class Website extends ABN_Controller {
 			$this->load->library('upload', $config);
 	 
 			if(empty($post["fileName"])){
-				$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),$post["name"],$post["desc"],$post["fileName"]);
-				$errorType = "";
-				$msg = "";
+				/*$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),
+												$post["name"],$post["desc"],$post["fileName"]);*/
+				$errorType = "image";
+				$msg = "Image must be filled";
 			}
 			else if (!$this->upload->do_upload("productImage"))
 			{
@@ -189,13 +191,20 @@ class Website extends ABN_Controller {
 			else
 			{
 				$data = $this->upload->data();
-				$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),$post["name"],$post["desc"],$data['file_name']);
+				if($post["cat"]==-1){
+					$this->website->InsertProducts($post["newCat"],trim($post["categoryName"]," "),
+													$post["name"],$post["desc"],$data['file_name']);
+				}
+				else{
+					$this->website->InsertProducts($post["cat"],trim($post["categoryName"]," "),
+													$post["name"],$post["desc"],$data['file_name']);
+				}
 				$errorType = "";
 				$msg = "";
 			}
 			@unlink($_FILES["productImage"]);
 		}
-		else if(empty($post["cat"])){
+		else if($post["cat"]==-1&&$post["newCat"]==""){
 			$msg = "Category must be filled.";
 			$errorType = "category";
 		}
@@ -211,7 +220,8 @@ class Website extends ABN_Controller {
 	}
 	public function editProduct(){
 		$post = $this->input->post();
-		if(!(empty($post["cat"])||empty($post["categoryName"])||empty($post["name"])||empty($post["desc"]))){
+		if(!(($post["cat"]==-1&&empty($post["newCat"]))
+				||empty($post["categoryName"])||empty($post["name"])||empty($post["desc"]))){
 			$config['upload_path'] = '../'.$this->session->userdata('currentDomain').'/images';
 			$config['allowed_types'] = 'gif|jpg|png|doc|txt';
 			$config['max_size'] = 1024 * 8;
@@ -233,13 +243,20 @@ class Website extends ABN_Controller {
 			else
 			{
 				$data = $this->upload->data();
-				$this->website->UpdateProducts($post["prodId"],$post["cat"],$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
+				if($post["cat"]==-1){
+					$this->website->UpdateProducts($post["prodId"],$post["newCat"],
+													$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
+				}
+				else{
+					$this->website->UpdateProducts($post["prodId"],$post["cat"],
+													$post["categoryName"],$post["name"],$post["desc"],$data['file_name']);
+				}
 				$errorType = "";
 				$msg = "";
 			}
 			@unlink($_FILES["productImage"]);
 		}
-		else if(empty($post["cat"])){
+		else if($post["cat"]==-1&&$post["newCat"]==""){
 			$msg = "Category must be filled.";
 			$errorType = "category";
 		}

@@ -359,7 +359,8 @@
 				  	<div class="form-group">
 				    	<label class="col-sm-3 control-label taleft">Category</label>
 				      	<span class="col-sm-9">
-				      		<select id="cat" name="cat" class="form-control"><!-- toggle-visible-on-option="3" target-selector="#newCategory"-->
+				      		<select id="cat" name="cat" class="form-control" toggle-visible-on-option="-1" target-selector="#newCategory">
+								<option value="-1">New Category</option>
 								<?php 
 									$countProductCat = count($request["ProductCat"]);
 									for($i=0;$i<$countProductCat;$i++){
@@ -367,13 +368,9 @@
 								<option value="<?=$request["ProductCat"][$i]->prod_cat_id?>">
 									<?=$request["ProductCat"][$i]->prod_cat_name?>
 								</option>
-								<?php };
-								if($countProductCat==0){?>
-								<option value="-1">No Category Available</option>
-								<?php	}
-								?>
+								<?php }; ?>
 				      		</select>
-				      		<input id="newCategory" type="text" class="form-control mt10" placeholder="Type new category here &hellip;" />
+				      		<input id="newCategory" type="text" class="form-control mt10 hide" placeholder="Type new category here &hellip;" name="newCat"/>
 				      	</span>
 						<span class="error-message errorValidation" id="categoryError"></span>
 				  	</div>
